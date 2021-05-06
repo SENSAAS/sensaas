@@ -14,7 +14,7 @@
 
 ## Requirements
 
-SENSAAS relies on the open-source library Open3D. The current release of SENSAAS uses **Open3D version 0.12.0 along with Python3.7**. Visit the following URL for downloading the appropriate package: [https://anaconda.org/open3d-admin/open3d/files](https://anaconda.org/open3d-admin/open3d/files) or for using Open3D Python packages distributed via PyPI and Conda (more information at [http://www.open3d.org/docs/release/getting_started.html](http://www.open3d.org/docs/release/getting_started.html)). For example, for windows-64, you can download '*win-64/open3d-0.12.0-py37_0.tar.bz2*'
+SENSAAS relies on the open-source library Open3D. The current release of SENSAAS uses **Open3D version 0.12.0 along with Python3.7**. Visit the following URL for downloading the appropriate package: [https://anaconda.org/open3d-admin/open3d/files](https://anaconda.org/open3d-admin/open3d/files) or for using Open3D Python packages distributed via PyPI and Conda (more information at [http://www.open3d.org/docs/release/getting_started.html](http://www.open3d.org/docs/release/getting_started.html)). For example, for windows-64, you can download *win-64/open3d-0.12.0-py37_0.tar.bz2*
 
 
 ## Virtual environment for python with conda
@@ -27,11 +27,11 @@ Then, complete the installation:
 	conda activate sensaas
 	conda install python=3.7 numpy
  
- After donwloading the appropriate version of Open3D:
+ After donwloading the appropriate version of Open3D, for example:
   
  	conda install open3d-0.12.0-py37_0.tar.bz2
 
-(Option) Additional packages for using scripts in the directory utils or visualization with PyMol:
+(Option) Additional packages for using scripts in the directory utils or visualization with PyMOL:
 
   	conda install perl
   	install -c conda-forge rdkit
@@ -59,38 +59,59 @@ Retrieve and unzip SENSAAS repository
 	Not tested
 
 ## Information on the third-party program nsc
+
 nsc is used to efficiently generate point cloud of molecules. It is written in C and was developed by Frank Eisenhaber who kindly accepted its use in SENSAAS:
-   *  references :
-   *  1. F.Eisenhaber, P.Lijnzaad, P.Argos, M.Scharf
-   *     "The Double Cubic Lattice Method: Efficient Approaches to
-   *     Numerical Integration of Surface Area and Volume and to Dot
-   *     Surface Contouring of Molecular Assemblies"
-   *     Journal of Computational Chemistry (1995) v.16, N3, pp.273-284
-   *  2. F.Eisenhaber, P.Argos
-   *     "Improved Strategy in Analytic Surface Calculation for Molecular
-   *     Systems: Handling of Singularities and Computational Efficiency"
-   *     Journal of Computational Chemistry (1993) v.14, N11, pp.1272-1280
 
-Executables nsc (for Linux) and ncs-win (for windows) are included in the repository. In case it does not work on your system, you may have to compile it using the source file nsc.c in directory src:
+References :
 
-Linux ('nsc' is used to set the variable nscexe in python script sensaas.py):
+1. F. Eisenhaber, P. Lijnzaad, P. Argos, M. Scharf, The Double Cubic Lattice Method: Efficient Approaches to Numerical Integration of Surface Area and Volume and to Dot Surface Contouring of Molecular Assemblies, *Journal of Computational Chemistry*, **1995**, 16, N3, pp.273-284.
+2. F. Eisenhaber, P. Argos, Improved Strategy in Analytic Surface Calculation for Molecular Systems: Handling of Singularities and Computational Efficiency, 	*Journal of Computational Chemistry*, **1993**,14, N11, pp.1272-1280.
+
+
+Executables nsc (for Linux) or ncs-win (for windows) are included in this repository. In case it does not work on your system, you may have to compile it using the source file nsc.c in directory src
+
+
+**for Linux**:
+
 	cc src/nsc.c -lm
-rename a.out as nsc:
+	
+rename a.out as nsc because 'nsc' is used to set the variable nscexe in python script sensaas.py:
+
 	cp a.out nsc
 	
-Windows ('nsc-win.exe' is used to set the variable nscexe in python script sensaas.py):
-The current executable nsc-win.exe was compiled by using [http://www.codeblocks.org](http://www.codeblocks.org)
-rename the executable as nsc-win.exe
+**for Windows**:
 
-Alternative to the use of nsc to generate point cloud:
+The current executable nsc-win.exe was compiled by using [http://www.codeblocks.org](http://www.codeblocks.org). Rename the executable as nsc-win.exe because 'nsc-win.exe' is used to set the variable nscexe in python script sensaas.py
+
+
 We recommend the use of nsc program but it exists an alternative by using PyMOL. Please contact us.
 
+
 ## Run Sensaas
-To align a Source molecule on a Target molecule, run:
+To align a Source molecule on a Target molecule (that does not move), run:
 	
 	sensaas.py sdf molecule-target.sdf sdf molecule-source.sdf slog optim
+	
 Example:
-	se
+
+	sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog optim
+
+Here, the source file *IMATINIB_mv.sdf* is aligned (moved) on the target file *IMATINIB.sdf*. The output *tran.txt* contains the transformation matrix allowing the alignment of the source file (see Source_tran.sdf). The slog file details results with final scores on the last line. In this example, the last line must look like:
+
+	gfit= 1.000 cfit= 0.999 hfit= 0.996 gfit+hfit= 1.996
+
+There are three different fitness scores but we only use 2 of them, gfit and hfit to calculate gfit+hfit.
+
+- gfit score estimates the geometric matching of point-based surfaces; It ranges between 0 and 1
+
+- hfit score estimates the matching of colored points representing pharmacophore features; It ranges between 0 and 1
+
+Thus, we calculate a hybrid score = gfit + hfit scores; It ranges between 0 and 2
+
+A gfit+hfit score close to 2.0 means a perfect superimposition.
+
+A gfit+hfit score > 1.0 means that similaries were identified.
+
 
 ## License
 Code released under [the 3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause)
@@ -99,6 +120,5 @@ Code released under [the 3-Clause BSD License](https://opensource.org/licenses/B
 Copyright (c) 2018-2021, CNRS, Inserm, Université Côte d'Azur, Dominique Douguet and Frédéric Payan, All rights reserved.
 
 ## Reference
-[Douguet D. and Payan F., SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces,
-   '*Molecular Informatics*', **2020**, 8, 2000081.](https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081). doi: 10.1002/minf.202000081
+[Douguet D. and Payan F., SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces, *Molecular Informatics*, **2020**, 8, 2000081.](https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081). doi: 10.1002/minf.202000081
    
