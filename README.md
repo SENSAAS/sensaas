@@ -29,7 +29,7 @@ Then, complete the installation:
 	conda activate sensaas
 	conda install python=3.7 numpy
  
- After donwloading the appropriate version of Open3D:
+ After downloading the appropriate version of Open3D:
   
  	conda install open3d-0.12.0-py37_0.tar.bz2
 
