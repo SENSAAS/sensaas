@@ -5,6 +5,8 @@
 
 **SENSAAS** is a shape-based alignment program to superimpose molecules as described in the publication [SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces](https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081).
 
+/images/logo.png
+
 **Documentation**: Full documentation is available at [https://sensaas.readthedocs.io/en/latest/.](https://sensaas.readthedocs.io/en/latest/.)
 
 **Website**: A web demo is available at https://chemoinfo.ipmc.cnrs.fr/SENSAAS/index.html
@@ -60,7 +62,7 @@ Retrieve and unzip SENSAAS repository
 
 ## Information on the third-party program nsc
 
-nsc is used to efficiently generate point cloud of molecules. It is written in C and was developed by Frank Eisenhaber who kindly accepted its use in SENSAAS. **Please be advised that its use is strictly tied to SENSAAS and its code is released under the following [license](https://github.com/SENSAAS/sensaas/License_NSC.txt)**. We recommend the use of nsc program but if this license is an issue then, please contact us or F. Eisenhaber (the Bioinformatics Institute (BII) A*STAR).
+nsc is used to efficiently generate point cloud of molecules. It is written in C and was developed by Frank Eisenhaber who kindly accepted its use in SENSAAS. **Please be advised that its use is strictly tied to SENSAAS and its code is released under the following [license](https://github.com/SENSAAS/sensaas/License_NSC.txt)**. We recommend the use of nsc program but if this license is an issue then, please contact us or F. Eisenhaber (Bioinformatics Institute A*STAR).
 
 References :
 
@@ -110,9 +112,10 @@ A gfit+hfit score close to 2.0 means a perfect superimposition.
 
 A gfit+hfit score > 1.0 means that similaries were identified.
 
+## Licenses
+1. SENSAAS code is released under [the 3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause)
 
-## License
-Code released under [the 3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause)
+2. nsc code is released under the following [license](https://github.com/SENSAAS/sensaas/License_NSC.txt)
 
 ## Copyright
 Copyright (c) 2018-2021, CNRS, Inserm, Université Côte d'Azur, Dominique Douguet and Frédéric Payan, All rights reserved.
