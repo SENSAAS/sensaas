@@ -112,6 +112,12 @@ A gfit+hfit score close to 2.0 means a perfect superimposition.
 
 A gfit+hfit score > 1.0 means that similaries were identified.
 
+Then you can evaluate the RMSD value by using rdkit tools:
+
+	utils/rdkit-CalcLigRMSD.py ../DATASET/IMATINIB.sdf Source_tran.sdf
+
+Here, it returns RMSD= 0.00
+
 ## Licenses
 1. SENSAAS code is released under [the 3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause)
 
