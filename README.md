@@ -1,44 +1,47 @@
-# sensaas
+## sensaas
 
 
 [![badgepython](https://forthebadge.com/images/badges/made-with-python.svg)](https://www.python.org/downloads/release/python-370/)  [![forthebadge](https://forthebadge.com/images/badges/built-with-science.svg)](https://chemoinfo.ipmc.cnrs.fr/)
 
-This project has been created by a chemininformatic Dr. Douguet and a Dr. Payan, it is a teamwork between the [I3S Laboratory](https://www.i3s.unice.fr/) and [IPMC Laboratory](https://www.ipmc.cnrs.fr/cgi-bin/site.cgi). This cheminformatics algorithm is used to optimize an alignment of 2 molecules or proteins. Thanks to the [open3D library](http://www.open3d.org/), molecules are represented in 3D to be align and visualize more easily. All the algorithm has been created with Python 3.7 and including a C library.
+**SENSAAS** is a shape-based alignment program for molecular superimposition as described in the publication [SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces](https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081).
 
-## Documentation
+**Documentation**: Full documentation is available at [https://sensaas.readthedocs.io/en/latest/.](https://sensaas.readthedocs.io/en/latest/.)
 
-If you want more details about sensaas using or how to visualize molecules, let see [our documentation](lien)
+**Website**: A web demo is available at https://chemoinfo.ipmc.cnrs.fr/SENSAAS/index.html
 
-## To start
+**Tutorial**: This video on YouTube XXXX provides a tutorial
 
-This version of SENSAAS works with Open3D-0.12.0 libraries (BSD 3-clause "New" or "Revised") along with python 3.7. To be able to use SENSAAS in the good environment with all corrects packages, you should create an environment on CONDA.
 
-### Installation of CONDA
+### Requirements
 
-Install conda or miniconda using python3 (64 bits):  
-[CONDA Miniconda installers](https://docs.conda.io/en/latest/miniconda.html) version for Windows, Linux and MacOSX. 
+SENSAAS relies on the open-source library Open3D. The current release of SENSAAS uses **Open3D version 0.12.0 along with Python3.7**. Visit the following URL for downloading the appropriate package: [https://anaconda.org/open3d-admin/open3d/files](https://anaconda.org/open3d-admin/open3d/files) or for using Open3D Python packages distributed via PyPI and Conda (more information at [http://www.open3d.org/docs/release/getting_started.html](http://www.open3d.org/docs/release/getting_started.html)). For example, for windows-64, download '*win-64/open3d-0.12.0-py37_0.tar.bz2*'
 
-### Installation of packages on CONDA
 
-Launch Anaconda Prompt (miniconda3). (On Anaconda: Home -> 'CMD.exe Prompt' -> Launch)
+### Installing with conda
 
-        (base) > conda update conda
-        (base) > conda create -n sensaas
-        (base) > conda activate sensaas
+A - Install conda or Miniconda from [https://conda.io/miniconda.html](https://conda.io/miniconda.html)  
+Then, complete the installation:
 
-Visit [this url](https://anaconda.org/open3d-admin/open3d/files) for informations and downloads.  
-Then, download the version of **open3D 0.12.0.0**, according to your OS (ex: for win-64: '*win64/open3d-0.12.0-py37_0.tar.bz2*') for **python 3.7**.
-Please check that you have installed the appropriate versions (open3D 0.12.0.0 for python 3.7 with Linux/Windows/MacOSX).
-   
-        (sensaas) > conda install python=3.7 numpy    
-	    (sensaas) > conda install open3d-0.12.0-py37_0.tar.bz2    (with the appropriate path)
+1. condat update conda
+2. conda create -n sensaas
+3. conda activate sensaas
+4. conda install python=3.7 numpy
+ 
+  After donwloading the appropriate version of Open3D:
+  
+  5. conda install open3d-0.12.0-py37_0.tar.bz2
 
-and additional packages for using additional scripts in the directory utils:  
+B - (Option) Additional packages for using scripts in the directory utils or visualization with PyMol:
 
-        (sensaas) > conda install -c conda-forge rdkit
-	
-Now, your environment is ready. Unzip and untar the SENSAAS distribution .tar.gz file.  
-To work on your environment on Anaconda: Environments -> sensaas -> click on the arrow -> Open Terminal
+  6. conda install perl
+  7. install -c conda-forge rdkit
+  8. conda install -c schrodinger -c conda-forge pymol-bundle
+  
+C - Retrieve and unzip SENSAAS repository
+
+### Linux
+
+  
 
 ## Getting started with Sensaas  
 This algorithm is used to optimize an alignment of 2 molecules or proteins. We will call the molecule you want to align "source" and the one which receive
