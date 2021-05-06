@@ -151,7 +151,7 @@ Associated files of Sensaas
 
 sensaas.py not work alone, it call different scripts to align molecules. Let show you how all the program works with a kind of blueprint:
 
-.. image:: _static/schema.jpg
+.. image:: _static/schema.JPG
 .. image:: _static/legend.jpg   
 
 
