@@ -33,7 +33,7 @@ Then, complete the installation:
   
  	conda install open3d-0.12.0-py37_0.tar.bz2
 
-(Option) Additional packages for using scripts in the directory utils or visualization with PyMOL:
+(Optional) Additional packages for using scripts in the directory utils or visualization with PyMOL:
 
   	conda install perl
   	install -c conda-forge rdkit
@@ -48,7 +48,7 @@ Install:
 1. Python3.7 and numpy
 2. Open3D version 0.12.0 (more information at [http://www.open3d.org/docs/release/getting_started.html](http://www.open3d.org/docs/release/getting_started.html))
 
-(Option) Install additional packages for using scripts in the directory utils or visualization with PyMOL:
+(Optional) Install additional packages for using scripts in the directory utils or visualization with PyMOL:
 
 4. perl (usually it is already installed)
 5. RDKit (Open-Source Cheminformatics Software; more information at [https://rdkit.org](https://rdkit.org) or [https://github.com/rdkit/rdkit](https://github.com/rdkit/rdkit))
