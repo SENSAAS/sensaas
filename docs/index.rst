@@ -9,7 +9,7 @@ Welcome to Sensaas Documentation's !
 .. toctree::
    :maxdepth: 2
    
-This project has been created by Mrs.Douguet and Mr.Payan, it is a teamwork between the `I3S Laboratory <https://www.i3s.unice.fr/>`_ and `IPMC Laboratory <https://www.ipmc.cnrs.fr/cgi-bin/site.cgi>`_. The algorithm is used to optimize an alignment of 2 molecules or proteins. Thanks to the `open3D library <http://www.open3d.org/>`_, molecules are represented in 3D to be align and visualize more easily. All the algorithm has been created with Python 3.7 and including a C library.
+This project has been created by Dr .Douguet and Dr. Payan, it is a teamwork between the `I3S Laboratory <https://www.i3s.unice.fr/>`_ and `IPMC Laboratory <https://www.ipmc.cnrs.fr/cgi-bin/site.cgi>`_. The algorithm is used to optimize an alignment of 2 molecules or proteins. Thanks to the `open3D library <http://www.open3d.org/>`_, molecules are represented in 3D to be align and visualize more easily. All the algorithm has been created with Python 3.7 and including a C library.
 
 * `To start`_
 * `Installation of CONDA`_
