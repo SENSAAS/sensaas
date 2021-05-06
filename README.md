@@ -58,15 +58,39 @@ Retrieve and unzip SENSAAS repository
 
 	Not tested
 
-## Third-party program  
-This algorithm used NSC program
+## Information on the third-party program nsc
+nsc is used to efficiently generate point cloud of molecules. It is written in C and was developed by Frank Eisenhaber who kindly accepted its use in SENSAAS:
+   *  references :
+   *  1. F.Eisenhaber, P.Lijnzaad, P.Argos, M.Scharf
+   *     "The Double Cubic Lattice Method: Efficient Approaches to
+   *     Numerical Integration of Surface Area and Volume and to Dot
+   *     Surface Contouring of Molecular Assemblies"
+   *     Journal of Computational Chemistry (1995) v.16, N3, pp.273-284
+   *  2. F.Eisenhaber, P.Argos
+   *     "Improved Strategy in Analytic Surface Calculation for Molecular
+   *     Systems: Handling of Singularities and Computational Efficiency"
+   *     Journal of Computational Chemistry (1993) v.14, N11, pp.1272-1280
+
+Executables nsc (for Linux) and ncs-win (for windows) are included in the repository. In case it does not work on your system, you may have to compile it using the source file nsc.c in directory src:
+
+Linux ('nsc' is used to set the variable nscexe in python script sensaas.py):
+	cc src/nsc.c -lm
+rename a.out as nsc:
+	cp a.out nsc
+	
+Windows ('nsc-win.exe' is used to set the variable nscexe in python script sensaas.py):
+The current executable nsc-win.exe was compiled by using [http://www.codeblocks.org](http://www.codeblocks.org)
+rename the executable as nsc-win.exe
+
+Alternative to the use of nsc to generate point cloud:
+We recommend the use of nsc program but it exists an alternative by using PyMOL. Please contact us.
 
 ## Run Sensaas
 To align a Source molecule on a Target molecule, run:
 	
 	sensaas.py sdf molecule-target.sdf sdf molecule-source.sdf slog optim
-
-When you will us SENSAAS, it will create **3 outputs files**: slog, Source_tran, tran.txt.
+Example:
+	se
 
 ## License
 Code released under [the 3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause)
