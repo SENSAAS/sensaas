@@ -3,7 +3,7 @@
 
 [![badgepython](https://forthebadge.com/images/badges/made-with-python.svg)](https://www.python.org/downloads/release/python-370/)  [![forthebadge](https://forthebadge.com/images/badges/built-with-science.svg)](https://chemoinfo.ipmc.cnrs.fr/)
 
-This project has been created by a chemininformatic Mrs.Douguet and a ? Mr.Payan, it is a teamwork between the [I3S Laboratory](https://www.i3s.unice.fr/) and [IPMC Laboratory](https://www.ipmc.cnrs.fr/cgi-bin/site.cgi). This cheminformatics algorithm is used to optimize an alignment of 2 molecules or proteins. Thanks to the [open3D library](http://www.open3d.org/), molecules are represented in 3D to be align and visualize more easily. All the algorithm has been created with Python 3.7 and including a C library.
+This project has been created by a chemininformatic Dr. Douguet and a Dr. Payan, it is a teamwork between the [I3S Laboratory](https://www.i3s.unice.fr/) and [IPMC Laboratory](https://www.ipmc.cnrs.fr/cgi-bin/site.cgi). This cheminformatics algorithm is used to optimize an alignment of 2 molecules or proteins. Thanks to the [open3D library](http://www.open3d.org/), molecules are represented in 3D to be align and visualize more easily. All the algorithm has been created with Python 3.7 and including a C library.
 
 ## Documentation
 
