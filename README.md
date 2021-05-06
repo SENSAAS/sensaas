@@ -62,7 +62,7 @@ Retrieve and unzip SENSAAS repository
 
 ## Information on the third-party program nsc
 
-nsc is used to efficiently generate point cloud of molecules. It is written in C and was developed by Frank Eisenhaber who kindly accepted its use in SENSAAS. **Please be advised that its use is strictly tied to SENSAAS and its code is released under the following [license](https://github.com/SENSAAS/sensaas/License_NSC.txt)**. We recommend the use of nsc program but if this license is an issue then, please contact us or F. Eisenhaber (Bioinformatics Institute A*STAR).
+nsc is used to efficiently generate point cloud of molecules. It is written in C and was developed by Frank Eisenhaber who kindly accepted its use in SENSAAS. **Please be advised that its use is strictly tied to SENSAAS and its code is released under the following [license](https://github.com/SENSAAS/sensaas/License_NSC.txt)**. We recommend the use of nsc but if this type of license is an issue then, please contact us for using an alternative method or contact F. Eisenhaber (Bioinformatics Institute A*STAR).
 
 References :
 
@@ -70,7 +70,7 @@ References :
 2. F. Eisenhaber, P. Argos, Improved Strategy in Analytic Surface Calculation for Molecular Systems: Handling of Singularities and Computational Efficiency, 	*Journal of Computational Chemistry*, **1993**,14, N11, pp.1272-1280.
 
 
-Executables nsc (for Linux) or ncs-win (for windows) are included in this repository. In case it does not work on your system, you may have to compile it using the source file nsc.c in directory src
+Executables nsc (for Linux) or ncs-win (for windows) are included in this repository. In case they do not work on your system, you may have to compile it using the source file nsc.c in directory src
 
 
 **for Linux**:
@@ -96,7 +96,7 @@ Example:
 
 	sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog optim
 
-Here, the source file *IMATINIB_mv.sdf* is aligned (**moved**) on the target file *IMATINIB.sdf* (**that does not move**). The output *tran.txt* contains the transformation matrix allowing the alignment of the source file (see Source_tran.sdf). The slog file details results with final scores on the last line. In this example, the last line must look like:
+Here, the source file *IMATINIB_mv.sdf* is aligned (**moved**) on the target file *IMATINIB.sdf* (**that does not move**). The output **tran.txt** contains the transformation matrix allowing the alignment of the source file (result in **Source_tran.sdf**). The **slog** file details results with final scores on the last line. In this example, the last line must look like:
 
 	gfit= 1.000 cfit= 0.999 hfit= 0.996 gfit+hfit= 1.996
 
