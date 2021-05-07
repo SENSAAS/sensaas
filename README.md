@@ -41,7 +41,7 @@ Launch Anaconda Prompt, then complete the installation:
   	conda install -c conda-forge rdkit
   	conda install -c schrodinger -c conda-forge pymol-bundle
   
-Retrieve and unzip SENSAAS repository in your desired folder. See below for running the programm **Sensaas**.
+Retrieve and unzip SENSAAS repository in your desired folder. See below for running the program **sensaas.py**.
 
 ## Linux
 
@@ -104,17 +104,17 @@ Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file 
 
 There are three different fitness scores but we only use 2 of them, gfit and hfit, to calculate gfit+hfit.
 
-- gfit score estimates the geometric matching of point-based surfaces; it ranges between 0 and 1
+- gfit score estimates the geometric matching of point-based surfaces - it ranges between 0 and 1
 
-- hfit score estimates the matching of colored points representing pharmacophore features; it ranges between 0 and 1
+- hfit score estimates the matching of colored points representing pharmacophore features - it ranges between 0 and 1
 
-Thus, we calculate a hybrid score = gfit + hfit scores; **gfit+hfit ranges between 0 and 2**
+Thus, we calculate a hybrid score = gfit + hfit scores - **gfit+hfit ranges between 0 and 2**
 
    A gfit+hfit score close to 2.0 means a perfect superimposition.
 
    A gfit+hfit score > 1.0 means that similaries were identified.
 
-Here IMATINIB.sdf and IMATINIB_mv.sdf are the 2 same molecules thus you can evaluate the RMSD value by using rdkit tool (only possible if you install rdkit from the optional packages, see above)):
+(Option) Here IMATINIB.sdf and IMATINIB_mv.sdf are the 2 same molecules thus, you can evaluate the RMSD value by using rdkit if installed (see optional packages above):
 
 	python utils/rdkit-CalcLigRMSD.py examples/IMATINIB.sdf Source_tran.sdf
 
@@ -122,7 +122,7 @@ Here, it returns RMSD= 0.00
 
 ## Visualization 
 
-You can use any molecular viewer. For instance, you can use (if you installed rdkit from the optional packages)
+You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages):
 
 	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
 
