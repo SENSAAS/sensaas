@@ -124,7 +124,7 @@ Here, it returns RMSD= 0.00
 ## Licenses
 1. SENSAAS code is released under [the 3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause)
 
-2. nsc code is released under the following [license](https://github.com/SENSAAS/sensaas/blob/main/License_NSC.txt)
+2. NSC code is released under the following [license](https://github.com/SENSAAS/sensaas/blob/main/License_NSC.txt)
 
 ## Copyright
 Copyright (c) 2018-2021, CNRS, Inserm, Université Côte d'Azur, Dominique Douguet and Frédéric Payan, All rights reserved.
