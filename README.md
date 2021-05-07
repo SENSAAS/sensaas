@@ -108,13 +108,13 @@ There are three different fitness scores but we only use 2 of them, gfit and hfi
 
 - hfit score estimates the matching of colored points representing pharmacophore features; It ranges between 0 and 1
 
-Thus, we calculate a hybrid score = gfit + hfit scores; It ranges between 0 and 2
+Thus, we calculate a hybrid score = gfit + hfit scores; **gfit+hfit ranges between 0 and 2**
 
-A gfit+hfit score close to 2.0 means a perfect superimposition.
+   A gfit+hfit score close to 2.0 means a perfect superimposition.
 
-A gfit+hfit score > 1.0 means that similaries were identified.
+   A gfit+hfit score > 1.0 means that similaries were identified.
 
-Then you can evaluate the RMSD value by using rdkit tools:
+Here IMATINIB.sdf and IMATINIB_mv.sdf are the 2 same molecules thus you can evaluate the RMSD value by using rdkit tool:
 
 	utils/rdkit-CalcLigRMSD.py ../DATASET/IMATINIB.sdf Source_tran.sdf
 
