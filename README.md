@@ -3,7 +3,7 @@
 
 [![badgepython](https://forthebadge.com/images/badges/made-with-python.svg)](https://www.python.org/downloads/release/python-370/)  [![forthebadge](https://forthebadge.com/images/badges/built-with-science.svg)](https://chemoinfo.ipmc.cnrs.fr/)
 
-**SENSAAS** is a shape-based alignment program to superimpose molecules as described in the publication [SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces](https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081){:target="_blank"}. https://doi.org/10.1002/minf.202000081
+**SENSAAS** is a shape-based alignment program to superimpose molecules as described in the publication [SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces](https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081){:target="_blank" rel="noopener"}. https://doi.org/10.1002/minf.202000081
 
 ![example](/images/sensaas-core-eg.png)
 
