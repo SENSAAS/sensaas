@@ -16,7 +16,11 @@
 
 ## Requirements
 
-SENSAAS relies on the open-source library Open3D. The current release of SENSAAS uses **Open3D version 0.12.0 along with Python3.7**. Visit the following URL for downloading the appropriate package: [https://anaconda.org/open3d-admin/open3d/files](https://anaconda.org/open3d-admin/open3d/files) or for using Open3D Python packages distributed via PyPI and Conda (more information at [http://www.open3d.org/docs/release/getting_started.html](http://www.open3d.org/docs/release/getting_started.html)). For example, for windows-64, you can download *win-64/open3d-0.12.0-py37_0.tar.bz2*
+SENSAAS relies on the open-source library Open3D. The current release of SENSAAS uses **Open3D version 0.12.0 along with Python3.7**.
+
+Visit the following URL for downloading the appropriate package: [https://anaconda.org/open3d-admin/open3d/files](https://anaconda.org/open3d-admin/open3d/files). For example, for windows-64, you can download *win-64/open3d-0.12.0-py37_0.tar.bz2*
+
+or for using Open3D Python packages distributed via PyPI (more information at [http://www.open3d.org/docs/release/getting_started.html](http://www.open3d.org/docs/release/getting_started.html)).
 
 
 ## Virtual environment for python with conda
