@@ -7,7 +7,7 @@
 
 ![example](/images/sensaas-core-eg.png)
 
-**Documentation**: Full documentation is available at [https://sensaas.readthedocs.io/en/latest/.](https://sensaas.readthedocs.io/en/latest/.)
+**Documentation**: Full documentation is available at [https://sensaas.readthedocs.io](https://sensaas.readthedocs.io)
 
 **Website**: A web demo is available at https://chemoinfo.ipmc.cnrs.fr/SENSAAS/index.html
 
@@ -16,11 +16,9 @@
 
 ## Requirements
 
-SENSAAS relies on the open-source library Open3D. The current release of SENSAAS uses **Open3D version 0.12.0 along with Python3.7**.
+SENSAAS relies on the open-source library [Open3D](http://www.open3d.org). The current release of SENSAAS uses **Open3D version 0.12.0 along with Python3.7**.
 
-Visit the following URL for downloading the appropriate package: [https://anaconda.org/open3d-admin/open3d/files](https://anaconda.org/open3d-admin/open3d/files). For example, for windows-64, you can download *win-64/open3d-0.12.0-py37_0.tar.bz2*
-
-or for using Open3D Python packages distributed via PyPI (more information at [http://www.open3d.org/docs/release/getting_started.html](http://www.open3d.org/docs/release/getting_started.html)).
+Visit the following URL for using Python packages distributed via PyPI: [http://www.open3d.org/docs/release/getting_started.html](http://www.open3d.org/docs/release/getting_started.html) or conda: [https://anaconda.org/open3d-admin/open3d/files](https://anaconda.org/open3d-admin/open3d/files). For example, for windows-64, you can download *win-64/open3d-0.12.0-py37_0.tar.bz2*
 
 
 ## Virtual environment for python with conda
