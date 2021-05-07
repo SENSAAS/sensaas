@@ -21,7 +21,7 @@ SENSAAS relies on the open-source library [Open3D](http://www.open3d.org). The c
 Visit the following URL for using Python packages distributed via PyPI: [http://www.open3d.org/docs/release/getting_started.html](http://www.open3d.org/docs/release/getting_started.html) or conda: [https://anaconda.org/open3d-admin/open3d/files](https://anaconda.org/open3d-admin/open3d/files). For example, for windows-64, you can download *win-64/open3d-0.12.0-py37_0.tar.bz2*
 
 
-## Windows : virtual environment for python with conda
+## Virtual environment for python with conda (for Windows for example)
 
 Install conda or Miniconda from [https://conda.io/miniconda.html](https://conda.io/miniconda.html)  
 Launch Anaconda Prompt, then complete the installation:
@@ -96,7 +96,7 @@ To align a Source molecule on a Target molecule, the syntax is:
 	
 Example:
 
-	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.text optim
+	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim
 
 Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**). The output **tran.txt** contains the transformation matrix allowing the alignment of the source file (result in **Source_tran.sdf**). The **slog.txt** file details results with final scores on the last line. In this example, the last line must look like:
 
@@ -114,11 +114,18 @@ Thus, we calculate a hybrid score = gfit + hfit scores; **gfit+hfit ranges betwe
 
    A gfit+hfit score > 1.0 means that similaries were identified.
 
-Here IMATINIB.sdf and IMATINIB_mv.sdf are the 2 same molecules thus you can evaluate the RMSD value by using rdkit tool (only possible if you install rdkit from the optional packages (see above):
+Here IMATINIB.sdf and IMATINIB_mv.sdf are the 2 same molecules thus you can evaluate the RMSD value by using rdkit tool (only possible if you install rdkit from the optional packages, see above)):
 
 	python utils/rdkit-CalcLigRMSD.py examples/IMATINIB.sdf Source_tran.sdf
 
 Here, it returns RMSD= 0.00
+
+## Visualization 
+
+You can use any molecular viewer. For instance, you can use (if you installed rdkit from the optional packages)
+
+	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
+
 
 ## Licenses
 1. SENSAAS code is released under [the 3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause)
