@@ -62,9 +62,10 @@ Retrieve and unzip SENSAAS repository
 
 	Not tested
 
-## Information on the third-party program nsc
+## Information on the third-party program NSC
 
-nsc is used to efficiently generate point cloud of molecules. It is written in C and was developed by Frank Eisenhaber who kindly accepted its use in SENSAAS. **Please be advised that its use is strictly tied to SENSAAS and its code is released under the following [license](https://github.com/SENSAAS/sensaas/blob/main/License_NSC.txt)**. We recommend the use of nsc but if this type of license is an issue then, please contact us for using an alternative method or contact the author F. Eisenhaber (Bioinformatics Institute A*STAR).
+NSC is used to efficiently generate point clouds of molecules and to calculate their surfaces. It is written in C and was developed by Frank Eisenhaber who kindly licensed its use in SENSAAS. **Please be advised that the use of NSC is strictly tied to SENSAAS and its code is released under the following [license](https://github.com/SENSAAS/sensaas/blob/main/License_NSC.txt)**. If the NSC license is an issue for your application or if you wish to use NSC independently of
+SENSAAS, please contact the author Frank Eisenhaber (email: frank.eisenhaber@gmail.com) who will amicably manage your request.
 
 References :
 
