@@ -1,0 +1,33 @@
+SENSAAS executables at 
+Open3D version 0.12.0
+#label 1 {H, Cl, Br, I}
+#label 2 {O, N, S, F, HO, HN}
+#label 3 {C, P, B}
+#label 4 {others}
+Threshold for evaluation (maximum correspondence points-pair distance) = 0.300
+Target that does not move:
+Object nb-points [ label1 label2 label3 label4]
+Target     7853 [    5705     1162      986        0]
+Source to align/move on Target:
+Object nb-points [ label1 label2 label3 label4]
+Source     7858 [    5712     1160      986        0]
+
+voxel_size 0.20 (global_gfit= 0.005 dots=    40 rmse= 0.161) gfit= 0.053 dots=   418 rmse= 0.191 hfit= 0.030 (gfit + hfit = 0.083 )
+voxel_size 0.30 (global_gfit= 1.000 dots=  7856 rmse= 0.120) gfit= 1.000 dots=  7858 rmse= 0.105 hfit= 0.996 (gfit + hfit = 1.996 )
+voxel_size 0.40 (global_gfit= 0.621 dots=  4878 rmse= 0.188) gfit= 1.000 dots=  7858 rmse= 0.105 hfit= 0.996 (gfit + hfit = 1.996 )
+voxel_size 0.50 (global_gfit= 0.991 dots=  7784 rmse= 0.168) gfit= 1.000 dots=  7858 rmse= 0.105 hfit= 0.996 (gfit + hfit = 1.996 )
+voxel_size 0.60 (global_gfit= 0.706 dots=  5550 rmse= 0.189) gfit= 1.000 dots=  7858 rmse= 0.105 hfit= 0.996 (gfit + hfit = 1.996 )
+voxel_size 0.70 (global_gfit= 0.703 dots=  5525 rmse= 0.177) gfit= 1.000 dots=  7858 rmse= 0.105 hfit= 0.996 (gfit + hfit = 1.996 )
+voxel_size 0.80 (global_gfit= 0.611 dots=  4800 rmse= 0.180) gfit= 1.000 dots=  7858 rmse= 0.105 hfit= 0.996 (gfit + hfit = 1.996 )
+voxel_size 0.90 (global_gfit= 0.465 dots=  3654 rmse= 0.193) gfit= 1.000 dots=  7858 rmse= 0.105 hfit= 0.996 (gfit + hfit = 1.996 )
+voxel_size 1.00 (global_gfit= 0.229 dots=  1803 rmse= 0.189) gfit= 1.000 dots=  7858 rmse= 0.107 hfit= 0.996 (gfit + hfit = 1.996 )
+voxel_size 1.10 (global_gfit= 0.635 dots=  4991 rmse= 0.188) gfit= 1.000 dots=  7858 rmse= 0.108 hfit= 0.996 (gfit + hfit = 1.996 )
+voxel_size 1.20 (global_gfit= 0.503 dots=  3954 rmse= 0.194) gfit= 1.000 dots=  7858 rmse= 0.111 hfit= 0.996 (gfit + hfit = 1.996 )
+
+Selected solution (best gfit + hfit):
+gfit 1.000 Source_matching_all_dots=  7858 rmse_all_dots= 0.105 (Target_gfit= 1.001)
+fit_label1 0.999 Source_matching_dots_label1=  5709 rmse_label1= 0.099
+fit_label2 0.997 Source_matching_dots_label2=  1156 rmse_label2= 0.115
+fit_label3 0.996 Source_matching_dots_label3=   982 rmse_label3= 0.138
+fit_label4 0.000 Source_matching_dots_label4=     0 rmse_label4= 0.000
+gfit= 1.000 cfit= 0.999 hfit= 0.996 gfit+hfit= 1.996
