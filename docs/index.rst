@@ -9,7 +9,7 @@ Welcome to Sensaas Documentation's !
 .. toctree::
    :maxdepth: 2
    
-This project has been created by Dr .Douguet and Dr. Payan during a collaboration between the `I3S Laboratory <https://www.i3s.unice.fr/>`_ and `IPMC Laboratory <https://www.ipmc.cnrs.fr/cgi-bin/site.cgi>`_. The algorithm is used to optimize an alignment of 2 molecules or proteins. Thanks to the `open3D library <http://www.open3d.org/>`_, molecules are represented in 3D to be align and visualize more easily. All the algorithm has been created with Python 3.7 and including a C library. SENSAAS is a shape-based alignment program which allows to superimpose molecules. It is based on the publication SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces
+This project has been created by Dr .Douguet and Dr. Payan during a collaboration between the `I3S Laboratory <https://www.i3s.unice.fr/>`_ and `IPMC Laboratory <https://www.ipmc.cnrs.fr/cgi-bin/site.cgi>`_. The algorithm is used to optimize an alignment of 2 molecules or proteins. Thanks to the `open3D library <http://www.open3d.org/>`_, molecules are represented in 3D to be align and visualize more easily. All the algorithm has been created with Python 3.7 and including a C library. SENSAAS is a shape-based alignment program which allows to superimpose molecules. It is based on the publication SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surface
 
 * `To start`_
 * `Installation of CONDA`_
