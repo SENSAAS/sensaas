@@ -52,9 +52,9 @@ Install:
 
 (Optional) Install additional packages for using scripts in the directory utils/ or visualization with PyMOL:
 
-4. perl (usually it is already installed)
-5. RDKit (Open-Source Cheminformatics Software; more information at [https://rdkit.org](https://rdkit.org) or [https://github.com/rdkit/rdkit](https://github.com/rdkit/rdkit))
-6. PyMOL (a molecular viewer; more information at [https://pymolwiki.org](https://pymolwiki.org))
+3. perl (usually it is already installed)
+4. RDKit (Open-Source Cheminformatics Software; more information at [https://rdkit.org](https://rdkit.org) or [https://github.com/rdkit/rdkit](https://github.com/rdkit/rdkit))
+5. PyMOL (a molecular viewer; more information at [https://pymolwiki.org](https://pymolwiki.org))
   
 Retrieve and unzip SENSAAS repository
 
