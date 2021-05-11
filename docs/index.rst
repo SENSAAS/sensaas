@@ -37,7 +37,7 @@ geometry only. The matching is done on local 3D descriptors computed on a limite
 **2. Labelling of the points of each point cloud** Each point is colored according to its belonging to a user-defined class. In the current version, the classes depend on the pharmacophore features, but they can depend by any physico-chemical property mapped on the surface.
 
 **4. Refinement of this first alignement by applying a color and geometry-aware registration** At this step the registration takes into account the geometry of the point clouds, but also the color of the points provided by the previous step of labelling. the coarse alignement is finally improved by finding the best matching between
-the two colored point clouds. The method used here is the method presented in `Colored Point Cloud Registration Revisited` <https://ieeexplore.ieee.org/document/8237287>.
+the two colored point clouds. The method used here is the method presented in `Colored Point Cloud Registration Revisited <https://ieeexplore.ieee.org/document/8237287>`_.
 This step results into a transformation matrix (rotation + translation), that is applied to the Source molecule to get the final alignement. 
 
 
