@@ -10,14 +10,14 @@ Sensaas
 
 **SENSAAS** is a shape-based alignment program which allows to superimpose molecules. It is based on the publication [SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces](https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081)
 
-![example](/images/sensaas-core-eg-large_v2.png)
+.. image:: _static/alignement.png
 
 This software is the result of a collaboration between between two labs of UCA:  `I3S <https://www.i3s.unice.fr/>`_ and `IPMC<https://www.ipmc.cnrs.fr/cgi-bin/site.cgi>`_.
 
 SENSAAS is a shape-based alignment program which allows to superimpose molecules. It is based on the publication SenSaaS: `Shape-based Alignment by Registration of Colored Point-based Surfaces <https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081>`_. Thanks to the `open3D library <http://www.open3d.org/>`_, molecules are represented in 3D to be align and visualize more easily. 
 All the algorithm has been created with Python 3.7 and including a C library.
 
-.. image:: _static/alignement.png
+
 
 * `Requirements`_
 * `Virtual environment for python with conda`_
