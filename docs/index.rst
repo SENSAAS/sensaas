@@ -18,10 +18,10 @@ How does Sensaas work?
 ====================================
 
 Considering two molecules named Source and Target as input, SENSAAS will propose a transformation matrix as output, that will will lead to the "best" alignement of Source on Target. SENSAAS  follows four major steps:
-- generating point clouds describing the molecular surface; 
-- assigning a color to each point according to several user-defined classes;
-- applying a geometry-aware registration for aligning the two point clouds globally; 
-- applying color and geometry-aware local registration for refining the result of the first step.
+* generating point clouds describing the molecular surface; 
+* assigning a color to each point according to several user-defined classes;
+* applying a geometry-aware registration for aligning the two point clouds globally; 
+* applying color and geometry-aware local registration for refining the result of the first step.
 
 
 SENSAAS is a shape-based alignment program which allows to superimpose molecules. It is based on the publication SenSaaS: `Shape-based Alignment by Registration of Colored Point-based Surfaces <https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081>`_. Thanks to the `open3D library <http://www.open3d.org/>`_, molecules are represented in 3D to be align and visualize more easily. 
