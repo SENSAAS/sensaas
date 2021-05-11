@@ -26,7 +26,7 @@ Considering two molecules named Source and Target as input, SENSAAS will propose
 - applying a geometry-aware registration for aligning the two point clouds globally; 
 - applying color and geometry-aware local registration for refining the result of the first step.
 
-To continue
+.. image:: _static/overview.png
 
 
 
