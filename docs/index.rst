@@ -18,6 +18,13 @@ How does Sensaas work?
 ====================================
 
 Considering two molecules named Source and Target as input, SENSAAS will propose a transformation matrix as output, that will will lead to the "best" alignement of Source on Target. SENSAAS  follows four major steps:
+Voici une liste :
+
+- premier tiret
+- deuxième tiret
+
+Suite du texte.
+
 * generating point clouds describing the molecular surface; 
 * assigning a color to each point according to several user-defined classes;
 * applying a geometry-aware registration for aligning the two point clouds globally; 
