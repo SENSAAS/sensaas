@@ -21,19 +21,24 @@ How does Sensaas work?
 
 Considering two molecules named Source and Target as input, SENSAAS will propose a transformation matrix as output, that will will lead to the "best" alignement of Source on Target. SENSAAS  follows four major steps:
 
-- generation of one point cloud of the Van der Waal surface of each input molecule; 
+- generation of one point cloud of the molecular surface of the two input molecules; 
+- coarse alignment of the two point clouds thanks to a geometry-aware registration; 
 - labelling of each point of the two clouds according to several user-defined classes;
-- applying a geometry-aware coarse registration for aligning the two point clouds globally; 
-- applying color and geometry-aware local registration for refining the result of the coarse registration. At this step, for each point, the color depends on the class. 
+- refinement of this alignement by applying a color and geometry-aware local registration. At this step, for each point, a color is associated at each class. 
 
 .. image:: _static/overview.png
 
-*generation of input point clouds* 
-Type of the input files (Source and Target) supported: sdf/pdb/dot/xyzrgb/pcd. 
-Each point is described by its 3D coordinates, and a color (RGB) according to the
-nature of the underlying atom (Figure 1b).
+**1. Generation of input point clouds** 
+For each input file (Source and Target), a point cloud of the Van der Waal surface is obtained. Each point is described by its 3D coordinates, and a color (RGB) according to the nature of the underlying atom.
 
+**2. Coarse alignment by global registration** At this step, the Source point cloud is globally superimposed on the Target, by finding the best matching in terms of
+geometry only. The matching is done on local 3D descriptors computed on a limited number of points (rather than on the points themselves).
 
+**2. Labelling of the points of each point cloud** Each point is colored according to its belonging to a user-defined class. In the current version, the classes depend on the pharmacophore features, but they can depend by any physico-chemical property mapped on the surface.
+
+**4. Refinement of this first alignement by applying a color and geometry-aware registration** At this step the registration takes into account the geometry of the point clouds, but also the color of the points provided by the previous step of labelling. the coarse alignement is finally improved by finding the best matching between
+the two colored point clouds. The method used here is the method presented in `Colored Point Cloud Registration Revisited` <https://ieeexplore.ieee.org/document/8237287>.
+This step results into a transformation matrix (rotation + translation), that is applied to the Source molecule to get the final alignement. 
 
 
 
