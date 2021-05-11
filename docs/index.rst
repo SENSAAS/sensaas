@@ -21,10 +21,10 @@ How does Sensaas work?
 
 Considering two molecules named Source and Target as input, SENSAAS will propose a transformation matrix as output, that will will lead to the "best" alignement of Source on Target. SENSAAS  follows four major steps:
 
-- generating point clouds describing the molecular surface; 
-- assigning a color to each point according to several user-defined classes;
-- applying a geometry-aware registration for aligning the two point clouds globally; 
-- applying color and geometry-aware local registration for refining the result of the first step.
+- generating one point cloud for each molecule from their Van der Waal surface; 
+- coloring each point of the two clouds according to several user-defined classes (one class = one color);
+- applying a geometry-aware coarse registration for aligning the two point clouds globally; 
+- applying color and geometry-aware local registration for refining the result of the coarse registration.
 
 .. image:: _static/overview.png
 
