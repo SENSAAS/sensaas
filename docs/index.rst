@@ -32,9 +32,10 @@ Considering two molecules named Source and Target as input, SENSAAS will propose
 For each input file (Source and Target), a point cloud of the Van der Waal surface is obtained. Each point is described by its 3D coordinates, and a color (RGB) according to the nature of the underlying atom.
 
 **2. Coarse alignment by global registration** At this step, the Source point cloud is globally superimposed on the Target, by finding the best matching in terms of
-geometry only. The matching is done on local 3D descriptors computed on a limited number of points (rather than on the points themselves).
+geometry only. The matching is done on local 3D descriptors computed on a limited number of points (rather than on the points themselves). Here, the descriptors named Fast Point Features Histograms (FPFH) presented in `Fast Point Feature Histograms (FPFH) for 3D Registration <https://ieeexplore.ieee.org/abstract/document/5152473>`_ are used, and their matching is done by using the RANSAC method: `Random Sample Consensus: A Paradigm for
+Model Fitting with Applications to Image Analysis and Automated Cartography <https://dl.acm.org/doi/10.1145/358669.358692>`_.
 
-**2. Labelling of the points of each point cloud** Each point is colored according to its belonging to a user-defined class. In the current version, the classes depend on the pharmacophore features, but they can depend by any physico-chemical property mapped on the surface.
+**3. Labelling of the points of each point cloud** Each point is colored according to its belonging to a user-defined class. In the current version, the classes depend on the pharmacophore features, but they can depend by any physico-chemical property mapped on the surface. The user can change the classification as desired.
 
 **4. Refinement of this first alignement by applying a color and geometry-aware registration** At this step the registration takes into account the geometry of the point clouds, but also the color of the points provided by the previous step of labelling. the coarse alignement is finally improved by finding the best matching between
 the two colored point clouds. The method used here is the method presented in `Colored Point Cloud Registration Revisited <https://ieeexplore.ieee.org/document/8237287>`_.
