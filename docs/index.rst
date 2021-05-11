@@ -5,14 +5,22 @@
 
 .. _my-reference-label:
 
-Sensaas
+What is Sensaas?
 ====================================
 
 **SENSAAS** is a shape-based alignment program which allows to superimpose molecules. It is based on the publication [SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces](https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081)
 
 .. image:: _static/alignement.png
 
-This software is the result of a collaboration between researchers of two labs of `UCA (University Côte d'Azur) <https://univ-cotedazur.fr/>`_: `I3S <https://www.i3s.unice.fr>`_ and `IPMC <https://www.ipmc.cnrs.fr/cgi-bin/site.cgi>`_. 
+**SENSAAS** is the result of a collaboration between researchers of two labs of `UCA (University Côte d'Azur) <https://univ-cotedazur.fr/>`_: `I3S <https://www.i3s.unice.fr>`_ and `IPMC <https://www.ipmc.cnrs.fr/cgi-bin/site.cgi>`_. 
+Based on the publication [SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces](https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081)., **SENSAAS** is a shape-based alignment program which allows to superimpose molecules in 3D space.
+
+Considering two molecules named Source and Target as input, SENSAAS will propose a transformation matrix as output, that will will lead to the "best" alignement of Source on Target. SENSAAS  follows four major steps:
+- generating point clouds describing the molecular surface; 
+- assigning a color to each point according to several user-defined classes;
+- applying a geometry-aware registration for aligning the two point clouds globally; 
+- applying color and geometry-aware local registration for refining the result of the first step.
+
 
 SENSAAS is a shape-based alignment program which allows to superimpose molecules. It is based on the publication SenSaaS: `Shape-based Alignment by Registration of Colored Point-based Surfaces <https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081>`_. Thanks to the `open3D library <http://www.open3d.org/>`_, molecules are represented in 3D to be align and visualize more easily. 
 All the algorithm has been created with Python 3.7 and including a C library.
