@@ -22,8 +22,10 @@ How does Sensaas work?
 Considering two molecules named Source and Target as input, SENSAAS will propose a transformation matrix as output, that will will lead to the "best" alignement of Source on Target. SENSAAS  follows four major steps:
 
 - generating one point cloud for each molecule from their Van der Waal surface; 
-Type of the input files (Source and Target) supported: sdf/pdb/dot/xyzrgb/pcd. Each point is described by its 3D coordinates, and a color (RGB) according to the
+
+-- Type of the input files (Source and Target) supported: sdf/pdb/dot/xyzrgb/pcd. Each point is described by its 3D coordinates, and a color (RGB) according to the
 nature of the underlying atom (Figure 1b).
+
 - coloring each point of the two clouds according to several user-defined classes (one class = one color);
 - applying a geometry-aware coarse registration for aligning the two point clouds globally; 
 - applying color and geometry-aware local registration for refining the result of the coarse registration.
