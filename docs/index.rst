@@ -5,18 +5,10 @@
 
 .. _my-reference-label:
 
-* `How does SENSAAS work?`_
-* `Requirements`_
-* `Virtual environment for python with conda`_
-* `Information on the third-party program NSC`_
-* `Run Sensaas`_
-* `Associated files of Sensaas`_
-* `Visualization`_
-* `Indices and tables`_
+
 
 What is Sensaas?
 ====================================
-
 
 .. image:: _static/alignement.png
 
@@ -25,8 +17,18 @@ Based on the publication `SenSaaS: Shape-based Alignment by Registration of Colo
 
 Our algorithm runs with Python 3.7 and requires the `open3D library <http://www.open3d.org/>`_.
 
+**Website:** A web demo is available `here <nul>`_
 
+**Tutorial:** `This video <nul>`_ on Youtube provides a tutorial
 
+* `How does SENSAAS work?`_
+* `Requirements`_
+* `Virtual environment for python with conda`_
+* `Information on the third-party program NSC`_
+* `Run Sensaas`_
+* `Associated files of Sensaas`_
+* `Visualization`_
+* `Indices and tables`_
 
 
 
@@ -56,9 +58,7 @@ Model Fitting with Applications to Image Analysis and Automated Cartography <htt
 the two colored point clouds. The method used here is the method presented in `Colored Point Cloud Registration Revisited <https://ieeexplore.ieee.org/document/8237287>`_.
 This step results into a transformation matrix (rotation + translation), that is applied to the Source molecule to get the final alignement. 
 
-**Website:** A web demo is available `here <nul>`_
 
-**Tutorial:** `This video <nul>`_ on Youtube provides a tutorial
 
 Requirements
 ============
