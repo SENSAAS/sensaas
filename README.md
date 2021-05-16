@@ -141,7 +141,7 @@ here the mean of the score of the target and of the aligned source will be used 
 
 Example extracted from the publication:
 
-	 python meta-sensaas.py ../examples/VALSARTAN.sdf ../examples/tetrazole.sdf -r 100
+	 python meta-sensaas.py examples/VALSARTAN.sdf examples/tetrazole.sdf -r 100
 
 - sensaas-1.sdf contains the self-matching superimposition
 - sensaas-2.sdf contains the bioisosteric superimposition
