@@ -90,7 +90,7 @@ To align a Source molecule on a Target molecule, the syntax is:
 	
 	python sensaas.py sdf molecule-target.sdf sdf molecule-source.sdf slog.txt optim
 	
-Example:
+Example extracted from the publication:
 
 	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim
 
@@ -110,6 +110,41 @@ Thus, we calculate a hybrid score = gfit + hfit scores - **gfit+hfit ranges betw
 
    A gfit+hfit score > 1.0 means that similaries were identified.
    
+## Run meta-sensaas.py
+
+1. If you want to process a sdf file containing several molecules as for example several conformers for Target and Source:
+
+ 		python meta-sensaas.py molecules-target.sdf molecules-source.sdf
+ 
+ Here outputs are:
+ - the file bestsensaas.sdf that contains the best ranked aligned Source
+ - the file catsensaas.sdf that contains all aligned Sources
+ - the file matrix-sensaas.txt that contains gfit+hfit scores (one target per line and source per column)
+
+You can also select the score type by using the option -s 
+
+	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s mean
+
+here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt
+
+2. If you want to repeat in order to find alternate alignments when they exist (eg: aligning a fragment on a large molecule)
+
+  		python meta-sensaas.py molecules-target.sdf molecules-source.sdf -r 100
+ 
+ here 100 alignments of the source will be generated and clustered
+ Outputs are:
+ - file sensaas-1.sdf with the best ranked alignemnt - it contains 2 molecules: first is Target and second the aligned Source
+ - file sensaas-2.sdf with the second best ranked alignemnt - it contains 2 molecules: first is Target and second the aligned Source
+ - ...
+ - file cat-repeats.sdf that contains all aligned Sources
+
+Example extracted from the publication:
+
+	 python meta-sensaas.py ../examples/VALSARTAN.sdf ../examples/tetrazole.sdf -r 100
+
+- sensaas-1.sdf contains the self-matching superimposition
+- sensaas-2.sdf contains the bioisosteric superimposition
+- sensaas-3.sdf contains the geometric-only superimposition
 
 ## Visualization 
 
