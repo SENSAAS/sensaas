@@ -119,7 +119,7 @@ Thus, we calculate a hybrid score = gfit + hfit scores - **gfit+hfit ranges betw
  Here outputs are:
  - the file bestsensaas.sdf that contains the best ranked aligned Source
  - the file catsensaas.sdf that contains all aligned Sources
- - the file matrix-sensaas.txt that contains gfit+hfit scores (one target per line and source per column)
+ - the file matrix-sensaas.txt that contains gfit+hfit scores (rows=targets and columns=sources)
 
 You can also select the score type by using the option -s 
 
@@ -127,7 +127,8 @@ You can also select the score type by using the option -s
 
 here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt
 
-2. If you want to repeat in order to find alternate alignments when they exist (eg: aligning a fragment on a large molecule)
+
+2. If you want to repeat in order to find alternate alignments when they exist (eg: aligning a fragment on a large molecule):
 
   		python meta-sensaas.py molecules-target.sdf molecules-source.sdf -r 100
  
