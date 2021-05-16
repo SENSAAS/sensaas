@@ -48,7 +48,7 @@ Install:
 1. Python3.7 and numpy
 2. Open3D version 0.12.0 (more information at [http://www.open3d.org/docs/release/getting_started.html](http://www.open3d.org/docs/release/getting_started.html))
 
-(Optional) Install additional packages for using scripts in the directory utils/ or visualization with PyMOL:
+(Optional) Install additional packages for visualization with PyMOL:
 
 3. PyMOL (a molecular viewer; more information at [https://pymolwiki.org](https://pymolwiki.org))
   
