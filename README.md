@@ -35,10 +35,8 @@ Launch Anaconda Prompt, then complete the installation:
   
  	conda install open3d-0.12.0-py37_0.tar.bz2
 
-(Optional) Additional packages for using scripts in the directory utils/ or visualization with PyMOL:
+(Optional) Additional packages for visualization with PyMOL:
 
-  	conda install perl
-  	conda install -c conda-forge rdkit
   	conda install -c schrodinger -c conda-forge pymol-bundle
   
 Retrieve and unzip SENSAAS repository in your desired folder. See below for running the program **sensaas.py**.
@@ -98,7 +96,7 @@ Example:
 
 	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim
 
-Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**). The output **tran.txt** contains the transformation matrix allowing the alignment of the source file (result in **Source_tran.sdf**). The **slog.txt** file details results with final scores on the last line. In this example, the last line must look like:
+Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**). The output **tran.txt** contains the transformation matrix allowing the alignment of the source file (result in **Source_tran.sdf**). The **slog.txt** file details results with final scores of the aligned molecule (Source) on the last line. In this example, the last line must look like:
 
 	gfit= 1.000 cfit= 0.999 hfit= 0.996 gfit+hfit= 1.996
 
@@ -113,12 +111,7 @@ Thus, we calculate a hybrid score = gfit + hfit scores - **gfit+hfit ranges betw
    A gfit+hfit score close to 2.0 means a perfect superimposition.
 
    A gfit+hfit score > 1.0 means that similaries were identified.
-
-(Option) Here IMATINIB.sdf and IMATINIB_mv.sdf are the 2 same molecules thus, you can evaluate the RMSD value by using rdkit if installed (see optional packages above):
-
-	python utils/rdkit-CalcLigRMSD.py examples/IMATINIB.sdf Source_tran.sdf
-
-Here, it returns RMSD= 0.00
+   
 
 ## Visualization 
 
