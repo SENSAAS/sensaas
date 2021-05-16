@@ -50,9 +50,7 @@ Install:
 
 (Optional) Install additional packages for using scripts in the directory utils/ or visualization with PyMOL:
 
-3. perl (usually it is already installed)
-4. RDKit (Open-Source Cheminformatics Software; more information at [https://rdkit.org](https://rdkit.org) or [https://github.com/rdkit/rdkit](https://github.com/rdkit/rdkit))
-5. PyMOL (a molecular viewer; more information at [https://pymolwiki.org](https://pymolwiki.org))
+3. PyMOL (a molecular viewer; more information at [https://pymolwiki.org](https://pymolwiki.org))
   
 Retrieve and unzip SENSAAS repository
 
@@ -96,7 +94,7 @@ Example:
 
 	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim
 
-Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**). The output **tran.txt** contains the transformation matrix allowing the alignment of the source file (result in **Source_tran.sdf**). The **slog.txt** file details results with final scores of the aligned molecule (Source) on the last line. In this example, the last line must look like:
+Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**). The output **tran.txt** contains the transformation matrix allowing the alignment of the source file (result in **Source_tran.sdf**). The **slog.txt** file details results with final scores of the aligned molecule (Source) on the last line. In the current example, the last line must look like:
 
 	gfit= 1.000 cfit= 0.999 hfit= 0.996 gfit+hfit= 1.996
 
