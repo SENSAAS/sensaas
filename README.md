@@ -152,6 +152,8 @@ Example extracted from the publication:
 You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages):
 
 	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
+	
+	pymol examples/VALSARTAN.sdf examples/tetrazole.sdf sensaas-1.sdf
 
 
 ## Licenses
