@@ -133,6 +133,7 @@ here the mean of the score of the target and of the aligned source will be used 
   		python meta-sensaas.py molecules-target.sdf molecules-source.sdf -r 100
  
  here 100 alignments of the source will be generated and clustered
+ 
  Outputs are:
  - file sensaas-1.sdf with the best ranked alignemnt - it contains 2 molecules: first is Target and second the aligned Source
  - file sensaas-2.sdf with the second best ranked alignemnt - it contains 2 molecules: first is Target and second the aligned Source
