@@ -136,22 +136,46 @@ rename a.out as nsc because 'nsc' is used to set the variable nscexe in the Pyth
 List of I/O Formats
 ===================
 
-.. note::sdf
+SENSAAS manages several input files:
 
-SDF format file
+.. list-table::
+   
+ * - **Input type**
+   - **File format**
+   -
+ * - sdf
+   - SDF format file
+   - 
+ * - pdb
+   - PDB format file 
+   - reads ATOM and HETATM coordinates
+ * - dot
+   - PDB format file
+   - reads HETATM lines that contain coordinates of dots and the atom type for defining the label
+ * - xyzrgb
+   - xyzrgb format file
+   - ascii file used in 3D data processing such as Open3D; contains coordinates of dots and color
+ * - pcd
+   - PCD format file
+   - used in 3D data processing such as Open3D
 
-- pdb 
-PDB format file (reads ATOM and HETATM lines with coordinates)
+Depending on the input file, the output can be:
 
-- dot 
-PDB format file where HETATM lines contain coordinates of dots and the atom element defining the label
-
-- pcd
-PCD format file (used in 3D data processing such as Open3d)
-
--xyzrgb
-xyzrgb format file (ascii file used in 3D data processing such as Open3d; contains coordinates of dots and color)
-
+.. list-table::
+   
+ * - **Output type**
+   - **File format**
+   -
+ * - sdf
+   - SDF format file
+   - 
+ * - pdb
+   - PDB format file 
+   - 
+ * - text
+   - tran
+   - contains the transformation matrix (translation + rotation)
+   
 
 Fitness scores
 ==============
