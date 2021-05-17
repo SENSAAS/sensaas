@@ -259,10 +259,7 @@ sensaas.py call different scripts to align molecules. Let show you how all the p
 Visualization
 =============
 
-Help `to install PyMOL <https://pymol.org/2/support.html?#installation>`_
-
-
-You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)::
+You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages or help `to install PyMOL <https://pymol.org/2/support.html?#installation>`_)::
 
 	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
 	
