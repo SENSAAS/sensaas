@@ -90,7 +90,7 @@ To align a Source molecule on a Target molecule, the syntax is:
 	
 	python sensaas.py sdf molecule-target.sdf sdf molecule-source.sdf slog.txt optim
 	
-Example extracted from the publication:
+Example:
 
 	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim
 
@@ -139,7 +139,7 @@ here the mean of the score of the target and of the aligned source will be used 
  - ...
  - file cat-repeats.sdf that contains all aligned Sources
 
-Example extracted from the publication:
+Example:
 
 	 python meta-sensaas.py examples/VALSARTAN.sdf examples/tetrazole.sdf -r 100
 
