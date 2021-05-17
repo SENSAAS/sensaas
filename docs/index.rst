@@ -8,7 +8,7 @@
 
 
 What is SENSAAS?
-====================================
+================
 
 .. image:: _static/alignement.png
 
@@ -21,11 +21,8 @@ Our algorithm runs with Python and requires the open-source library `Open3D <htt
 * `Installing`_
 * `Program NSC`_
 * `List of I/O Formats`_
-* `Run sensaas.py`_
-* `Run meta-sensaas.py`_
-* `More on SENSAAS algorithm`_
+* `Fitness scores`_
 * `Tutorials`_
-* `Visualization`_
 * `About This Project`_
 
 
@@ -137,11 +134,36 @@ rename a.out as nsc because 'nsc' is used to set the variable nscexe in the Pyth
 
 
 List of I/O Formats
+===================
+
+.. note::sdf
+
+SDF format file
+
+- pdb 
+PDB format file (reads ATOM and HETATM lines with coordinates)
+
+- dot 
+PDB format file where HETATM lines contain coordinates of dots and the atom element defining the label
+
+- pcd
+PCD format file (used in 3D data processing such as Open3d)
+
+-xyzrgb
+xyzrgb format file (ascii file used in 3D data processing such as Open3d; contains coordinates of dots and color)
+
+
+Fitness scores
 ==============
+
+Tutorials
+===========
+
+**Tutorial:** `This video <nul>`_ on Youtube provides a tutorial for installing and executing SENSAAS
 
 
 Run sensaas.py
-==============
+--------------
 
 **Please check that you have installed the appropriate versions** (open3D 0.12.0.0 for python 3.7 with Linux/Windows/MacOSX).
 
@@ -238,20 +260,11 @@ Here, it returns RMSD= 0.00
 
 
 Run meta-sensaas.py
-====================
-
-
-More on SENSAAS algorithm
-===========================
-
-sensaas.py call different scripts to align molecules. Let show you how all the program works with a kind of blueprint:
-
-.. image:: _static/schema.JPG
-.. image:: _static/legend.jpg   
+--------------------
 
 
 Visualization
-=============
+-------------
 
 You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages or help `to install PyMOL <https://pymol.org/2/support.html?#installation>`_)::
 
@@ -266,10 +279,13 @@ or after executing meta-sensaas.py with several molecules as Target and/or Sourc
 	pymol target.sdf bestsensaas.sdf catsensaas.sdf
 
 
-Tutorials
-===========
+More on SENSAAS algorithm for developpers
+------------------------------------------
 
-**Tutorial:** `This video <nul>`_ on Youtube provides a tutorial
+sensaas.py call different scripts to align molecules. Let show you how all the program works with a kind of blueprint:
+
+.. image:: _static/schema.JPG
+.. image:: _static/legend.jpg   
 
 
 About This Project
