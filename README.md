@@ -121,7 +121,7 @@ Thus, we calculate a hybrid score = gfit + hfit scores - **gfit+hfit ranges betw
  - the file **catsensaas.sdf** that contains all aligned Sources
  - the file **matrix-sensaas.txt** that contains gfit+hfit scores (rows=Targets and columns=Sources)
 
-You can also select the score type by using the option -s (default is -s source):
+You can also select the score type by using the option -s (default is **-s source**):
 
 	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s mean
 
