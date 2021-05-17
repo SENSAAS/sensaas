@@ -256,11 +256,13 @@ Visualization
 
 You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)::
 
-   pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
+	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
+	
    
 or after executing meta-sensaas.py with the repeat option:
 
-   pymol examples/VALSARTAN.sdf examples/tetrazole.sdf sensaas-1.sdf
+	pymol examples/VALSARTAN.sdf examples/tetrazole.sdf sensaas-1.sdf
+	
 
 To install PyMol, `click here <https://pymol.org/2/>`_ -> click "Download" -> choose the right zip file
 
