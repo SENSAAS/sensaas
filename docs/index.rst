@@ -15,7 +15,7 @@ What is Sensaas?
 **SENSAAS** is the result of a collaboration between researchers of two labs of `UCA (University Côte d'Azur) <https://univ-cotedazur.fr/>`_: `I3S <https://www.i3s.unice.fr>`_ and `IPMC <https://www.ipmc.cnrs.fr/cgi-bin/site.cgi>`_. 
 Based on the publication `SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces <https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081>`_, **SENSAAS** is a shape-based alignment program which allows to superimpose molecules in 3D space.
 
-Our algorithm runs with Python 3.7 and requires the `open3D library <http://www.open3d.org/>`_.
+Our algorithm runs with Python and requires the open-source library `open3D library <http://www.open3d.org/>`_.
 
 **Website:** A web demo is available `here <nul>`_
 
