@@ -21,6 +21,7 @@ Our algorithm runs with Python and requires the open-source library `Open3D <htt
 * `Installing`_
 * `Program NSC`_
 * `List of I/O Formats`_
+* `Colors`_
 * `Fitness scores`_
 * `Tutorials`_
 * `About This Project`_
@@ -136,7 +137,8 @@ rename a.out as nsc because 'nsc' is used to set the variable nscexe in the Pyth
 List of I/O Formats
 ===================
 
-SENSAAS manages several input files:
+SENSAAS reads several input file formats:
+
 
 .. list-table::
    
@@ -159,26 +161,47 @@ SENSAAS manages several input files:
    - PCD format file
    - used in 3D data processing such as Open3D
 
-Depending on the input file, the output can be:
+The output file format depends on the input file format:
 
-.. list-table::
-   
- * - **Output type**
-   - **File format**
-   -
- * - sdf
-   - SDF format file
-   - 
- * - pdb
-   - PDB format file 
-   - 
- * - text
-   - tran
-   - contains the transformation matrix (translation + rotation)
-   
+- if the Source input file is **sdf** then **Source_tran.sdf** is the transformed sdf source file
+- if the Source input file is **pdb** then **Source_tran.pdb** is the transformed pdb source file
+- if the Source input file is **dot** then **Source-dots_tran.pdb** is the transformed dot file in pdb format
+- if the Source input file is **xyzrgb** then **Source_tran.xyzrgb** is the transformed xyzrgb file
+- if the Source input file is **pcd** then **Source_tran.pcd** is the transformed pcd file
+
+
+Colors
+=======
+
+In our implementation, labels aim to recapitulate typical pharmacophore features such as aromatic (colored in green), lipophilic (colored in white/grey) and polar groups (colored in red):
+
+- class 1 (or label 1) includes non polar hydrogen (H) and halogen atoms excepting fluorines (Cl, Br and I). Hydrogen and halogen atoms are molecule endings. They are the most frequent atoms that contribute to the surface geometry and coloration, and thus, highlight the apolar surface area. Points belonging to this class are colored in white/grey.
+
+- class 2 (or label 2) includes polar atoms able to be involved in hydrogen bonds such as N, O, S, H (if linked to N or O) and F. Points belonging to this class are colored in red.
+
+- class 3 (or label 3) includes “skeleton elements” such as C, P and B. Points belonging to this class are colored in green.
+
+- class 4 (or label 4) includes  all elements not listed in the first three classes. This class is empty for most small organic molecules in medicinal chemistry. Points belonging to this class are colored in blue.
+
 
 Fitness scores
 ==============
+
+There are three different fitness scores but we only use 2 of them, gfit and hfit, to calculate gfit+hfit.
+
+- **gfit** score estimates the geometric matching of point-based surfaces. It is the ratio between the number of points of the transformed Source that match points of the Target, and its total number of points - **it ranges between 0 and 1**
+
+- **hfit** score estimates the matching of colored points representing pharmacophore features. It is the sum of the fitness for each class except the first class, to specifically evaluate the matching of polar and aromatic points (classes 2, 3 and 4) - **it ranges between 0 and 1**
+
+- cfit score is the sum of the fitness for each class, to specifically evaluate the matching of the colored points of the 4 classes - it ranges between 0 and 1
+
+The hybrid score is called **gfit+hfit** and is the sum = gfit + hfit scores
+**gfit+hfit ranges between 0 and 2**
+
+  A gfit+hfit score close to 2.0 means a perfect superimposition.
+
+  A gfit+hfit score > 1.0 means that similaries were identified.
+    
 
 Tutorials
 ===========
@@ -258,33 +281,13 @@ Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file 
 
    gfit= 1.000 cfit= 0.999 hfit= 0.996 gfit+hfit= 1.996
 
-There are three different fitness scores but we only use 2 of them, gfit and hfit, to calculate gfit+hfit.
-
-   * gfit score estimates the geometric matching of point-based surfaces - it ranges between 0 and 1
-   * hfit score estimates the matching of colored points representing pharmacophore features - it ranges between 0 and 1
-
-Thus, we calculate a hybrid score = gfit + hfit scores - **gfit+hfit ranges between 0 and 2**
-
-   * A gfit+hfit score close to 2.0 means a perfect superimposition.
-   * A gfit+hfit score > 1.0 means that similaries were identified.
-
-**(Option)** Here IMATINIB.sdf and IMATINIB_mv.sdf are the 2 same molecules thus, you can evaluate the RMSD value by using rdkit if installed (see optional packages above)::
-
-   python utils/rdkit-CalcLigRMSD.py examples/IMATINIB.sdf Source_tran.sdf
-
-Here, it returns RMSD= 0.00
-
-2. example (IMATINIB_mv.sdf was reoriented when compared with IMATINIB.sdf)(with eval: To evaluate an alignment (in place)):
-
-::
-
-   (sensaas) > sensaas.py sdf DATASET/IMATINIB.sdf sdf DATASET/IMATINIB_mv.sdf slog eval
-
-**slog** (whatever you want to call it) details results with final scores on the last line
 
 
 Run meta-sensaas.py
 --------------------
+
+This "meta" script only works with sdf files 
+
 
 
 Visualization
