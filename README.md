@@ -134,8 +134,8 @@ here the mean of the score of the target and of the aligned source will be used 
  
  here 100 alignments of the source will be generated and clustered. Outputs are:
  
- - file **sensaas-1.sdf** with the best ranked alignemnt - it contains 2 molecules: first is Target and second the aligned Source
- - file **sensaas-2.sdf** with the second best ranked alignemnt - it contains 2 molecules: first is Target and second the aligned Source
+ - the file **sensaas-1.sdf** with the best ranked alignemnt - it contains 2 molecules: first is Target and second the aligned Source
+ - the file **sensaas-2.sdf** (if exists) with the second best ranked alignment - it contains 2 molecules: first is Target and second the aligned Source
  - ...
  - file **cat-repeats.sdf** that contains all aligned Sources
 
