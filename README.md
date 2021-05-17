@@ -143,7 +143,7 @@ here the mean of the score of the target and of the aligned source will be used 
  - ...
  - file **cat-repeats.sdf** that contains all aligned Sources
 
-Example:
+Example extracted from the publication:
 
 	 python meta-sensaas.py examples/VALSARTAN.sdf examples/tetrazole.sdf -r 100
 
