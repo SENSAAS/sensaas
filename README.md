@@ -112,7 +112,7 @@ Thus, we calculate a hybrid score = gfit + hfit scores - **gfit+hfit ranges betw
    
 ## Run meta-sensaas.py
 
-1. If you want to process a sdf file containing several molecules as for example several conformers for Target and Source:
+1. If you want to process a sdf file containing several molecules as for example several conformers for Target and/or Source:
 
  		python meta-sensaas.py molecules-target.sdf molecules-source.sdf
  
