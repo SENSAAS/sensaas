@@ -17,9 +17,8 @@ Based on the publication `SenSaaS: Shape-based Alignment by Registration of Colo
 
 Our algorithm runs with Python and requires the open-source library `Open3D <http://www.open3d.org/>`_.
 
-* `How does work SENSAAS?`_
+* `How does SENSAAS work`_
 * `Installing`_
-* `Virtual environment for python with conda`_
 * `Program NSC`_
 * `List of I/O Formats`_
 * `Run sensaas.py`_
@@ -30,49 +29,44 @@ Our algorithm runs with Python and requires the open-source library `Open3D <htt
 * `About This Project`_
 
 
-How does work SENSAAS?
+How does SENSAAS work
 ======================
 
-Considering two molecules named Source and Target as input, SENSAAS will propose a transformation matrix as output, that will will lead to the "best" alignement of Source on Target. SENSAAS  follows four major steps:
+Considering two molecules named Source and Target as inputs, SENSAAS will propose a transformation matrix as output, that will lead to the "best" alignement of Source on Target. SENSAAS follows four major steps:
 
-- generation of one point cloud of the molecular surface of the two input molecules; 
+- generation of a point cloud of the molecular surface of the two input molecules; 
 - coarse alignment of the two point clouds thanks to a geometry-aware registration; 
-- labelling of each point of the two clouds according to several user-defined classes;
-- refinement of this alignement by applying a color and geometry-aware local registration. At this step, for each point, a color is associated at each class. 
+- labelling of each point of the two clouds according to user-defined classes;
+- refinement of this alignement by applying a color and geometry-aware local registration. At this step, for each point, a color is associated with each class. 
 
 .. image:: _static/overview.png
 
 **1. Generation of input point clouds** 
-For each input file (Source and Target), a point cloud of the Van der Waal surface is obtained. Each point is described by its 3D coordinates, and a color (RGB) according to the nature of the underlying atom.
+For each input file (Source and Target), a point cloud of the van der Waals surface is obtained. Each point is described by its 3D coordinates, and a color (RGB) according to the nature of the underlying atom.
 
-**2. Coarse alignment by global registration** At this step, the Source point cloud is globally superimposed on the Target, by finding the best matching in terms of
-geometry only. The matching is done on local 3D descriptors computed on a limited number of points (rather than on the points themselves). Here, the descriptors named Fast Point Features Histograms (FPFH) presented in `Fast Point Feature Histograms (FPFH) for 3D Registration <https://ieeexplore.ieee.org/abstract/document/5152473>`_ are used, and their matching is done by using the RANSAC method: `Random Sample Consensus: A Paradigm for
+**2. Coarse alignment by global registration** At this step, the Source point cloud is globally superimposed on the Target, by finding an initial matching in terms of
+geometry only. The matching is done by using local 3D descriptors computed on a limited number of points (also called downsampled point clouds). Here, the descriptors named Fast Point Features Histograms (FPFH) presented in `Fast Point Feature Histograms (FPFH) for 3D Registration <https://ieeexplore.ieee.org/abstract/document/5152473>`_ are used, and their matching is done by using the RANSAC method: `Random Sample Consensus: A Paradigm for
 Model Fitting with Applications to Image Analysis and Automated Cartography <https://dl.acm.org/doi/10.1145/358669.358692>`_.
 
-**3. Labelling of the points of each point cloud** Each point is colored according to its belonging to a user-defined class. In the current version, the classes depend on the pharmacophore features, but they can depend by any physico-chemical property mapped on the surface. The user can change the classification as desired.
+**3. Labelling of the points of each point cloud** Each point is colored according to its belonging to a user-defined class. In the current version, the classes depend on the pharmacophore features, but they could depend on any physico-chemical property mapped onto the surface.
 
-**4. Refinement of this first alignement by applying a color and geometry-aware registration** At this step the registration takes into account the geometry of the point clouds, but also the color of the points provided by the previous step of labelling. the coarse alignement is finally improved by finding the best matching between
+**4. Refinement of the first global alignement by applying a color and geometry-aware registration** At this step, the registration takes into account the geometry of the point clouds, but also the color of the points provided by the previous step of labelling. The coarse alignement is improved by finding the best matching between
 the two colored point clouds. The method used here is the method presented in `Colored Point Cloud Registration Revisited <https://ieeexplore.ieee.org/document/8237287>`_.
 This step results into a transformation matrix (rotation + translation), that is applied to the Source molecule to get the final alignement. 
 
 
-
 Installing
 ===========
+
 SENSAAS relies on the open-source library Open3D. The current release of SENSAAS uses **Open3D version 0.12.0** along with **Python3.7**.
 
 Visit the following URL for using Python packages distributed: 
 
 * via PyPI: `http://www.open3d.org/docs/release/getting_started.html <http://www.open3d.org/docs/release/getting_started.html>`_ 
-* or conda: `https://anaconda.org/open3d-admin/open3d/files <https://anaconda.org/open3d-admin/open3d/files>`_. 
+* or conda: `https://anaconda.org/open3d-admin/open3d/files <https://anaconda.org/open3d-admin/open3d/files>`_. For example, for windows-64, you can download *win-64/open3d-0.12.0-py37_0.tar.bz2*
 
-For example, for windows-64, you can download *win-64/open3d-0.12.0-py37_0.tar.bz2*
-
-Virtual environment for python with conda
-=========================================
-
-Windows for example
------------------------
+Virtual environment for python with conda (for Windows for example)
+-------------------------------------------------------------------
 
 Install `conda or Miniconda <https://docs.conda.io/en/latest/miniconda.html>`_.
 
@@ -81,35 +75,33 @@ Launch Anaconda Prompt, then complete the installation::
    conda update conda
    conda create -n sensaas
    conda activate sensaas
-   conda install python=3.7 numpy
+   (sensaas) > conda install python=3.7 numpy
 
 After downloading the appropriate version of Open3D::
 
    (sensaas) > conda install open3d-0.12.0-py37_0.tar.bz2
 
-.. important::  **Please check that you have installed the appropriate versions** (open3D 0.12.0.0 for python 3.7 with Linux/Windows/MacOSX).
+(Optional) Additional packages for visualization with PyMOL::
 
+   (sensaas) > conda install -c schrodinger -c conda-forge pymol-bundle
 
-**(Optional)** Additional packages for visualization with PyMOL
+Retrieve and unzip SENSAAS repository in your desired folder. See below for running the program **sensaas.py** or **meta-sensaas.py**.
 
-   conda install -c schrodinger -c conda-forge pymol-bundle
-
-Retrieve and unzip SENSAAS repository in your desired folder. See below for running the program **sensaas.py**.
 
 Linux
 -----
 
-Install:
+Install (more information at http://www.open3d.org/docs/release/getting_started.html)::
 
    1. Python 3.7 and numpy
-   2. Open3D version 0.12.0 (more information `here <http://www.open3d.org/docs/release/getting_started.html>`_)
+   2. Open3D version 0.12.0
 
-**(Optional)** Install additional packages for visualization with PyMOL:
+(Optional) Install additional packages for visualization with PyMOL (more information at https://pymolwiki.org)::
 
-   3. PyMOL (a molecular viewer; more information at https://pymolwiki.org)
+   3. PyMOL
 
+Retrieve and unzip SENSAAS repository in your desired folder. See below for running the program **sensaas.py** or **meta-sensaas.py**.
 
-Retrieve and unzip SENSAAS repository
 
 MacOS
 -----
@@ -118,8 +110,9 @@ MacOS
 
    Not tested
 
+
 Program NSC
-==========================================
+============
 
 NSC is used to efficiently generate point clouds of molecules and to calculate their surfaces. It is written in C and was developed by Frank Eisenhaber who kindly licensed its use in SENSAAS. **Please be advised that the use of NSC is strictly tied to SENSAAS and its code is released under the following** `license <https://github.com/SENSAAS/sensaas/blob/main/License_NSC.txt>`_. If the NSC license is an issue for your application or if you wish to use NSC independently of SENSAAS, please contact the author Frank Eisenhaber (email: `frank.eisenhaber@gmail.com <frank.eisenhaber@gmail.com>`_) who will amicably manage your request.
 
@@ -150,6 +143,7 @@ List of I/O Formats
 Run sensaas.py
 ==============
 
+**Please check that you have installed the appropriate versions** (open3D 0.12.0.0 for python 3.7 with Linux/Windows/MacOSX).
 
 This algorithm is used to optimize an alignment of 2 molecules or proteins. You can see results on `PyMol <https://pymol.org/2/>`_, if you don't own PyMol yet, click here: `Visualization`_.
 
