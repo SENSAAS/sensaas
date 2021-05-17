@@ -7,7 +7,7 @@
 
 
 
-What is Sensaas?
+What is SENSAAS?
 ====================================
 
 .. image:: _static/alignement.png
@@ -15,24 +15,23 @@ What is Sensaas?
 **SENSAAS** is the result of a collaboration between researchers of two labs of `UCA (University Côte d'Azur) <https://univ-cotedazur.fr/>`_: `I3S <https://www.i3s.unice.fr>`_ and `IPMC <https://www.ipmc.cnrs.fr/cgi-bin/site.cgi>`_. 
 Based on the publication `SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces <https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081>`_, **SENSAAS** is a shape-based alignment program which allows to superimpose molecules in 3D space.
 
-Our algorithm runs with Python and requires the open-source library `open3D <http://www.open3d.org/>`_.
+Our algorithm runs with Python and requires the open-source library `Open3D <http://www.open3d.org/>`_.
 
-**Tutorial:** `This video <nul>`_ on Youtube provides a tutorial
-
-* `How does SENSAAS work?`_
-* `Requirements`_
+* `How does work SENSAAS?`_
+* `Installing`_
 * `Virtual environment for python with conda`_
-* `Information on the third-party program NSC`_
-* `Run Sensaas`_
-* `Associated files of Sensaas`_
+* `Program NSC`_
+* `List of I/O Formats`_
+* `Run sensaas.py`_
+* `Run meta-sensaas.py`_
+* `More on SENSAAS algorithm`_
+* `Tutorials`_
 * `Visualization`_
-* `Indices and tables`_
+* `About This Project`_
 
 
-
-
-How does Sensaas work?
-====================================
+How does work SENSAAS?
+======================
 
 Considering two molecules named Source and Target as input, SENSAAS will propose a transformation matrix as output, that will will lead to the "best" alignement of Source on Target. SENSAAS  follows four major steps:
 
@@ -58,8 +57,8 @@ This step results into a transformation matrix (rotation + translation), that is
 
 
 
-Requirements
-============
+Installing
+===========
 SENSAAS relies on the open-source library Open3D. The current release of SENSAAS uses **Open3D version 0.12.0** along with **Python3.7**.
 
 Visit the following URL for using Python packages distributed: 
@@ -91,10 +90,8 @@ After downloading the appropriate version of Open3D::
 .. important::  **Please check that you have installed the appropriate versions** (open3D 0.12.0.0 for python 3.7 with Linux/Windows/MacOSX).
 
 
-**(Optional)** Additional packages for using scripts in the directory utils/ or visualization with PyMOL::
+**(Optional)** Additional packages for visualization with PyMOL
 
-   conda install perl
-   conda install -c conda-forge rdkit
    conda install -c schrodinger -c conda-forge pymol-bundle
 
 Retrieve and unzip SENSAAS repository in your desired folder. See below for running the program **sensaas.py**.
@@ -107,11 +104,10 @@ Install:
    1. Python 3.7 and numpy
    2. Open3D version 0.12.0 (more information `here <http://www.open3d.org/docs/release/getting_started.html>`_)
 
-**(Optional)** Install additional packages for using scripts in the directory utils/ or visualization with PyMOL:
+**(Optional)** Install additional packages for visualization with PyMOL:
 
-   3. perl (usually it is already installed)
-   4. RDKit (Open-Source Cheminformatics Software; more information at https://rdkit.org or https://github.com/rdkit/rdkit)
-   5. PyMOL (a molecular viewer; more information at https://pymolwiki.org)
+   3. PyMOL (a molecular viewer; more information at https://pymolwiki.org)
+
 
 Retrieve and unzip SENSAAS repository
 
@@ -122,7 +118,7 @@ MacOS
 
    Not tested
 
-Information on the third-party program NSC
+Program NSC
 ==========================================
 
 NSC is used to efficiently generate point clouds of molecules and to calculate their surfaces. It is written in C and was developed by Frank Eisenhaber who kindly licensed its use in SENSAAS. **Please be advised that the use of NSC is strictly tied to SENSAAS and its code is released under the following** `license <https://github.com/SENSAAS/sensaas/blob/main/License_NSC.txt>`_. If the NSC license is an issue for your application or if you wish to use NSC independently of SENSAAS, please contact the author Frank Eisenhaber (email: `frank.eisenhaber@gmail.com <frank.eisenhaber@gmail.com>`_) who will amicably manage your request.
@@ -146,8 +142,13 @@ rename a.out as nsc because 'nsc' is used to set the variable nscexe in the Pyth
 
    cp a.out nsc
 
-Run Sensaas
-===========
+
+List of I/O Formats
+==============
+
+
+Run sensaas.py
+==============
 
 
 This algorithm is used to optimize an alignment of 2 molecules or proteins. You can see results on `PyMol <https://pymol.org/2/>`_, if you don't own PyMol yet, click here: `Visualization`_.
@@ -242,7 +243,11 @@ Here, it returns RMSD= 0.00
 **slog** (whatever you want to call it) details results with final scores on the last line
 
 
-Associated files of Sensaas
+Run meta-sensaas.py
+====================
+
+
+More on SENSAAS algorithm
 ===========================
 
 sensaas.py call different scripts to align molecules. Let show you how all the program works with a kind of blueprint:
@@ -254,25 +259,30 @@ sensaas.py call different scripts to align molecules. Let show you how all the p
 Visualization
 =============
 
+Help `to install PyMOL <https://pymol.org/2/support.html?#installation>`_
+
+
 You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)::
 
 	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
 	
-   
-or after executing meta-sensaas.py with the repeat option:
+or after executing meta-sensaas.py with the repeat option::
 
-	pymol examples/VALSARTAN.sdf examples/tetrazole.sdf sensaas-1.sdf
+	pymol examples/VALSARTAN.sdf sensaas-1.sdf sensaas-2.sdf sensaas-3.sdf
+
+or after executing meta-sensaas.py with several molecules as Target and/or Source::
 	
+	pymol target.sdf bestsensaas.sdf catsensaas.sdf
 
-To install PyMol, `click here <https://pymol.org/2/>`_ -> click "Download" -> choose the right zip file
 
-`To install PyMol <https://pymol.org/2/support.html?#installation>`_ with control terminal or on conda.
+Tutorials
+===========
 
-Indices and tables
+**Tutorial:** `This video <nul>`_ on Youtube provides a tutorial
+
+
+About This Project
 ==================
-
-
-
 
 Licenses
 --------
