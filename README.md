@@ -130,7 +130,7 @@ here the mean of the score of the target and of the aligned source will be used 
 
 **2. If you want to repeat in order to find alternate alignments when they exist (eg: aligning a fragment on a large molecule):**
 
-  		python meta-sensaas.py molecules-target.sdf molecules-source.sdf -r 100
+  		python meta-sensaas.py target.sdf source.sdf -r 100
  
  here 100 alignments of the source will be generated and clustered. Outputs are:
  
