@@ -112,7 +112,7 @@ Thus, we calculate a hybrid score = gfit + hfit scores - **gfit+hfit ranges betw
    
 ## Run meta-sensaas.py
 
-1. If you want to process a sdf file containing several molecules as for example several conformers for Target and/or Source:
+**1. If you want to process a sdf file containing several molecules as for example several conformers for Target and/or Source:**
 
  		python meta-sensaas.py molecules-target.sdf molecules-source.sdf
  
@@ -128,7 +128,7 @@ You can also select the score type by using the option -s (default is **-s sourc
 here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt
 
 
-2. If you want to repeat in order to find alternate alignments when they exist (eg: aligning a fragment on a large molecule):
+**2. If you want to repeat in order to find alternate alignments when they exist (eg: aligning a fragment on a large molecule):**
 
   		python meta-sensaas.py molecules-target.sdf molecules-source.sdf -r 100
  
