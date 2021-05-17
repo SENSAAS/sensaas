@@ -114,9 +114,13 @@ Thus, we calculate a hybrid score = gfit + hfit scores - **gfit+hfit ranges betw
 
 **1. If you want to process a sdf file containing several molecules as for example several conformers for Target and/or Source:**
 
- 		python meta-sensaas.py molecules-target.sdf molecules-source.sdf
+ 	python meta-sensaas.py molecules-target.sdf molecules-source.sdf
  
- Here outputs are:
+ Example:
+
+	python meta-sensaas.py examples/IMATINIB.sdf examples/IMATINIB_parts.sdf
+
+Here, the source file IMATINIB_parts.sdf contains 3 substructures that are aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**). Outputs are:
  - the file **bestsensaas.sdf** that contains the best ranked aligned Source
  - the file **catsensaas.sdf** that contains all aligned Sources
  - the file **matrix-sensaas.txt** that contains gfit+hfit scores (rows=Targets and columns=Sources)
@@ -128,11 +132,11 @@ You can also select the score type by using the option -s (default is **-s sourc
 here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt
 
 
-**2. If you want to repeat in order to find alternate alignments when they exist (eg: aligning a fragment on a large molecule):**
+**2. If you want to repeat in order to find alternate alignments when they exist (for example when aligning a fragment on a large molecule):**
 
-  		python meta-sensaas.py target.sdf source.sdf -r 100
+  	python meta-sensaas.py target.sdf source.sdf -r 10
  
- here 100 alignments of the source will be generated and clustered. Outputs are:
+ here 10 alignments of the source will be generated and clustered. Outputs are:
  
  - the file **sensaas-1.sdf** with the best ranked alignment - it contains 2 molecules: first is Target and second the aligned Source
  - the file **sensaas-2.sdf** (if exists) with the second best ranked alignment - it contains 2 molecules: first is Target and second the aligned Source
@@ -149,13 +153,17 @@ Example:
 
 ## Visualization 
 
-You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages):
+You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target, the Source and the aligned Source(s):
 
 	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
 
+or after executing meta-sensaas.py with several molecules:
+
+	pymol examples/IMATINIB.sdf examples/IMATINIB_parts.sdf catsensaas.sdf
+
 or after executing meta-sensaas.py with the repeat option:
 	
-	pymol examples/VALSARTAN.sdf examples/tetrazole.sdf sensaas-1.sdf
+	pymol sensaas-1.sdf
 
 
 ## Licenses
