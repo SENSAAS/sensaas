@@ -189,6 +189,10 @@ In our implementation, labels aim to recapitulate typical pharmacophore features
 Fitness scores
 ==============
 
+Fitness scores are calculated using point clouds. A fitness score indicates how many points are paired. Points are considered paired if their distance is lower than a given threshold. In our implementation, we set the threshold value to 0.3 because it is the average distance between two adjacent points in our original point clouds.
+
+Each score is similar to a Tversky coefficient tuned to evaluate the embedding of a point cloud in another one. Therefore, the score of the Source and the score of the Target may differ. The smallest point cloud of the two will always obtain the highest fitness score as more points are paired, proportionally.
+
 There are three different fitness scores but we only use 2 of them, gfit and hfit, to calculate gfit+hfit.
 
 - **gfit** score estimates the geometric matching of point-based surfaces. It is the ratio between the number of points of the transformed Source that match points of the Target, and its total number of points - **it ranges between 0 and 1**
@@ -230,7 +234,7 @@ To align a Source molecule on a Target molecule, the syntax is::
    name of the Source file
 
 **<log-file-name>**
-   name of the output file. It details the results of the alignement with final scores of Source on the last line.
+   name of the output file. It details the results of the alignement with **final scores of Source** on the last line.
 
 **<mode>**
    - **optim** executes the alignment and generates a transformation matrix
