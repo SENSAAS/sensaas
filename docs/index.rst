@@ -15,6 +15,8 @@ What is SENSAAS?
 **SENSAAS** is the result of a collaboration between researchers of two labs of `UCA (University Côte d'Azur) <https://univ-cotedazur.fr/>`_: `I3S <https://www.i3s.unice.fr>`_ and `IPMC <https://www.ipmc.cnrs.fr/cgi-bin/site.cgi>`_. 
 Based on the publication `SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces <https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081>`_, **SENSAAS** is a shape-based alignment program which allows to superimpose molecules in 3D space.
 
+**Tutorial:** `This video <nul>`_ on Youtube provides a tutorial for installing and executing SENSAAS
+
 Our algorithm runs with Python and requires the open-source library `Open3D <http://www.open3d.org/>`_.
 
 * `How does SENSAAS work?`_
@@ -206,8 +208,7 @@ The hybrid score is called **gfit+hfit** and is the sum = gfit + hfit scores
 Tutorials
 ===========
 
-**Tutorial:** `This video <nul>`_ on Youtube provides a tutorial for installing and executing SENSAAS
-
+This tutorial presents basic usage of SENSAAS with sdf molecular files.
 
 Run sensaas.py
 --------------
@@ -232,16 +233,15 @@ To align a Source molecule on a Target molecule, the syntax is::
    name of the output file. It details the results of the alignement with final scores of Source on the last line.
 
 **<mode>**
-   - "optim": executes the alignment and generates a transformation matrix
+   - **optim** executes the alignment and generates a transformation matrix
    
-   - "eval": evaluates the superimposition "in place" (without aligning)
+   - **eval** evaluates the superimposition "in place" (without aligning)
 
+Example with the optim mode
+---------------------------
 
-Example
--------
-
-The following example works with 2 molecules from the directory examples/::
-
+The following example works with 2 molecules from the directory examples/
+::
 	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim	
 		
 Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**).
@@ -263,46 +263,19 @@ You can use any molecular viewer. For instance, you can use PyMOL if installed (
 
 	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
 	
+The evaluation mode
+-------------------
+Given 2 molecules, molecule1.sdf and molecule2.sdf
+::
+		python sensaas.py sdf molecule1.sdf sdf molecule2.sdf slog.txt eval	
+
+Here, the resulting **slog.txt** contains scores of molecule2.sdf on the last line.
+::
+		python sensaas.py sdf molecule2.sdf sdf molecule1.sdf slog.txt eval
 	
-Example with sdf file
----------------------
-::
+Here, the resulting **slog.txt** contains scores of molecule1.sdf on the last line.
 
-   python sensaas.py sdf <target-file-name>.sdf sdf <source-file-name>.sdf slog.txt optim
-
-Here the source file is aligned (moved) on the target file.
-
-	the output tran.txt contains the transformation matrix allowing the alignment of the source file:
-
-	    if Source input file is **sdf** then **Source_tran.sdf** is the transformed sdf source file
-
-	    if Source input file is **pdb** then **Source_tran.pdb** is the transformed pdb source file
-
-	    if Source input file is **dot** then **Source-dots_tran.pdb** is the transformed dot file in pdb format
-
- 	    if Source input file is **xyzrgb** then **Source_tran.xyzrgb** is the transformed xyzrgb file
-
-	    if Source input file is **pcd** then **Source_tran.pcd** is the transformed pcd file
-
-**slog** (whatever you want to call it) details results with final scores on the last line.
-
-.pcd or .xyzrgb file contains coordinates and rgb colors of points and can be read by Open3D (visualize.py in directory utils)
-
-Example with IMATINIB.sdf
--------------------------
-
-1. example (IMATINIB_mv.sdf was reoriented when compared with IMATINIB.sdf):
-
-::
-
-	(sensaas) > sensaas.py sdf DATASET/IMATINIB.sdf sdf DATASET/IMATINIB_mv.sdf slog.txt optim
-
-Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**). The output tran.txt contains the transformation matrix allowing the alignment of the source file (result in **Source_tran.sdf**). The slog.txt file details results with final scores on the last line. In this example, the last line must look like::
-
-   gfit= 1.000 cfit= 0.999 hfit= 0.996 gfit+hfit= 1.996
-
-
-
+	
 Run meta-sensaas.py
 --------------------
 
@@ -315,13 +288,11 @@ Visualization
 
 You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages or help `to install PyMOL <https://pymol.org/2/support.html?#installation>`_)::
 
-	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
-	
-or after executing meta-sensaas.py with the repeat option::
+After executing meta-sensaas.py with the repeat option::
 
 	pymol examples/VALSARTAN.sdf sensaas-1.sdf sensaas-2.sdf sensaas-3.sdf
 
-or after executing meta-sensaas.py with several molecules as Target and/or Source::
+After executing meta-sensaas.py with several molecules as Target and/or Source::
 	
 	pymol target.sdf bestsensaas.sdf catsensaas.sdf
 
