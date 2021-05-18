@@ -305,7 +305,15 @@ Outputs are:
 - the file **catsensaas.sdf** that contains all aligned Sources
 - the file **matrix-sensaas.txt** that contains gfit+hfit scores (rows=Targets and columns=Sources)
 
+Visualization
+~~~~~~~~~~~~~
 
+You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)
+::
+	
+	pymol examples/IMATINIB.sdf bestsensaas.sdf catsensaas.sdf
+
+	
 Option -s 
 ~~~~~~~~~
 
@@ -328,7 +336,7 @@ c)::
 	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s target
 
 here the score of the target will be used to rank solutions and to fill matrix-sensaas.txt.
-
+	
 
 **2. Finding alternate alignments and Clustering**
 
@@ -345,30 +353,27 @@ Outputs are:
 - ...
 - file **cat-repeats.sdf** that contains all aligned Sources
 
+Example
+~~~~~~~~
 
-Example extracted from the publication
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The following example works with 2 files from the directory examples/
 ::
+
 	python meta-sensaas.py examples/VALSARTAN.sdf examples/tetrazole.sdf -r 100
-	
-	
+
+As described in the publication, outputs are:
+
 - sensaas-1.sdf contains the self-matching superimposition
 - sensaas-2.sdf contains the bioisosteric superimposition
 - sensaas-3.sdf contains the geometric-only superimposition
-
 
 Visualization
 ~~~~~~~~~~~~~
 
 You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)
-
-After executing meta-sensaas.py with the repeat option::
+::
 
 	pymol examples/VALSARTAN.sdf sensaas-1.sdf sensaas-2.sdf sensaas-3.sdf
-
-After executing meta-sensaas.py with several molecules as Target and/or Source::
-	
-	pymol target.sdf bestsensaas.sdf catsensaas.sdf
 
 
 More on SENSAAS algorithm for developpers
