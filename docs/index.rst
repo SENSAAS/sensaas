@@ -17,7 +17,7 @@ Based on the publication `SenSaaS: Shape-based Alignment by Registration of Colo
 
 Our algorithm runs with Python and requires the open-source library `Open3D <http://www.open3d.org/>`_.
 
-* `How does SENSAAS work`_
+* `How does SENSAAS work?`_
 * `Installing`_
 * `Program NSC`_
 * `List of I/O Formats`_
@@ -27,7 +27,7 @@ Our algorithm runs with Python and requires the open-source library `Open3D <htt
 * `About This Project`_
 
 
-How does SENSAAS work
+How does SENSAAS work?
 ======================
 
 Considering two molecules named Source and Target as inputs, SENSAAS will propose a transformation matrix as output, that will lead to the "best" alignement of Source on Target. SENSAAS follows four major steps:
