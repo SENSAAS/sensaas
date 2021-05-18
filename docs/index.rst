@@ -237,8 +237,8 @@ To align a Source molecule on a Target molecule, the syntax is::
    
    - **eval** evaluates the superimposition "in place" (without aligning)
 
-Example with the optim mode
----------------------------
+Example with the 'optim' mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following example works with 2 molecules from the directory examples/
 ::
@@ -246,26 +246,28 @@ The following example works with 2 molecules from the directory examples/
 		
 Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**).
 
-The output file **Source_tran.sdf** contains the aligned (transformed) coordinates of the Source.
+- The output file **Source_tran.sdf** contains the aligned (transformed) coordinates of the Source.
 
-The output file **tran.txt** contains the transformation matrix applied to the Source file.
+- The output file **tran.txt** contains the transformation matrix applied to the Source file.
 
-The **slog.txt** file details results with final scores of the aligned Source molecule on the last line. In the current example, the last line must look like:
+- The **slog.txt** file details results with final scores of the aligned Source molecule on the last line. In the current example, the last line must look like:
 
 	gfit= 1.000 cfit= 0.999 hfit= 0.996 gfit+hfit= 1.996
 	
 with gfit and hfit close to the maximum value of 1.00. Indeed, IMATINIB_mv.sdf is the same 3D structure as IMATINIB.sdf but with a different orientation. In such case, SENSAAS perfectly aligns the 2 molecules.
 
 Visualization 
--------------
+~~~~~~~~~~~~~
 
 You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target, the Source and the aligned Source(s)::
 
 	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
-	
-The evaluation mode
--------------------
-Given 2 molecules, molecule1.sdf and molecule2.sdf
+
+
+The 'eval' mode
+~~~~~~~~~~~~~~~~~~~
+
+Given 2 molecules, molecule1.sdf and molecule2.sdf, the eval mode evaluates the superimposition "in place" (without aligning)
 ::
 		python sensaas.py sdf molecule1.sdf sdf molecule2.sdf slog.txt eval	
 
@@ -279,14 +281,86 @@ Here, the resulting **slog.txt** contains scores of molecule1.sdf on the last li
 Run meta-sensaas.py
 --------------------
 
-This "meta" script only works with sdf files 
+This "meta" script only works with sdf files.
 
+**1. Virtual Screening**
+
+This script is suited for performing virtual screenings of sdf files containing several molecules (database mode). For example, if you want to process a sdf file containing several conformers for Target and/or Source. Solutions are ranked in descending order of score and a similarity matrix is provided. The syntax is::
+
+	python meta-sensaas.py molecules-target.sdf molecules-source.sdf
+ 
+Example
+~~~~~~~~
+
+The following example works with 2 files from the directory examples/
+::
+
+	python meta-sensaas.py examples/IMATINIB.sdf examples/IMATINIB_parts.sdf
+
+Here, the source file IMATINIB_parts.sdf contains 3 substructures that are aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**)
+
+Outputs are:
+
+- the file **bestsensaas.sdf** that contains the best ranked aligned Source
+- the file **catsensaas.sdf** that contains all aligned Sources
+- the file **matrix-sensaas.txt** that contains gfit+hfit scores (rows=Targets and columns=Sources)
+
+
+Option -s 
+~~~~~~~~~
+
+You can also select the score type by using the option -s
+
+a)::
+
+	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s source
+
+here the score of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt. This is the default setting if the option -s is not indicated.
+
+b)::
+
+	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s mean
+	
+here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt. This option is interesting to favor solutions that have the same size of the Target.
+
+c)::
+
+	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s target
+
+here the score of the target will be used to rank solutions and to fill matrix-sensaas.txt.
+
+
+**2. Finding alternate alignments and Clustering**
+
+This option allows to repeat in order to find alternate alignments when they exist as for example when aligning a fragment on a large molecule. The syntax is::
+
+	python meta-sensaas.py target.sdf source.sdf -r 10
+
+here 10 alignments of the Source will be generated and clustered.
+
+Outputs are:
+ 
+- the file **sensaas-1.sdf** with the best ranked alignment - it contains 2 molecules: first is Target and second the aligned Source
+- the file **sensaas-2.sdf** (if exists) with the second best ranked alignment - it contains 2 molecules: first is Target and second the aligned Source
+- ...
+- file **cat-repeats.sdf** that contains all aligned Sources
+
+
+Example extracted from the publication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+	python meta-sensaas.py examples/VALSARTAN.sdf examples/tetrazole.sdf -r 100
+	
+	
+- sensaas-1.sdf contains the self-matching superimposition
+- sensaas-2.sdf contains the bioisosteric superimposition
+- sensaas-3.sdf contains the geometric-only superimposition
 
 
 Visualization
--------------
+~~~~~~~~~~~~~
 
-You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages or help `to install PyMOL <https://pymol.org/2/support.html?#installation>`_)::
+You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)
 
 After executing meta-sensaas.py with the repeat option::
 
