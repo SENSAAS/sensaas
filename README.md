@@ -112,11 +112,15 @@ Thus, we calculate a hybrid score = gfit + hfit scores - **gfit+hfit ranges betw
    
 ## Run meta-sensaas.py
 
-**1. If you want to process a sdf file containing several molecules as for example several conformers for Target and/or Source:**
+**1. Virtual Screening**
+
+This script is suited for performing virtual screenings of sdf files containing several molecules (database mode). For example, if you want to process a sdf file containing several conformers for Target and/or Source. Solutions are ranked in descending order of score and a similarity matrix is provided. The syntax is:
 
  	python meta-sensaas.py molecules-target.sdf molecules-source.sdf
  
- Example:
+**Example**
+ 
+ The following example works with 2 files from the directory examples/
 
 	python meta-sensaas.py examples/IMATINIB.sdf examples/IMATINIB_parts.sdf
 
@@ -125,27 +129,36 @@ Here, the source file IMATINIB_parts.sdf contains 3 substructures that are align
  - the file **catsensaas.sdf** that contains all aligned Sources
  - the file **matrix-sensaas.txt** that contains gfit+hfit scores (rows=Targets and columns=Sources)
 
-You can also select the score type by using the option -s (default is **-s source**):
+
+**Option -s**
+
+You can also select the score type by using the option -s (default is the score of the Source (**-s source**)):
 
 	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s mean
 
-here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt
+here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt. The option '-s mean' is interesting to favor solutions that have the same size of the Target.
 
 
-**2. If you want to repeat in order to find alternate alignments when they exist (for example when aligning a fragment on a large molecule):**
+**2. Finding alternate alignments and Clustering**
+
+This option allows to repeat in order to find alternate alignments when they exist as for example when aligning a fragment on a large molecule. The syntax is:
 
   	python meta-sensaas.py target.sdf source.sdf -r 10
  
- here 10 alignments of the source will be generated and clustered. Outputs are:
+ here 10 alignments of the Source will be generated and clustered. Outputs are:
  
  - the file **sensaas-1.sdf** with the best ranked alignment - it contains 2 molecules: first is Target and second the aligned Source
  - the file **sensaas-2.sdf** (if exists) with the second best ranked alignment - it contains 2 molecules: first is Target and second the aligned Source
  - ...
  - file **cat-repeats.sdf** that contains all aligned Sources
 
-Example extracted from the publication:
+**Example** 
+
+The following example works with 2 files from the directory examples/
 
 	 python meta-sensaas.py examples/VALSARTAN.sdf examples/tetrazole.sdf -r 100
+
+As described in the publication, outputs are:
 
 - sensaas-1.sdf contains the self-matching superimposition
 - sensaas-2.sdf contains the bioisosteric superimposition
@@ -159,7 +172,7 @@ You can use any molecular viewer. For instance, you can use PyMOL if installed (
 
 or after executing meta-sensaas.py with several molecules:
 
-	pymol examples/IMATINIB.sdf examples/IMATINIB_parts.sdf catsensaas.sdf
+	pymol examples/IMATINIB.sdf bestsensaas.sdf catsensaas.sdf
 
 or after executing meta-sensaas.py with the repeat option:
 	
