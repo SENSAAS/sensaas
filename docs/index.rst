@@ -137,7 +137,7 @@ rename a.out as nsc because 'nsc' is used to set the variable nscexe in the Pyth
 List of I/O Formats
 ===================
 
-SENSAAS reads several input file formats:
+In our implementation, input molecules are **3D structures with explicit hydrogen atoms**. Molecules are represented either by their 3D graphs or by their resulting 3D point clouds. SENSAAS reads several input file formats:
 
 
 .. list-table::
@@ -147,19 +147,19 @@ SENSAAS reads several input file formats:
    -
  * - sdf
    - SDF format file
-   - 
+   - 3D graph
  * - pdb
-   - PDB format file 
-   - reads ATOM and HETATM coordinates
+   - PDB format file
+   - (3D graph) reads ATOM and HETATM coordinates
  * - dot
    - PDB format file
-   - reads HETATM lines that contain coordinates of dots and the atom type for defining the label
+   - (Point cloud) reads HETATM lines that contain coordinates of dots and the atom type for defining the label
  * - xyzrgb
    - xyzrgb format file
-   - ascii file used in 3D data processing such as Open3D; contains coordinates of dots and color
+   - (Point cloud) ascii file used in 3D data processing such as Open3D; contains coordinates of dots and color
  * - pcd
    - PCD format file
-   - used in 3D data processing such as Open3D
+   - (Point cloud) used in 3D data processing such as Open3D
 
 The output file format depends on the input file format:
 
@@ -212,38 +212,58 @@ Tutorials
 Run sensaas.py
 --------------
 
-**Please check that you have installed the appropriate versions** (open3D 0.12.0.0 for python 3.7 with Linux/Windows/MacOSX).
-
-This algorithm is used to optimize an alignment of 2 molecules or proteins. You can see results on `PyMol <https://pymol.org/2/>`_, if you don't own PyMol yet, click here: `Visualization`_.
-
-.. warning:: Before using Sensaas, please check that your **inputs are 3D files**. The algorithm works only with **sdf/pdb/xyzrgb/pcd** 3D files. 
-
-To align a Source molecule on a Target molecule, the syntax is:::
+To align a Source molecule on a Target molecule, the syntax is::
 	
-   python sensaas.py <target-type> <target-file-name> <source-type> <source-file-name> <output-file-name> <mode> (with the appropriate path)
+   python sensaas.py <target-type> <target-file-name> <source-type> <source-file-name> <log-file-name> <mode>
 
 **<target-type>**
-   type of the target file (sdf/pdb/dot/xyzrgb/pcd)
+   type of the Target file (sdf/pdb/dot/xyzrgb/pcd)
 
 **<target-file-name>**
-   name of the target file (you need to precise the path of the target file)
+   name of the Target file
 
 **<source-type>**
-   type of the source file (sdf/pdb/dot/xyzrgb/pcd)
+   type of the Source file (sdf/pdb/dot/xyzrgb/pcd)
 
 **<source-file-name>**
-   name of the source file (you need to precise the path of the source file)
+   name of the Source file
 
-**<output-file-name>**
-   name of the output file that will be created. We usually named it "slog" but you can call it whatever you want. It details results of the alignement with final scores on the last line.
+**<log-file-name>**
+   name of the output file. It details the results of the alignement with final scores of Source on the last line.
 
-**<mode>** (optim or eval)
-   \- "optim": generates a transformation matrix
+**<mode>**
+   - "optim": executes the alignment and generates a transformation matrix
    
-   \- "eval": evaluate the alignment "in place" (without aligning)
+   - "eval": evaluates the superimposition "in place" (without aligning)
 
-When you will us SENSAAS, it will create **3 outputs files**: slog, Source_tran, tran.txt.
 
+Example
+-------
+
+The following example works with 2 molecules from the directory examples/::
+
+	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim	
+		
+Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**).
+
+The output file **Source_tran.sdf** contains the aligned (transformed) coordinates of the Source.
+
+The output file **tran.txt** contains the transformation matrix applied to the Source file.
+
+The **slog.txt** file details results with final scores of the aligned Source molecule on the last line. In the current example, the last line must look like:
+
+	gfit= 1.000 cfit= 0.999 hfit= 0.996 gfit+hfit= 1.996
+	
+with gfit and hfit close to the maximum value of 1.00. Indeed, IMATINIB_mv.sdf is the same 3D structure as IMATINIB.sdf but with a different orientation. In such case, SENSAAS perfectly aligns the 2 molecules.
+
+Visualization 
+-------------
+
+You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target, the Source and the aligned Source(s)::
+
+	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
+	
+	
 Example with sdf file
 ---------------------
 ::
