@@ -163,7 +163,7 @@ In our implementation, input molecules are **3D structures with explicit hydroge
    - PCD format file
    - (Point cloud) used in 3D data processing such as Open3D
 
-The output file format depends on the input file format:
+**The output file format depends on the input file format**:
 
 - if the Source input file is **sdf** then **Source_tran.sdf** is the transformed sdf source file
 - if the Source input file is **pdb** then **Source_tran.pdb** is the transformed pdb source file
@@ -259,7 +259,7 @@ with gfit and hfit close to the maximum value of 1.00. Indeed, IMATINIB_mv.sdf i
 Visualization 
 ~~~~~~~~~~~~~
 
-You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target, the Source and the aligned Source(s)::
+You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target, the Source and the aligned Source::
 
 	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
 
