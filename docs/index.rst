@@ -234,7 +234,7 @@ To align a Source molecule on a Target molecule, the syntax is::
    name of the Source file
 
 **<log-file-name>**
-   name of the output file. It details the results of the alignement with **final scores of Source** on the last line.
+   name of the output file. It details the results of the alignement with **scores of Source**.
 
 **<mode>**
    - **optim** executes the alignment and generates a transformation matrix
@@ -252,7 +252,7 @@ Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file 
 
 - The output file **Source_tran.sdf** contains the aligned (transformed) coordinates of the Source.
 
-- The output file **tran.txt** contains the transformation matrix applied to the Source file.
+- The output file **tran.txt** contains the transformation matrix applied to the input Source file.
 
 - The **slog.txt** file details results with final scores of the aligned Source molecule on the last line. In the current example, the last line must look like:
 
@@ -275,11 +275,11 @@ Given 2 molecules, molecule1.sdf and molecule2.sdf, the eval mode evaluates the 
 ::
 		python sensaas.py sdf molecule1.sdf sdf molecule2.sdf slog.txt eval	
 
-Here, the resulting **slog.txt** contains scores of molecule2.sdf on the last line.
+Here, the resulting slog.txt contains final scores of molecule2.sdf on the last line.
 ::
 		python sensaas.py sdf molecule2.sdf sdf molecule1.sdf slog.txt eval
 	
-Here, the resulting **slog.txt** contains scores of molecule1.sdf on the last line.
+Here, the resulting slog.txt contains final scores of molecule1.sdf on the last line.
 
 	
 Run meta-sensaas.py
@@ -317,6 +317,27 @@ You can use any molecular viewer. For instance, you can use PyMOL if installed (
 	
 	pymol examples/IMATINIB.sdf bestsensaas.sdf catsensaas.sdf
 
+Post-processing 
+~~~~~~~~~~~~~~~
+
+To ease the analysis of the results, the script utils/ordered-catsensaas.py can be used to generate files in descending order of score.
+::
+
+	pyhton utils/ordered-catsensaas.py matrix-sensaas.txt catsensaas.sdf
+
+- the file **ordered-catsensaas.sdf** contains all aligned Sources in descending order of score
+- the file **ordered-score.txt** contains gfit+hfit scores in descending order
+
+
+Visualization
+~~~~~~~~~~~~~
+
+You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)
+::
+	
+	pymol examples/IMATINIB.sdf ordered-catsensaas.sdf
+
+
 	
 Option -s 
 ~~~~~~~~~
@@ -333,7 +354,7 @@ b)::
 
 	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s mean
 	
-here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt. This option is interesting to favor solutions that have the same size of the Target.
+here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt. This option is interesting to favor source molecules that have the same size of the Target.
 
 c)::
 
@@ -341,10 +362,11 @@ c)::
 
 here the score of the target will be used to rank solutions and to fill matrix-sensaas.txt.
 	
+	
 
 **2. Finding alternate alignments and Clustering**
 
-This option allows to repeat in order to find alternate alignments when they exist as for example when aligning a fragment on a large molecule. The syntax is::
+This option allows to repeat in order to find alternate alignments when they exist as for example when aligning a fragment on a large molecule. It works with one Target and one Source only (or the first molecule of the sdf file). The syntax is::
 
 	python meta-sensaas.py target.sdf source.sdf -r 10
 
@@ -379,6 +401,26 @@ You can use any molecular viewer. For instance, you can use PyMOL if installed (
 
 	pymol examples/VALSARTAN.sdf sensaas-1.sdf sensaas-2.sdf sensaas-3.sdf
 
+
+Utils
+------
+
+- To visualize a point cloud with Open3D
+::
+
+	python utils/visualize.py examples/VALSARTAN.pcd
+
+or
+::
+
+	python utils/visualize.py examples/VALSARTAN.xyzrgb
+
+
+- To convert a xyzrgb file into pdb file for visualization (generated the file dots.pdb)
+::
+
+	python utils/xyzrgb2dotspdb.py examples/VALSARTAN.xyzrgb
+	
 
 More on SENSAAS algorithm for developpers
 ------------------------------------------
