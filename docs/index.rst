@@ -405,23 +405,23 @@ You can use any molecular viewer. For instance, you can use PyMOL if installed (
 Utils
 ------
 
-- To visualize a point cloud with Open3D
-::
+In the Python script sensaas.py, the variable 'verbose' can be set to 1 (default is 0) in order to write Target and Source files in pcd and xyzrgb format.
 
-	python utils/visualize.py examples/VALSARTAN.pcd
-
-or
+- Example to visualize a point cloud with Open3D
 ::
 
 	python utils/visualize.py examples/VALSARTAN.xyzrgb
+	
+or::
 
-
-- To convert a xyzrgb file into pdb file for visualization (generated the file dots.pdb)
+	python utils/visualize.py examples/VALSARTAN.pcd
+	
+- Example to convert a xyzrgb file into pdb file for visualization (generates the file 'dots.pdb')
 ::
 
 	python utils/xyzrgb2dotspdb.py examples/VALSARTAN.xyzrgb
 	
-
+	
 More on SENSAAS algorithm for developpers
 ------------------------------------------
 
