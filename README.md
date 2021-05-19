@@ -114,7 +114,7 @@ Thus, we calculate a hybrid score = gfit + hfit scores - **gfit+hfit ranges betw
 
 **1. Virtual Screening**
 
-This script is suited for performing virtual screenings of sdf files containing several molecules (database mode). For example, if you want to process a sdf file containing several conformers for Target and/or Source. Solutions are ranked in descending order of score and a similarity matrix is provided. The syntax is:
+This script is suited for performing virtual screenings of sdf files containing several molecules (database mode). For example, if you want to process a sdf file containing several conformers for Target and/or Source. A similarity matrix is provided along with a sdf file that contains all aligned Sources. The syntax is:
 
  	python meta-sensaas.py molecules-target.sdf molecules-source.sdf
  
@@ -125,10 +125,18 @@ This script is suited for performing virtual screenings of sdf files containing 
 	python meta-sensaas.py examples/IMATINIB.sdf examples/IMATINIB_parts.sdf
 
 Here, the source file IMATINIB_parts.sdf contains 3 substructures that are aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**). Outputs are:
- - the file **bestsensaas.sdf** that contains the best ranked aligned Source
- - the file **catsensaas.sdf** that contains all aligned Sources
- - the file **matrix-sensaas.txt** that contains gfit+hfit scores (rows=Targets and columns=Sources)
+- the file **bestsensaas.sdf** that contains the best ranked aligned Source
+- the file **catsensaas.sdf** that contains all aligned Sources
+- the file **matrix-sensaas.txt** that contains gfit+hfit scores (rows=Targets and columns=Sources)
 
+**post-processing**
+
+Then, to ease the analysis of the results, the script utils/ordered-catsensaas.py can be used to generate files in descending order of score.
+
+	pyhton utils/ordered-catsensaas.py matrix-sensaas.txt catsensaas.sdf
+
+- the file ordered-catsensaas.sdf contains all aligned Sources in descending order of score
+- the file ordered-score.txt contains gfit+hfit scores in descending order
 
 **Option -s**
 
@@ -136,7 +144,7 @@ You can also select the score type by using the option -s (default is the score 
 
 	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s mean
 
-here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt. The option '-s mean' is interesting to favor solutions that have the same size of the Target.
+here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt. The option '-s mean' is interesting to favor source molecules that have the same size of the Target.
 
 
 **2. Finding alternate alignments and Clustering**
