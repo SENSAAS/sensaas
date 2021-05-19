@@ -181,6 +181,11 @@ You can use any molecular viewer. For instance, you can use PyMOL if installed (
 or after executing meta-sensaas.py with several molecules:
 
 	pymol examples/IMATINIB.sdf bestsensaas.sdf catsensaas.sdf
+	
+or
+
+	pymol examples/IMATINIB.sdf ordered-catsensaas.sdf
+
 
 or after executing meta-sensaas.py with the repeat option:
 	
