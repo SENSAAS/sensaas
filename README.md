@@ -129,7 +129,7 @@ Here, the source file IMATINIB_parts.sdf contains 3 substructures that are align
 - the file **catsensaas.sdf** that contains all aligned Sources
 - the file **matrix-sensaas.txt** that contains gfit+hfit scores (rows=Targets and columns=Sources)
 
-**post-processing**
+**Post-processing**
 
 Then, to ease the analysis of the results, the script utils/ordered-catsensaas.py can be used to generate files in descending order of score.
 
