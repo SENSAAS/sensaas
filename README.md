@@ -135,8 +135,8 @@ Then, to ease the analysis of the results, the script utils/ordered-catsensaas.p
 
 	pyhton utils/ordered-catsensaas.py matrix-sensaas.txt catsensaas.sdf
 
-- the file ordered-catsensaas.sdf contains all aligned Sources in descending order of score
-- the file ordered-score.txt contains gfit+hfit scores in descending order
+- the file **ordered-catsensaas.sdf** contains all aligned Sources in descending order of score
+- the file **ordered-scores.txt** contains gfit+hfit scores in descending order
 
 **Option -s**
 
