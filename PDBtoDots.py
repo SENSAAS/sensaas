@@ -155,13 +155,13 @@ def pdbsurface(filepdb,nscexe):
         getrgb[comptDots,:]=[rgb[rgbi,0], rgb[rgbi,1], rgb[rgbi,2]]
         getDots[comptDots,:]=[xDot,yDot,zDot]
 
-        if (getrgb[comptDots, 0] == 0.9):
+        if (rgbi == 1):
             label1.append(np.vstack([getDots[comptDots], getrgb[comptDots]]))
-        elif (getrgb[comptDots, 0] == 1.0):
+        elif (rgbi == 2):
             label2.append(np.vstack([getDots[comptDots], getrgb[comptDots]]))
-        elif (getrgb[comptDots, 1] == 1.0):
+        elif (rgbi == 3):
             label3.append(np.vstack([getDots[comptDots], getrgb[comptDots]]))
-        elif (getrgb[comptDots, 2] == 1.0):
+        elif (rgbi == 4):
             label4.append(np.vstack([getDots[comptDots], getrgb[comptDots]]))
         else:
             print("no label for dot no %5s ?\n" %(comptDots))
