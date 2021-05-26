@@ -40,7 +40,7 @@ Launch Anaconda Prompt, then complete the installation:
 
   	conda install -c schrodinger -c conda-forge pymol-bundle
   
-Retrieve and unzip SENSAAS repository in your desired folder. See below for running the program **sensaas.py**.
+Retrieve and unzip SENSAAS repository in your desired folder. See below for running the program **sensaas.py**. The directory containing executables is called sensaas-main.
 
 ## Linux
 
@@ -53,7 +53,7 @@ Install:
 
 3. PyMOL (a molecular viewer; more information at [https://pymolwiki.org](https://pymolwiki.org))
   
-Retrieve and unzip SENSAAS repository.
+Retrieve and unzip SENSAAS repository. The directory containing executables is called sensaas-main.
 
 ## MacOS
 
@@ -191,7 +191,7 @@ or after the post-processing:
 	pymol examples/IMATINIB.sdf ordered-catsensaas.sdf
 
 
-or after executing meta-sensaas.py with the repeat option (state 1 is Target and state 2 is the aligned Source):
+or after executing meta-sensaas.py with the repeat option (State 1 is Target and State 2 is the aligned Source):
 	
 	pymol examples/VALSARTAN.sdf sensaas-1.sdf
 
