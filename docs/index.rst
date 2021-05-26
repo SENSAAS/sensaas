@@ -85,7 +85,7 @@ After downloading the appropriate version of Open3D::
 
    (sensaas) > conda install -c schrodinger -c conda-forge pymol-bundle
 
-Retrieve and unzip SENSAAS repository in your desired folder. See below for running the program **sensaas.py** or **meta-sensaas.py**.
+Retrieve and unzip SENSAAS repository in your desired folder. The directory containing executables is called sensaas-main. See below for running the program **sensaas.py** or **meta-sensaas.py**.
 
 
 Linux
@@ -100,7 +100,7 @@ Install (more information at http://www.open3d.org/docs/release/getting_started.
 
    3. PyMOL
 
-Retrieve and unzip SENSAAS repository in your desired folder. See below for running the program **sensaas.py** or **meta-sensaas.py**.
+Retrieve and unzip SENSAAS repository in your desired folder. The directory containing executables is called sensaas-main. See below for running the program **sensaas.py** or **meta-sensaas.py**.
 
 
 MacOS
@@ -139,7 +139,9 @@ rename a.out as nsc because 'nsc' is used to set the variable nscexe in the Pyth
 List of I/O Formats
 ===================
 
-In our implementation, input molecules are **3D structures with explicit hydrogen atoms**. Molecules are represented either by their 3D graphs or by their resulting 3D point clouds. SENSAAS reads several input file formats:
+In our implementation, input molecules are **3D structures with explicit hydrogen atoms**. Molecules are represented either by their 3D graphs or by their resulting 3D point clouds. 
+
+**sensaas.py** reads several input file formats:
 
 
 .. list-table::
@@ -177,13 +179,13 @@ Colors
 
 In our implementation, labels aim to recapitulate typical pharmacophore features such as aromatic (colored in green), lipophilic (colored in white/grey) and polar groups (colored in red):
 
-- class 1 (or label 1) includes non polar hydrogen (H) and halogen atoms excepting fluorines (Cl, Br and I). Hydrogen and halogen atoms are molecule endings. They are the most frequent atoms that contribute to the surface geometry and coloration, and thus, highlight the apolar surface area. Points belonging to this class are colored in white/grey.
+- **class 1** (or label 1) includes non polar hydrogen (H) and halogen atoms excepting fluorines (Cl, Br and I). Hydrogen and halogen atoms are molecule endings. They are the most frequent atoms that contribute to the surface geometry and coloration, and thus, highlight the apolar surface area. Points belonging to this class are colored in white/grey.
 
-- class 2 (or label 2) includes polar atoms able to be involved in hydrogen bonds such as N, O, S, H (if linked to N or O) and F. Points belonging to this class are colored in red.
+- **class 2** (or label 2) includes polar atoms able to be involved in hydrogen bonds such as N, O, S, H (if linked to N or O) and F. Points belonging to this class are colored in red.
 
-- class 3 (or label 3) includes “skeleton elements” such as C, P and B. Points belonging to this class are colored in green.
+- **class 3** (or label 3) includes “skeleton elements” such as C, P and B. Points belonging to this class are colored in green.
 
-- class 4 (or label 4) includes  all elements not listed in the first three classes. This class is empty for most small organic molecules in medicinal chemistry. Points belonging to this class are colored in blue.
+- **class 4** (or label 4) includes  all elements not listed in the first three classes. This class is empty for most small organic molecules in medicinal chemistry. Points belonging to this class are colored in blue.
 
 
 Fitness scores
@@ -263,9 +265,9 @@ with gfit and hfit close to the maximum value of 1.00. Indeed, IMATINIB_mv.sdf i
 Visualization 
 ~~~~~~~~~~~~~
 
-You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target, the Source and the aligned Source::
+You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target and the aligned Source::
 
-	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
+	pymol examples/IMATINIB.sdf Source_tran.sdf 
 
 
 The 'eval' mode
@@ -344,19 +346,22 @@ Option -s
 
 You can also select the score type by using the option -s
 
-a)::
+a) -s source
+::
 
 	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s source
 
 here the score of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt. This is the default setting if the option -s is not indicated.
 
-b)::
+b) -s mean
+::
 
 	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s mean
 	
 here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt. This option is interesting to favor source molecules that have the same size of the Target.
 
-c)::
+c) -s target
+::
 
 	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s target
 
@@ -396,7 +401,7 @@ As described in the publication, outputs are:
 Visualization
 ~~~~~~~~~~~~~
 
-You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)
+You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages). State 1 is Target and State 2 is the aligned Source.
 ::
 
 	pymol examples/VALSARTAN.sdf sensaas-1.sdf sensaas-2.sdf sensaas-3.sdf
