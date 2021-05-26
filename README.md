@@ -7,7 +7,6 @@
 
 ![example](/images/sensaas-core-eg-large_v2.png)
 
-**Documentation**: Full documentation is available at [https://sensaas.readthedocs.io](https://sensaas.readthedocs.io)
 
 **Documentation**: Full documentation is available at [https://github.com/SENSAAS/sensaas/blob/main/docs/index.rst](https://github.com/SENSAAS/sensaas/blob/main/docs/index.rst)
 
