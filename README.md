@@ -100,7 +100,7 @@ Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file 
 
 	gfit= 1.000 cfit= 0.999 hfit= 0.996 gfit+hfit= 1.996
 
-There are three different fitness scores but we only use 2 of them, gfit and hfit, to calculate gfit+hfit.
+There are three different fitness scores but we only use 2 of them, gfit and hfit, to calculate gfit+hfit. More about [Fitness scores](https://github.com/SENSAAS/sensaas/blob/main/docs/index.rst#fitness-scores)
 
 - gfit score estimates the geometric matching of point-based surfaces - it ranges between 0 and 1
 
