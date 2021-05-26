@@ -121,19 +121,19 @@ References :
    1. F. Eisenhaber, P. Lijnzaad, P. Argos, M. Scharf, The Double Cubic Lattice Method: Efficient Approaches to Numerical Integration of Surface Area and Volume and to Dot Surface Contouring of Molecular Assemblies, Journal of Computational Chemistry, **1995**, 16, N3, pp.273-284.
    2. F. Eisenhaber, P. Argos, Improved Strategy in Analytic Surface Calculation for Molecular Systems: Handling of Singularities and Computational Efficiency, Journal of Computational Chemistry, **1993**,14, N11, pp.1272-1280.
 
-Executables nsc (for Linux) or ncs-win (for windows) are included in this repository. In case they do not work on your system, you may have to compile it using the source file nsc.c in directory src/
+**Executables nsc (for Linux) or ncs-win (for windows) are included in this repository**. In case they do not work on your system, you may have to compile it using the source file nsc.c in directory src/. Instructions for compilation:
 
-**for Windows:**
+1. **for Windows:**
 
 The current executable nsc-win.exe was compiled by using http://www.codeblocks.org. Rename the executable as nsc-win.exe because 'nsc-win.exe' is used to set the variable nscexe in the Python script sensaas.py
 
-**for Linux**::
+2. **for Linux**::
 
-   cc src/nsc.c -lm
+	cc src/nsc.c -lm
 
 rename a.out as nsc because 'nsc' is used to set the variable nscexe in the Python script sensaas.py::
 
-   cp a.out nsc
+	cp a.out nsc
 
 
 List of I/O Formats
