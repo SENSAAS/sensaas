@@ -178,7 +178,7 @@ As described in the publication, outputs are:
 
 You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target and the aligned Source(s):
 
-after aligning IMATINIB_mv.sdf on IMATINIB.sdf:
+after aligning IMATINIB_mv.sdf on IMATINIB.sdf using sensaas.py:
 
 	pymol examples/IMATINIB.sdf Source_tran.sdf 
 
@@ -186,7 +186,7 @@ or after executing meta-sensaas.py with several molecules:
 
 	pymol examples/IMATINIB.sdf bestsensaas.sdf catsensaas.sdf
 	
-or
+or after the post-processing:
 
 	pymol examples/IMATINIB.sdf ordered-catsensaas.sdf
 
