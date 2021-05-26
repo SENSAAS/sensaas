@@ -77,7 +77,7 @@ In case they do not work on your system, you may have to compile it using the so
 1. **for Windows**:
 	The current executable nsc-win.exe was compiled by using [http://www.codeblocks.org](http://www.codeblocks.org). Rename the executable as nsc-win.exe because  'nsc-win.exe' is used to set the variable nscexe in the Python script sensaas.py
 
-2. **for Linux**::
+2. **for Linux**:
 
 		cc src/nsc.c -lm
 	
@@ -176,9 +176,11 @@ As described in the publication, outputs are:
 
 ## Visualization 
 
-You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target, the Source and the aligned Source(s):
+You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target and the aligned Source(s):
 
-	pymol examples/IMATINIB.sdf examples/IMATINIB_mv.sdf Source_tran.sdf 
+after aligning IMATINIB_mv.sdf on IMATINIB.sdf:
+
+	pymol examples/IMATINIB.sdf Source_tran.sdf 
 
 or after executing meta-sensaas.py with several molecules:
 
@@ -189,9 +191,9 @@ or
 	pymol examples/IMATINIB.sdf ordered-catsensaas.sdf
 
 
-or after executing meta-sensaas.py with the repeat option:
+or after executing meta-sensaas.py with the repeat option (state 1 is Target and state 2 is the aligned Source):
 	
-	pymol sensaas-1.sdf
+	pymol examples/VALSARTAN.sdf sensaas-1.sdf
 
 
 ## Licenses
