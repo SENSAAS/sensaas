@@ -114,7 +114,7 @@ Thus, we calculate a hybrid score = gfit + hfit scores - **gfit+hfit ranges betw
    
 ## Run meta-sensaas.py
 
-**1. Virtual Screening**
+**1. Virtual Screening** 
 
 This script is suited for performing virtual screenings of sdf files containing several molecules (database mode). For example, if you want to process a sdf file containing several conformers for Target and/or Source. A similarity matrix is provided along with a sdf file that contains all aligned Sources. The syntax is:
 
