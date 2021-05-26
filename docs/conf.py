@@ -53,7 +53,7 @@ html_theme_options= {
     'logo_only': True
 }
 
-html_logo= "_static/logoSensaas2.png"
+html_logo= "_static/sensaas-core-eg-large_v2.png"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
