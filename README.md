@@ -142,7 +142,7 @@ Then, to ease the analysis of the results, the script utils/ordered-catsensaas.p
 
 **Option -s**
 
-You can also select the score type by using the option -s (default is the score of the Source (**-s source**)):
+When executing meta-sensaas.py, you can also select the score type by using the option -s (default is the score of the Source (**-s source**)):
 
 	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s mean
 
