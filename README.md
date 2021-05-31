@@ -90,11 +90,15 @@ In case they do not work on your system, you may have to compile it using the so
 ## Run Sensaas
 To align a Source molecule on a Target molecule, the syntax is:
 	
-	python sensaas.py sdf molecule-target.sdf sdf molecule-source.sdf slog.txt optim
+	sensaas.py sdf molecule-target.sdf sdf molecule-source.sdf slog.txt optim
 	
-Example:
+Example on Windows/conda:
 
 	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim
+	
+on Linux:
+
+	sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim
 
 Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**). The output **tran.txt** contains the transformation matrix allowing the alignment of the source file (result in **Source_tran.sdf**). The **slog.txt** file details results with final scores of the aligned molecule (Source) on the last line. In the current example, the last line must look like:
 
@@ -118,13 +122,13 @@ Thus, we calculate a hybrid score = gfit + hfit scores - **gfit+hfit ranges betw
 
 This script is suited for performing virtual screenings of sdf files containing several molecules (database mode). For example, if you want to process a sdf file containing several conformers for Target and/or Source. A similarity matrix is provided along with a sdf file that contains all aligned Sources. The syntax is:
 
- 	python meta-sensaas.py molecules-target.sdf molecules-source.sdf
+ 	meta-sensaas.py molecules-target.sdf molecules-source.sdf
  
 **Example**
  
  The following example works with 2 files from the directory examples/
 
-	python meta-sensaas.py examples/IMATINIB.sdf examples/IMATINIB_parts.sdf
+	meta-sensaas.py examples/IMATINIB.sdf examples/IMATINIB_parts.sdf
 
 Here, the source file IMATINIB_parts.sdf contains 3 substructures that are aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**). Outputs are:
 - the file **bestsensaas.sdf** that contains the best ranked aligned Source
@@ -135,7 +139,7 @@ Here, the source file IMATINIB_parts.sdf contains 3 substructures that are align
 
 Then, to ease the analysis of the results, the script utils/ordered-catsensaas.py can be used to generate files in descending order of score.
 
-	pyhton utils/ordered-catsensaas.py matrix-sensaas.txt catsensaas.sdf
+	utils/ordered-catsensaas.py matrix-sensaas.txt catsensaas.sdf
 
 - the file **ordered-catsensaas.sdf** contains all aligned Sources in descending order of score
 - the file **ordered-scores.txt** contains gfit+hfit scores in descending order
@@ -144,7 +148,7 @@ Then, to ease the analysis of the results, the script utils/ordered-catsensaas.p
 
 When executing meta-sensaas.py, you can also select the score type by using the option -s (default is the score of the Source (**-s source**)):
 
-	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s mean
+	meta-sensaas.py molecules-target.sdf molecules-source.sdf -s mean
 
 here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt. The option '-s mean' is interesting to favor source molecules that have the same size of the Target.
 
@@ -153,7 +157,7 @@ here the mean of the score of the target and of the aligned source will be used 
 
 This option allows to repeat in order to find alternate alignments when they exist as for example when aligning a fragment on a large molecule. The syntax is:
 
-  	python meta-sensaas.py target.sdf source.sdf -r 10
+  	meta-sensaas.py target.sdf source.sdf -r 10
  
  here 10 alignments of the Source will be generated and clustered. Outputs are:
  
@@ -166,7 +170,7 @@ This option allows to repeat in order to find alternate alignments when they exi
 
 The following example works with 2 files from the directory examples/
 
-	 python meta-sensaas.py examples/VALSARTAN.sdf examples/tetrazole.sdf -r 100
+	meta-sensaas.py examples/VALSARTAN.sdf examples/tetrazole.sdf -r 100
 
 As described in the publication, outputs are:
 
