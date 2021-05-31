@@ -92,13 +92,13 @@ To align a Source molecule on a Target molecule, the syntax is:
 	
 	sensaas.py sdf molecule-target.sdf sdf molecule-source.sdf slog.txt optim
 	
-Example on Windows/conda:
-
-	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim
-	
-on Linux:
+Example:
 
 	sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim
+	
+You may have to run the script as follows:
+
+	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim
 
 Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**). The output **tran.txt** contains the transformation matrix allowing the alignment of the source file (result in **Source_tran.sdf**). The **slog.txt** file details results with final scores of the aligned molecule (Source) on the last line. In the current example, the last line must look like:
 
@@ -129,6 +129,10 @@ This script is suited for performing virtual screenings of sdf files containing 
  The following example works with 2 files from the directory examples/
 
 	meta-sensaas.py examples/IMATINIB.sdf examples/IMATINIB_parts.sdf
+	
+You may have to run the script as follows:
+
+	python meta-sensaas.py examples/IMATINIB.sdf examples/IMATINIB_parts.sdf
 
 Here, the source file IMATINIB_parts.sdf contains 3 substructures that are aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**). Outputs are:
 - the file **bestsensaas.sdf** that contains the best ranked aligned Source
@@ -140,6 +144,10 @@ Here, the source file IMATINIB_parts.sdf contains 3 substructures that are align
 Then, to ease the analysis of the results, the script utils/ordered-catsensaas.py can be used to generate files in descending order of score.
 
 	utils/ordered-catsensaas.py matrix-sensaas.txt catsensaas.sdf
+
+You may have to run the script as follows:
+
+	python utils/ordered-catsensaas.py matrix-sensaas.txt catsensaas.sdf
 
 - the file **ordered-catsensaas.sdf** contains all aligned Sources in descending order of score
 - the file **ordered-scores.txt** contains gfit+hfit scores in descending order
@@ -171,6 +179,10 @@ This option allows to repeat in order to find alternate alignments when they exi
 The following example works with 2 files from the directory examples/
 
 	meta-sensaas.py examples/VALSARTAN.sdf examples/tetrazole.sdf -r 100
+	
+ou may have to run the script as follows:
+
+	python meta-sensaas.py examples/VALSARTAN.sdf examples/tetrazole.sdf -r 100
 
 As described in the publication, outputs are:
 
