@@ -221,7 +221,7 @@ Run sensaas.py
 
 To align a Source molecule on a Target molecule, the syntax is::
 	
-   python sensaas.py <target-type> <target-file-name> <source-type> <source-file-name> <log-file-name> <mode>
+   sensaas.py <target-type> <target-file-name> <source-type> <source-file-name> <log-file-name> <mode>
 
 **<target-type>**
    type of the Target file (sdf/pdb/dot/xyzrgb/pcd)
@@ -248,8 +248,12 @@ Example with the 'optim' mode
 
 The following example works with 2 molecules from the directory examples/
 ::
-	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim	
+	sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim	
 		
+You may have to run the script as follows:
+::
+	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim
+
 Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**).
 
 - The output file **Source_tran.sdf** contains the aligned (transformed) coordinates of the Source.
@@ -275,11 +279,11 @@ The 'eval' mode
 
 Given 2 molecules, molecule1.sdf and molecule2.sdf, the eval mode evaluates the superimposition "in place" (without aligning)
 ::
-		python sensaas.py sdf molecule1.sdf sdf molecule2.sdf slog.txt eval	
+		sensaas.py sdf molecule1.sdf sdf molecule2.sdf slog.txt eval	
 
 Here, the resulting slog.txt contains final scores of molecule2.sdf on the last line.
 ::
-		python sensaas.py sdf molecule2.sdf sdf molecule1.sdf slog.txt eval
+		sensaas.py sdf molecule2.sdf sdf molecule1.sdf slog.txt eval
 	
 Here, the resulting slog.txt contains final scores of molecule1.sdf on the last line.
 
@@ -293,16 +297,19 @@ This "meta" script only works with sdf files.
 
 This script is suited for performing virtual screenings of sdf files containing several molecules (database mode). For example, if you want to process a sdf file containing several conformers for Target and/or Source. Solutions are ranked in descending order of score and a similarity matrix is provided. The syntax is::
 
-	python meta-sensaas.py molecules-target.sdf molecules-source.sdf
+	meta-sensaas.py molecules-target.sdf molecules-source.sdf
  
 Example
 ~~~~~~~~
 
 The following example works with 2 files from the directory examples/
 ::
+	meta-sensaas.py examples/IMATINIB.sdf examples/IMATINIB_parts.sdf
 
+You may have to run the script as follows:
+::
 	python meta-sensaas.py examples/IMATINIB.sdf examples/IMATINIB_parts.sdf
-
+	
 Here, the source file IMATINIB_parts.sdf contains 3 substructures that are aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**)
 
 Outputs are:
@@ -316,7 +323,6 @@ Visualization
 
 You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)
 ::
-	
 	pymol examples/IMATINIB.sdf bestsensaas.sdf catsensaas.sdf
 
 Post-processing 
@@ -324,9 +330,12 @@ Post-processing
 
 To ease the analysis of the results, the script utils/ordered-catsensaas.py can be used to generate files in descending order of score.
 ::
+	utils/ordered-catsensaas.py matrix-sensaas.txt catsensaas.sdf
 
-	pyhton utils/ordered-catsensaas.py matrix-sensaas.txt catsensaas.sdf
-
+You may have to run the script as follows:
+::
+	python utils/ordered-catsensaas.py matrix-sensaas.txt catsensaas.sdf
+	
 - the file **ordered-catsensaas.sdf** contains all aligned Sources in descending order of score
 - the file **ordered-scores.txt** contains the original number of Source with gfit+hfit scores in descending order
 
@@ -336,9 +345,7 @@ Visualization
 
 You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)
 ::
-	
 	pymol examples/IMATINIB.sdf ordered-catsensaas.sdf
-
 
 	
 Option -s 
@@ -348,22 +355,19 @@ You can also select the score type by using the option -s
 
 a) -s source
 ::
-
-	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s source
+	meta-sensaas.py molecules-target.sdf molecules-source.sdf -s source
 
 here the score of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt. This is the default setting if the option -s is not indicated.
 
 b) -s mean
 ::
-
-	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s mean
+	meta-sensaas.py molecules-target.sdf molecules-source.sdf -s mean
 	
 here the mean of the score of the target and of the aligned source will be used to rank solutions and to fill matrix-sensaas.txt. This option is interesting to favor source molecules that have the same size of the Target.
 
 c) -s target
 ::
-
-	python meta-sensaas.py molecules-target.sdf molecules-source.sdf -s target
+	meta-sensaas.py molecules-target.sdf molecules-source.sdf -s target
 
 here the score of the target will be used to rank solutions and to fill matrix-sensaas.txt.
 	
@@ -373,7 +377,7 @@ here the score of the target will be used to rank solutions and to fill matrix-s
 
 This option allows to repeat in order to find alternate alignments when they exist as for example when aligning a fragment on a large molecule. It works with one Target and one Source only (or the first molecule of the sdf file). The syntax is::
 
-	python meta-sensaas.py target.sdf source.sdf -r 10
+	meta-sensaas.py target.sdf source.sdf -r 10
 
 here 10 alignments of the Source will be generated and clustered.
 
@@ -389,7 +393,10 @@ Example
 
 The following example works with 2 files from the directory examples/
 ::
-
+	meta-sensaas.py examples/VALSARTAN.sdf examples/tetrazole.sdf -r 100
+	
+You may have to run the script as follows:
+::
 	python meta-sensaas.py examples/VALSARTAN.sdf examples/tetrazole.sdf -r 100
 
 As described in the publication, outputs are:
@@ -403,7 +410,6 @@ Visualization
 
 You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages). State 1 is Target and State 2 is the aligned Source.
 ::
-
 	pymol examples/VALSARTAN.sdf sensaas-1.sdf sensaas-2.sdf sensaas-3.sdf
 
 
@@ -415,17 +421,16 @@ In the Python script sensaas.py, the variable 'verbose' can be set to 1 (default
 - Example to visualize a point cloud with Open3D
 ::
 
-	python utils/visualize.py examples/VALSARTAN.xyzrgb
-	
+	utils/visualize.py examples/VALSARTAN.xyzrgb
+
 or::
 
-	python utils/visualize.py examples/VALSARTAN.pcd
-	
+	utils/visualize.py examples/VALSARTAN.pcd
+
 - Example to convert a xyzrgb file into pdb file for visualization (generates the file 'dots.pdb')
 ::
 
-	python utils/xyzrgb2dotspdb.py examples/VALSARTAN.xyzrgb
-	
+	utils/xyzrgb2dotspdb.py examples/VALSARTAN.xyzrgb
 	
 More on SENSAAS algorithm for developpers
 ------------------------------------------
