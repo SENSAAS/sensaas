@@ -50,7 +50,7 @@ Considering two molecules named Source and Target as inputs, SENSAAS gives a tra
 For each input file (Source and Target), a point cloud of the van der Waals surface is obtained. Each point is described by its 3D coordinates, and a color (RGB) according to the nature of the underlying atom.
 
 **2. Coarse alignment by global registration** the Source point cloud is globally superimposed on the Target, by finding an initial matching in terms of
-geometry only. The matching is done by using local 3D descriptors computed on a limited number of points (also called downsampled point clouds). We use the descriptors FPFH (presented in `Fast Point Feature Histograms (FPFH) for 3D Registration <https://ieeexplore.ieee.org/abstract/document/5152473>`_), and the matching is done with RANSAC (`Random Sample Consensus: A Paradigm for Model Fitting with Applications to Image Analysis and Automated Cartography <https://dl.acm.org/doi/10.1145/358669.358692>`_).
+geometry only. The matching is done by using local 3D descriptors computed on a limited number of points (also called downsampled point clouds). We use the descriptors FPFH ( presented in `Fast Point Feature Histograms (FPFH) for 3D Registration <https://ieeexplore.ieee.org/abstract/document/5152473>`_), and the matching is done with RANSAC (`Random Sample Consensus: A Paradigm for Model Fitting with Applications to Image Analysis and Automated Cartography <https://dl.acm.org/doi/10.1145/358669.358692>`_).
 
 **3. Labelling of the points of each point cloud** Each point is colored according to its belonging to a user-defined class. In the current version, the classes depend on the pharmacophore features, but they could depend on any physico-chemical property mapped onto the surface, or any configuration given by the user.
 
@@ -267,6 +267,10 @@ Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file 
 	
 with gfit and hfit close to the maximum value of 1.00. Indeed, IMATINIB_mv.sdf is the same 3D structure as IMATINIB.sdf but with a different orientation. In such case, SENSAAS perfectly aligns the two molecules.
 
+**Visualization** To visualize the result, You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target and the aligned Source::
+
+	pymol examples/IMATINIB.sdf Source_tran.sdf 
+
 Example in 'eval' mode
 ~~~~~~~~~~~~~~~~~~~
 
@@ -336,7 +340,6 @@ You may have to run the script as follows:
 ::
 	pymol examples/IMATINIB.sdf ordered-catsensaas.sdf
 
-	
 Option -s 
 ~~~~~~~~~
 
