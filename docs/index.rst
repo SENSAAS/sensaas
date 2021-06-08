@@ -39,7 +39,7 @@ Considering two molecules named Source and Target as inputs, SENSAAS will propos
 - labelling of each point of the two clouds according to user-defined classes;
 - refinement of this alignement by applying a color and geometry-aware local registration. At this step, for each point, a color is associated with each class. 
 
-.. image:: _static/overview.png
+.. image:: _static/overview_v2.png
 
 **1. Generation of input point clouds** 
 For each input file (Source and Target), a point cloud of the van der Waals surface is obtained. Each point is described by its 3D coordinates, and a color (RGB) according to the nature of the underlying atom.
