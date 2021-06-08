@@ -399,10 +399,10 @@ To visualize the results, you can use any molecular viewer. For instance, you ca
 	pymol examples/VALSARTAN.sdf sensaas-1.sdf sensaas-2.sdf sensaas-3.sdf
 
 
-Utils
-------
+Miscellaneous Tools
+--------------------
 
-In the Python script sensaas.py, the variable 'verbose' can be set to 1 (default is 0) in order to write Target and Source files in pcd and xyzrgb format.
+If you want that sensaas.py outputs Target and Source files in pcd and xyzrgb format, set the variable 'verbose' to 1 in the Python script sensaas.py. Then, you can visualize these point clouds using Open3D:
 
 - Example to visualize a point cloud with Open3D
 ::
@@ -413,10 +413,14 @@ or::
 
 	utils/visualize.py examples/VALSARTAN.pcd
 
-- Example to convert a xyzrgb file into pdb file for visualization (generates the file 'dots.pdb')
+
+You can also convert a xyzrgb file into pdb file for visualization using PyMOL
 ::
 
 	utils/xyzrgb2dotspdb.py examples/VALSARTAN.xyzrgb
+	
+It will generate the file 'dots.pdb'
+
 	
 More on SENSAAS algorithm for developpers
 ------------------------------------------
