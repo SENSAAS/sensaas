@@ -193,20 +193,19 @@ In our implementation, labels aim to recapitulate typical pharmacophore features
 Fitness scores
 ==============
 
-Fitness scores are calculated using point clouds. A fitness score indicates how many points are paired. Points are considered paired if their distance is lower than a given threshold. In our implementation, we set the threshold value to 0.3 because it is the average distance between two adjacent points in our original point clouds.
+The alignements provided by SENSAAS are evaluated by fitness scores calculated  from point clouds. A fitness score indicates how many points are paired. Points are considered paired if their distance is lower than a given threshold. In our implementation, we set the threshold value to 0.3 because it is the average distance between two adjacent points in our original point clouds.
 
 Each score is similar to a Tversky coefficient tuned to evaluate the embedding of a point cloud in another one. Therefore, the score of the Source and the score of the Target may differ. The smallest point cloud of the two will always obtain the highest fitness score as more points are paired, proportionally.
 
-There are three different fitness scores but we only use 2 of them, gfit and hfit, to calculate gfit+hfit.
+There are three different fitness scores, but we only use 2 of them, gfit and hfit, to finally calculate gfit+hfit.
 
-- **gfit** score estimates the geometric matching of point-based surfaces. It is the ratio between the number of points of the transformed Source that match points of the Target, and its total number of points - **it ranges between 0 and 1**
+- **gfit** estimates the geometric matching of point-based surfaces. It is the ratio between the number of points of the transformed Source that match points of the Target, and its total number of points - **it ranges between 0 and 1**
 
-- **hfit** score estimates the matching of colored points representing pharmacophore features. It is the sum of the fitness for each class except the first class, to specifically evaluate the matching of polar and aromatic points (classes 2, 3 and 4) - **it ranges between 0 and 1**
+- **hfit** estimates the matching of colored points representing pharmacophore features. It is the sum of the fitness for each class except the first class, to specifically evaluate the matching of polar and aromatic points (classes 2, 3 and 4) - **it ranges between 0 and 1**
 
-- cfit score is the sum of the fitness for each class, to specifically evaluate the matching of the colored points of the 4 classes - it ranges between 0 and 1
+- cfit is the sum of the fitness for each class, to specifically evaluate the matching of the colored points of the 4 classes - it ranges between 0 and 1
 
-The hybrid score is called **gfit+hfit** and is the sum = gfit + hfit scores
-**gfit+hfit ranges between 0 and 2**
+The hybrid score called **gfit+hfit** is the sum = gfit + hfit scores - **gfit+hfit ranges between 0 and 2**
 
   A gfit+hfit score close to 2.0 means a perfect superimposition.
 
@@ -216,12 +215,12 @@ The hybrid score is called **gfit+hfit** and is the sum = gfit + hfit scores
 Tutorials
 ===========
 
-This tutorial presents basic usage of SENSAAS with sdf molecular files.
+This tutorial presents several basic usages of SENSAAS with sdf molecular files.
 
 Run sensaas.py
 --------------
 
-To align a Source molecule on a Target molecule, the syntax is::
+This script allows to align one Source molecule on one Target molecule::
 	
    sensaas.py <target-type> <target-file-name> <source-type> <source-file-name> <log-file-name> <mode>
 
@@ -238,17 +237,17 @@ To align a Source molecule on a Target molecule, the syntax is::
    name of the Source file
 
 **<log-file-name>**
-   name of the output file. It details the results of the alignement with **scores of Source**.
+   name of the log file that details the alignement with **scores of Source**.
 
 **<mode>**
    - **optim** executes the alignment and generates a transformation matrix
    
    - **eval** evaluates the superimposition "in place" (without aligning)
 
-Example with the 'optim' mode
+Example in 'optim' mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following example works with 2 molecules from the directory examples/
+The following example works with two molecules from the directory examples/
 ::
 	sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim	
 		
@@ -266,20 +265,12 @@ Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file 
 
 	gfit= 1.000 cfit= 0.999 hfit= 0.996 gfit+hfit= 1.996
 	
-with gfit and hfit close to the maximum value of 1.00. Indeed, IMATINIB_mv.sdf is the same 3D structure as IMATINIB.sdf but with a different orientation. In such case, SENSAAS perfectly aligns the 2 molecules.
+with gfit and hfit close to the maximum value of 1.00. Indeed, IMATINIB_mv.sdf is the same 3D structure as IMATINIB.sdf but with a different orientation. In such case, SENSAAS perfectly aligns the two molecules.
 
-Visualization 
-~~~~~~~~~~~~~
-
-You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target and the aligned Source::
-
-	pymol examples/IMATINIB.sdf Source_tran.sdf 
-
-
-The 'eval' mode
+Example in 'eval' mode
 ~~~~~~~~~~~~~~~~~~~
 
-Given 2 molecules, molecule1.sdf and molecule2.sdf, the eval mode evaluates the superimposition "in place" (without aligning)
+Given two molecules, molecule1.sdf and molecule2.sdf, the eval mode evaluates the superimposition "in place" (without aligning)
 ::
 		sensaas.py sdf molecule1.sdf sdf molecule2.sdf slog.txt eval	
 
@@ -289,11 +280,14 @@ Here, the resulting slog.txt contains final scores of molecule2.sdf on the last 
 	
 Here, the resulting slog.txt contains final scores of molecule1.sdf on the last line.
 
+**Visualization** To visualize the result, You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target and the aligned Source::
+
+	pymol examples/IMATINIB.sdf Source_tran.sdf 
 	
 Run meta-sensaas.py
 --------------------
 
-This "meta" script only works with sdf files.
+This "meta" script only works with sdf files. It permits to align several source molecules on a target one. 
 
 **1. Virtual Screening**
 
@@ -320,10 +314,7 @@ Outputs are:
 - the file **catsensaas.sdf** that contains all aligned Sources
 - the file **matrix-sensaas.txt** that contains gfit+hfit scores (rows=Targets and columns=Sources)
 
-Visualization
-~~~~~~~~~~~~~
-
-You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)
+**Visualization** You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)
 ::
 	pymol examples/IMATINIB.sdf bestsensaas.sdf catsensaas.sdf
 
@@ -341,11 +332,7 @@ You may have to run the script as follows:
 - the file **ordered-catsensaas.sdf** contains all aligned Sources in descending order of score
 - the file **ordered-scores.txt** contains the original number of Source with gfit+hfit scores in descending order
 
-
-Visualization
-~~~~~~~~~~~~~
-
-You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)
+**Visualization** You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages)
 ::
 	pymol examples/IMATINIB.sdf ordered-catsensaas.sdf
 
@@ -407,10 +394,7 @@ As described in the publication, outputs are:
 - sensaas-2.sdf contains the bioisosteric superimposition
 - sensaas-3.sdf contains the geometric-only superimposition
 
-Visualization
-~~~~~~~~~~~~~
-
-You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages). State 1 is Target and State 2 is the aligned Source.
+To visualize the results, you can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages). State 1 is Target and State 2 is the aligned Source.
 ::
 	pymol examples/VALSARTAN.sdf sensaas-1.sdf sensaas-2.sdf sensaas-3.sdf
 
