@@ -284,9 +284,6 @@ Here, the resulting slog.txt contains final scores of molecule2.sdf on the last 
 	
 Here, the resulting slog.txt contains final scores of molecule1.sdf on the last line.
 
-**Visualization** To visualize the result, You can use any molecular viewer. For instance, you can use PyMOL if installed (see optional packages) to load the Target and the aligned Source::
-
-	pymol examples/IMATINIB.sdf Source_tran.sdf 
 	
 Run meta-sensaas.py
 --------------------
