@@ -291,7 +291,7 @@ Here, the resulting slog.txt contains final scores of molecule1.sdf on the last 
 Run meta-sensaas.py
 --------------------
 
-This "meta" script only works with sdf files. It permits to align several source molecules on a target one. 
+This "meta" script only works with sdf files. It allows to align several source and target molecules. 
 
 **1. Virtual Screening**
 
