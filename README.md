@@ -40,7 +40,7 @@ Once Open3D downloaded:
 
   	conda install -c schrodinger -c conda-forge pymol-bundle
   
-Retrieve and unzip SENSAAS repository in your desired folder. See below for running the program **sensaas.py**. The directory containing executables is called sensaas-main.
+Retrieve and unzip SENSAAS repository in your desired folder. See below for running the program **sensaas.py** or **meta-sensaas.py**. The directory containing executables is called sensaas-main.
 
 ## Linux
 
