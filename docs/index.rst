@@ -244,7 +244,7 @@ This script allows to align one Source molecule on one Target molecule::
    
    - **eval** evaluates the superimposition "in place" (without aligning)
 
-Example in 'optim' mode
+Example with the 'optim' mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following example works with two molecules from the directory examples/
@@ -271,7 +271,7 @@ with gfit and hfit close to the maximum value of 1.00. Indeed, IMATINIB_mv.sdf i
 
 	pymol examples/IMATINIB.sdf Source_tran.sdf 
 
-Example in 'eval' mode
+Example with the 'eval' mode
 ~~~~~~~~~~~~~~~~~~~
 
 Given two molecules, molecule1.sdf and molecule2.sdf, the eval mode evaluates the superimposition "in place" (without aligning)
