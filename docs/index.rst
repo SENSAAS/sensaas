@@ -5,6 +5,18 @@
 
 .. _my-reference-label:
 
+Summary
+================
+
+* `What is SENSAAS?`_
+* `How does SENSAAS work?`_
+* `Installing`_
+* `Program NSC`_
+* `List of I/O Formats`_
+* `Colors`_
+* `Fitness scores`_
+* `Tutorials`_
+* `About This Project`_
 
 
 What is SENSAAS?
@@ -19,14 +31,7 @@ Based on the publication `SenSaaS: Shape-based Alignment by Registration of Colo
 
 Our algorithm runs with Python and requires the open-source library `Open3D <http://www.open3d.org/>`_.
 
-* `How does SENSAAS work?`_
-* `Installing`_
-* `Program NSC`_
-* `List of I/O Formats`_
-* `Colors`_
-* `Fitness scores`_
-* `Tutorials`_
-* `About This Project`_
+
 
 
 How does SENSAAS work?
