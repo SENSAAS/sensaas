@@ -32,28 +32,25 @@ Our algorithm runs with Python and requires the open-source library `Open3D <htt
 How does SENSAAS work?
 ======================
 
-Considering two molecules named Source and Target as inputs, SENSAAS will propose a transformation matrix as output, that will lead to the "best" alignement of Source on Target. SENSAAS follows four major steps:
+Considering two molecules named Source and Target as inputs, SENSAAS gives a transformation matrix as output, leading to the "best" 3D alignement of Source on Target. SENSAAS follows four major steps:
 
-- generation of a point cloud of the molecular surface of the two input molecules; 
-- coarse alignment of the two point clouds thanks to a geometry-aware registration; 
+- generation of a point cloud from the molecular surface of each input molecule; 
+- coarse alignment of the two point clouds thanks to a geometry-aware global registration; 
 - labelling of each point of the two clouds according to user-defined classes;
-- refinement of this alignement by applying a color and geometry-aware local registration. At this step, for each point, a color is associated with each class. 
+- refinement of this alignement by applying a color and geometry-aware local registration. At this step, a color is assigned to each point, in function of its label. 
 
 .. image:: _static/overview_v2.png
 
 **1. Generation of input point clouds** 
 For each input file (Source and Target), a point cloud of the van der Waals surface is obtained. Each point is described by its 3D coordinates, and a color (RGB) according to the nature of the underlying atom.
 
-**2. Coarse alignment by global registration** At this step, the Source point cloud is globally superimposed on the Target, by finding an initial matching in terms of
-geometry only. The matching is done by using local 3D descriptors computed on a limited number of points (also called downsampled point clouds). Here, the descriptors named Fast Point Features Histograms (FPFH) presented in `Fast Point Feature Histograms (FPFH) for 3D Registration <https://ieeexplore.ieee.org/abstract/document/5152473>`_ are used, and their matching is done by using the RANSAC method: `Random Sample Consensus: A Paradigm for
-Model Fitting with Applications to Image Analysis and Automated Cartography <https://dl.acm.org/doi/10.1145/358669.358692>`_.
+**2. Coarse alignment by global registration** the Source point cloud is globally superimposed on the Target, by finding an initial matching in terms of
+geometry only. The matching is done by using local 3D descriptors computed on a limited number of points (also called downsampled point clouds). We use the descriptors FPFH ( presented in `Fast Point Feature Histograms (FPFH) for 3D Registration <https://ieeexplore.ieee.org/abstract/document/5152473>`_), and the matching is done with RANSAC (`Random Sample Consensus: A Paradigm for Model Fitting with Applications to Image Analysis and Automated Cartography <https://dl.acm.org/doi/10.1145/358669.358692>`_).
 
-**3. Labelling of the points of each point cloud** Each point is colored according to its belonging to a user-defined class. In the current version, the classes depend on the pharmacophore features, but they could depend on any physico-chemical property mapped onto the surface.
+**3. Labelling of the points of each point cloud** Each point is colored according to its belonging to a user-defined class. In the current version, the classes depend on the pharmacophore features, but they could depend on any physico-chemical property mapped onto the surface, or any configuration given by the user.
 
-**4. Refinement of the first global alignement by applying a color and geometry-aware registration** At this step, the registration takes into account the geometry of the point clouds, but also the color of the points provided by the previous step of labelling. The coarse alignement is improved by finding the best matching between
-the two colored point clouds. The method used here is the method presented in `Colored Point Cloud Registration Revisited <https://ieeexplore.ieee.org/document/8237287>`_.
-This step results into a transformation matrix (rotation + translation), that is applied to the Source molecule to get the final alignement. 
-
+**4. Refinement of the alignement** At this step, the registration takes into account the geometry of the point clouds, but also the color of the points assigned by labelling. The coarse alignement is improved by finding the best matching between the two colored point clouds. The method used here is the method of `Colored Point Cloud Registration Revisited <https://ieeexplore.ieee.org/document/8237287>`_.
+This step results into a final transformation matrix (rotation + translation), that is applied to the Source molecule to get the final alignement. 
 
 Installing
 ===========
