@@ -226,10 +226,10 @@ Copyright (c) 2018-2021, CNRS, Inserm, Université Côte d'Azur, Dominique Dougu
    
  	@software{sensaas,
 	author 		= {Douguet, Dominique and Payan, Frédéric},
-  	title		= {SENSAAS},
-  	year		= {2021},
+  	title		= {{SENSAAS}},
+	month		= Jan
+  	year		= 2021,
   	publisher	= {Github},
-  	journal={GitHub repository},
   	howpublished={\url{https://github.com/SENSAAS/sensaas}},
 	}
 
