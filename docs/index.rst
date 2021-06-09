@@ -414,7 +414,7 @@ or::
 	utils/visualize.py examples/VALSARTAN.pcd
 
 
-You can also convert a xyzrgb file into pdb file for visualization using PyMOL
+You can also convert a xyzrgb file into pdb file for visualization with PyMOL
 ::
 
 	utils/xyzrgb2dotspdb.py examples/VALSARTAN.xyzrgb
@@ -425,7 +425,7 @@ It will generate the file 'dots.pdb'
 More on SENSAAS algorithm for developpers
 ------------------------------------------
 
-sensaas.py call different scripts to align molecules. Let show you how all the program works with a kind of blueprint:
+sensaas.py call different scripts to align molecules. Let us show you how the program works with a kind of blueprint:
 
 .. image:: _static/schema.JPG
 .. image:: _static/legend.jpg   
