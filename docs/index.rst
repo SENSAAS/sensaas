@@ -452,21 +452,31 @@ Reference
 
 https://doi.org/10.1002/minf.202000081
 
-  ::
+
+::
+
+	@article{10.1002/minf.202000081,
+	author = {Douguet, Dominique and Payan, Frédéric},
+	title = {sensaas: Shape-based Alignment by Registration of Colored Point-based Surfaces},
+	journal = {Molecular Informatics},
+	volume = {39},
+	number = {8},
+	pages = {2000081},
+	keywords = {Shape-based alignment, molecular surfaces, point clouds, registration, molecular similarity},
+	doi = {https://doi.org/10.1002/minf.202000081},
+	url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/minf.202000081},
+	eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/minf.202000081},
+	year = {2020}
+	}
+
+::
   
 	@software{sensaas,
-	
 	author 		= {Douguet, Dominique and Payan, Frédéric},
-	
 	title		= {{SENSAAS}},
-	
 	month		= Jan
-	
 	year		= 2021,
-	
 	publisher	= {Github},
-	
 	url		= {https://github.com/SENSAAS/sensaas}
-	
 	}
 
