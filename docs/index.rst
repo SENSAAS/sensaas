@@ -471,7 +471,7 @@ Bibtex:
 	year 		= {2020}
 	}
 
-or:
+and if you developed :
 
 ::
   
