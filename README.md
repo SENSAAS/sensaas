@@ -230,6 +230,6 @@ Copyright (c) 2018-2021, CNRS, Inserm, Université Côte d'Azur, Dominique Dougu
 	month		= Jan
   	year		= 2021,
   	publisher	= {Github},
-  	howpublished={\url{https://github.com/SENSAAS/sensaas}},
+  	url		= {\url{https://github.com/SENSAAS/sensaas}},
 	}
 
