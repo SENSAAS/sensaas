@@ -225,7 +225,7 @@ Copyright (c) 2018-2021, CNRS, Inserm, Université Côte d'Azur, Dominique Dougu
    
    
  	@software{sensaas_2021,
-  	title={SENSAAS,a shape-based alignment program for 3D molecules},
+  	title={SENSAAS},
   	author = {Douguet, Dominique and Payan, Frédéric},
   	year={2021},
   	publisher={Github},
