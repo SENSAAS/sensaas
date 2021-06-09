@@ -471,14 +471,14 @@ Bibtex format:
 	year 		= {2020}
 	}
 
-and if you developed :
+and in case of redistribution and use :
 
 ::
   
 	@software{sensaas,
 	author 		= {Douguet, Dominique and Payan, Frédéric},
 	title		= {{SENSAAS}},
-	month		= Jan
+	month		= Jan,
 	year		= 2021,
 	publisher	= {Github},
 	url		= {https://github.com/SENSAAS/sensaas}
