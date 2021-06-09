@@ -453,7 +453,7 @@ Reference
 https://doi.org/10.1002/minf.202000081
 
 
-Bibtex:
+Bibtex format:
 
 ::
 
