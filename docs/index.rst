@@ -471,6 +471,8 @@ Bibtex:
 	year 		= {2020}
 	}
 
+or:
+
 ::
   
 	@software{sensaas,
