@@ -471,7 +471,7 @@ Bibtex format:
 	year 		= {2020}
 	}
 
-and in case developments:
+and in case of software reuse:
 
 ::
   
