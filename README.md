@@ -223,13 +223,3 @@ Copyright (c) 2018-2021, CNRS, Inserm, Université Côte d'Azur, Dominique Dougu
 ## Reference
 [Douguet D. and Payan F., SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces, *Molecular Informatics*, **2020**, 8, 2000081](https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081). doi: 10.1002/minf.202000081
    
-   
- 	@software{sensaas,
-	author 		= {Douguet, Dominique and Payan, Frédéric},
-  	title		= {{SENSAAS}},
-	month		= Jan
-  	year		= 2021,
-  	publisher	= {Github},
-  	url		= {https://github.com/SENSAAS/sensaas}
-	}
-
