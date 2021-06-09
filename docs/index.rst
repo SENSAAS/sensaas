@@ -362,9 +362,9 @@ here the score of the target will be used to rank solutions and to fill matrix-s
 	
 	
 
-**2. Finding alternate alignments and Clustering**
+**2. Finding alternative alignments and Clustering**
 
-This option allows to repeat in order to find alternate alignments when they exist as for example when aligning a fragment on a large molecule. It works with one Target and one Source only (or the first molecule of the sdf file). The syntax is::
+This option allows to repeat in order to find alternative alignments when they exist as for example when aligning a fragment on a large molecule. It works with one Target and one Source only (or the first molecule of the sdf file). The syntax is::
 
 	meta-sensaas.py target.sdf source.sdf -r 10
 
