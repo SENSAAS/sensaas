@@ -478,9 +478,9 @@ and in case developments:
 	@software{sensaas,
 	author 		= {Douguet, Dominique and Payan, Frédéric},
 	title		= {{SENSAAS}},
-	month		= Jan,
+	month		= June,
 	year		= 2021,
 	publisher	= {Github},
-	url		= {https://github.com/SENSAAS/sensaas}
+	howpublished	= {https://github.com/SENSAAS/sensaas}
 	}
 
