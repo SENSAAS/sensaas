@@ -425,7 +425,7 @@ It will generate the file 'dots.pdb'
 More on SENSAAS algorithm for developpers
 ------------------------------------------
 
-The Python script **sensaas.py** calls several scripts to perform the alignment. Below, a description of the code is displayed:
+The Python script **sensaas.py** calls several scripts to perform the alignment. The following Figure gives an overview of the code:
 
 .. image:: _static/schema.JPG
 .. image:: _static/legend.jpg   
