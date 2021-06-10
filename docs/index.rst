@@ -431,7 +431,7 @@ More on SENSAAS algorithm for developpers
 
 The Python script **sensaas.py** calls several other scripts to perform the alignment. The following Figure gives an overview of the code:
 
-.. image:: _static/overview-sensaas-core.png
+.. image:: _static/overview-sensaas-core2.png
 
 
 About This Project
