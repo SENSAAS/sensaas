@@ -37,12 +37,12 @@ Our algorithm runs with Python and requires the open-source library `Open3D <htt
 How does SENSAAS work?
 ======================
 
-Considering two molecules named Source and Target as inputs, SENSAAS gives a transformation matrix as output, leading to the "best" 3D alignement of Source on Target. SENSAAS follows four major steps:
+Considering two molecules named Source and Target as inputs, SENSAAS gives a transformation matrix as output, leading to the "best" 3D alignment of Source on Target. SENSAAS follows four major steps:
 
 - generation of a point cloud from the molecular surface of each input molecule; 
 - coarse alignment of the two point clouds thanks to a geometry-aware global registration; 
 - labelling of each point of the two clouds according to user-defined classes;
-- refinement of this alignement by applying a color and geometry-aware local registration. At this step, a color is assigned to each point, in function of its label. 
+- refinement of this alignment by applying a color and geometry-aware local registration. At this step, a color is assigned to each point, in function of its label. 
 
 .. image:: _static/overview_v2_transpa.png
 
@@ -54,8 +54,8 @@ geometry only. The matching is done by using local 3D descriptors computed on a 
 
 **3. Labelling of the points of each point cloud** Each point is colored according to its belonging to a user-defined class. In the current version, the classes depend on the pharmacophore features, but they could depend on any physico-chemical property mapped onto the surface, or any configuration given by the user.
 
-**4. Refinement of the alignement** At this step, the registration takes into account the geometry of the point clouds, but also the color of the points assigned by labelling. The coarse alignement is improved by finding the best matching between the two colored point clouds. The method used here is the method of `Colored Point Cloud Registration Revisited <https://ieeexplore.ieee.org/document/8237287>`_.
-This step results into a final transformation matrix (rotation + translation), that is applied to the Source molecule to get the final alignement. 
+**4. Refinement of the alignment** At this step, the registration takes into account the geometry of the point clouds, but also the color of the points assigned by labelling. The coarse alignment is improved by finding the best matching between the two colored point clouds. The method used here is the method of `Colored Point Cloud Registration Revisited <https://ieeexplore.ieee.org/document/8237287>`_.
+This step results into a final transformation matrix (rotation + translation), that is applied to the Source molecule to get the final alignment. 
 
 Installing
 ===========
@@ -193,7 +193,7 @@ In our implementation, labels aim to recapitulate typical pharmacophore features
 Fitness scores
 ==============
 
-The alignements provided by SENSAAS are evaluated by fitness scores calculated  from point clouds. A fitness score indicates how many points are paired. Points are considered paired if their distance is lower than a given threshold. In our implementation, we set the threshold value to 0.3 because it is the average distance between two adjacent points in our original point clouds.
+The alignments provided by SENSAAS are evaluated by fitness scores calculated from point clouds. A fitness score indicates how many points are paired. Points are considered paired if their distance is lower than a given threshold. In our implementation, we set the threshold value to 0.3 because it is the average distance between two adjacent points in our original point clouds.
 
 Each score is similar to a Tversky coefficient tuned to evaluate the embedding of a point cloud in another one. Therefore, the score of the Source and the score of the Target may differ. The smallest point cloud of the two will always obtain the highest fitness score as more points are paired, proportionally.
 
@@ -237,7 +237,7 @@ This script allows to align one Source molecule on one Target molecule::
    name of the Source file
 
 **<log-file-name>**
-   name of the log file that details the alignement with **scores of Source**.
+   name of the log file that details the alignment with **scores of Source**.
 
 **<mode>**
    - **optim** executes the alignment and generates a transformation matrix
@@ -425,7 +425,7 @@ It will generate the file 'dots.pdb'
 More on SENSAAS algorithm for developpers
 ------------------------------------------
 
-sensaas.py call different scripts to align molecules. Let us show you how the program works with a kind of blueprint:
+The Python script **sensaas.py** calls several scripts to perform the alignment. Below, a description of the code is displayed:
 
 .. image:: _static/schema.JPG
 .. image:: _static/legend.jpg   
