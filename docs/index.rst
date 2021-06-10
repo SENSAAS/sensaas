@@ -37,6 +37,10 @@ Our algorithm runs with Python and requires the open-source library `Open3D <htt
 How does SENSAAS work?
 ======================
 
+3D point clouds or 3D meshes are geometric data structures that describe a surface in many domains well known by large audience: robotics, 3D reconstruction, games, autonomous navigation. Such 3D representations can also be relevant in chemistry to describe molecules although they were not the most used so far.
+
+SENSAAS (SENsitive Surface As A Shape) is a shape-based alignment program using 3D point-based representation of the van der Waals surface. SENSAAS is an original tool that combines recent methods dedicated to 3D registration, initially developed for the fusion of 3D point clouds from scanners, such as LiDAR. 
+
 Considering two molecules named Source and Target as inputs, SENSAAS gives a transformation matrix as output, leading to the "best" 3D alignment of Source on Target. SENSAAS follows four major steps:
 
 - generation of a point cloud from the molecular surface of each input molecule; 
