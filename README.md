@@ -12,7 +12,7 @@
 
 **Website**: A web demo is available at https://chemoinfo.ipmc.cnrs.fr/SENSAAS/index.html
 
-**Tutorial**: These [Videos](https://www.youtube.com/channel/UC3cjM1j8cQ-95ev0DNxRMOA) on YouTube provide tutorials
+**Tutorial**: These [videos](https://www.youtube.com/channel/UC3cjM1j8cQ-95ev0DNxRMOA) on YouTube provide tutorials
 
 ## Requirements
 
