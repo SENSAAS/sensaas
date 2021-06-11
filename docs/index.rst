@@ -313,7 +313,9 @@ The following example works with 2 files from the directory examples/
 You may have to run the script as follows:
 ::
 	python meta-sensaas.py examples/IMATINIB.sdf examples/IMATINIB_parts.sdf
-	
+
+.. note:: Don't worry if you get the following warning from Open3D: "*Open3D WARNING KDTreeFlann::SetRawData Failed due to no data.*". It is observed with conda on windows.
+
 Here, the source file IMATINIB_parts.sdf contains 3 substructures that are aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**)
 
 Outputs are:
@@ -394,6 +396,8 @@ The following example works with 2 files from the directory examples/
 You may have to run the script as follows:
 ::
 	python meta-sensaas.py examples/VALSARTAN.sdf examples/tetrazole.sdf -r 100
+
+.. note:: Don't worry if you get the following warning from Open3D: "*Open3D WARNING KDTreeFlann::SetRawData Failed due to no data.*". It is observed with conda on windows.
 
 As described in the publication, outputs are:
 
