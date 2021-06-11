@@ -27,11 +27,14 @@ What is SENSAAS?
 **SENSAAS** is the result of a collaboration between researchers of two labs of `UCA (University Côte d'Azur) <https://univ-cotedazur.fr/>`_: `I3S <https://www.i3s.unice.fr>`_ and `IPMC <https://www.ipmc.cnrs.fr/cgi-bin/site.cgi>`_. 
 Based on the publication `SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces <https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081>`_, **SENSAAS** is a shape-based alignment software which allows to superimpose molecules in 3D space.
 
-**Tutorial:** `This video <nul>`_ on Youtube provides a tutorial for installing and executing SENSAAS
+**Tutorial:** These videos on Youtube provide a tutorial for installing and executing SENSAAS
+
+1. Requirements and installation `https://www.youtube.com/watch?v=2mYZlW4QbvQ <https://www.youtube.com/watch?v=2mYZlW4QbvQ>`_
+2. Using sensaas, a basic example `https://www.youtube.com/watch?v=2mYZlW4QbvQ <https://www.youtube.com/watch?v=2mYZlW4QbvQ>`_
+3. Using meta-sensaas for virtual screening `https://www.youtube.com/watch?v=2mYZlW4QbvQ <https://www.youtube.com/watch?v=2mYZlW4QbvQ>`_
+4. Using meta-sensaas for clustering `https://www.youtube.com/watch?v=2mYZlW4QbvQ <https://www.youtube.com/watch?v=2mYZlW4QbvQ>`_
 
 Our algorithm runs with Python and requires the open-source library `Open3D <http://www.open3d.org/>`_.
-
-
 
 
 How does SENSAAS work?
