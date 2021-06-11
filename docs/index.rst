@@ -259,6 +259,9 @@ You may have to run the script as follows:
 ::
 	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim
 
+.. note:: 
+Don't worry if you get the following warning from Open3D: "*Open3D WARNING KDTreeFlann::SetRawData Failed due to no data.*". It is observed with conda on 	  windows.
+
 Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**).
 
 - The output file **Source_tran.sdf** contains the aligned (transformed) coordinates of the Source.
