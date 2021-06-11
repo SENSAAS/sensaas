@@ -30,9 +30,10 @@ Based on the publication `SenSaaS: Shape-based Alignment by Registration of Colo
 **Tutorial:** These videos on Youtube provide a tutorial for installing and executing SENSAAS
 
 1. Requirements and installation `https://www.youtube.com/watch?v=2mYZlW4QbvQ <https://www.youtube.com/watch?v=2mYZlW4QbvQ>`_
-2. Using sensaas, a basic example `https://www.youtube.com/watch?v=2mYZlW4QbvQ <https://www.youtube.com/watch?v=2mYZlW4QbvQ>`_
-3. Using meta-sensaas for virtual screening `https://www.youtube.com/watch?v=2mYZlW4QbvQ <https://www.youtube.com/watch?v=2mYZlW4QbvQ>`_
-4. Using meta-sensaas for clustering `https://www.youtube.com/watch?v=2mYZlW4QbvQ <https://www.youtube.com/watch?v=2mYZlW4QbvQ>`_
+2. Using sensaas, a basic example `https://www.youtube.com/watch?v=IvLDvVvfMTA <https://www.youtube.com/watch?v=IvLDvVvfMTA>`_
+3. Using meta-sensaas for virtual screening `https://www.youtube.com/watch?v=Z3qLQXEbW8o <https://www.youtube.com/watch?v=Z3qLQXEbW8o>`_
+4. Using meta-sensaas for clustering `https://www.youtube.com/watch?v=X5caj1us6rY <https://www.youtube.com/watch?v=X5caj1us6rY>`_
+
 
 Our algorithm runs with Python and requires the open-source library `Open3D <http://www.open3d.org/>`_.
 
