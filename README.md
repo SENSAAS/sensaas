@@ -12,12 +12,7 @@
 
 **Website**: A web demo is available at https://chemoinfo.ipmc.cnrs.fr/SENSAAS/index.html
 
-**Tutorial**: [Videos](https://www.youtube.com/channel/UC3cjM1j8cQ-95ev0DNxRMOA) on YouTube provide tutorials
-
-1. Requirements and installation [https://www.youtube.com/watch?v=2mYZlW4QbvQ](https://www.youtube.com/watch?v=2mYZlW4QbvQ)
-2. Using sensaas, a basic example [https://www.youtube.com/watch?v=IvLDvVvfMTA](https://www.youtube.com/watch?v=IvLDvVvfMTA)
-3. Using meta-sensaas for virtual screening [https://www.youtube.com/watch?v=Z3qLQXEbW8o](https://www.youtube.com/watch?v=Z3qLQXEbW8o)
-4. Using meta-sensaas for clustering [https://www.youtube.com/watch?v=X5caj1us6rY](https://www.youtube.com/watch?v=X5caj1us6rY)
+**Tutorial**: These [Videos](https://www.youtube.com/channel/UC3cjM1j8cQ-95ev0DNxRMOA) on YouTube provide tutorials
 
 ## Requirements
 
