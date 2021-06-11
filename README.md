@@ -12,7 +12,7 @@
 
 **Website**: A web demo is available at https://chemoinfo.ipmc.cnrs.fr/SENSAAS/index.html
 
-**Tutorial**: These videos on YouTube provides tutorials:
+**Tutorial**: [Videos](https://www.youtube.com/channel/UC3cjM1j8cQ-95ev0DNxRMOA) on YouTube provide tutorials
 
 1. Requirements and installation [https://www.youtube.com/watch?v=2mYZlW4QbvQ](https://www.youtube.com/watch?v=2mYZlW4QbvQ)
 2. Using sensaas, a basic example [https://www.youtube.com/watch?v=IvLDvVvfMTA](https://www.youtube.com/watch?v=IvLDvVvfMTA)
