@@ -100,6 +100,9 @@ You may have to run the script as follows:
 
 	python sensaas.py sdf examples/IMATINIB.sdf sdf examples/IMATINIB_mv.sdf slog.txt optim
 
+
+Don't worry if you get the following warning from Open3D: "Open3D WARNING KDTreeFlann::SetRawData Failed due to no data.". It is observed with conda on 	windows.
+
 Here, the source file IMATINIB_mv.sdf is aligned (**moved**) on the target file IMATINIB.sdf (**that does not move**). The output **tran.txt** contains the transformation matrix allowing the alignment of the source file (result in **Source_tran.sdf**). The **slog.txt** file details results with final scores of the aligned molecule (Source) on the last line. In the current example, the last line must look like:
 
 	gfit= 1.000 cfit= 0.999 hfit= 0.996 gfit+hfit= 1.996
