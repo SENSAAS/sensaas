@@ -15,9 +15,9 @@
 **Tutorial**: These videos on YouTube provides tutorials:
 
 1. Requirements and installation [https://www.youtube.com/watch?v=2mYZlW4QbvQ](https://www.youtube.com/watch?v=2mYZlW4QbvQ)
-2. Using sensaas, a basic example [https://www.youtube.com/watch?v=2mYZlW4QbvQ](https://www.youtube.com/watch?v=2mYZlW4QbvQ)
-3. Using meta-sensaas for virtual screening [https://www.youtube.com/watch?v=2mYZlW4QbvQ](https://www.youtube.com/watch?v=2mYZlW4QbvQ)
-4. Using meta-sensaas for clustering [https://www.youtube.com/watch?v=2mYZlW4QbvQ](https://www.youtube.com/watch?v=2mYZlW4QbvQ)
+2. Using sensaas, a basic example [https://www.youtube.com/watch?v=IvLDvVvfMTA](https://www.youtube.com/watch?v=IvLDvVvfMTA)
+3. Using meta-sensaas for virtual screening [https://www.youtube.com/watch?v=Z3qLQXEbW8o](https://www.youtube.com/watch?v=Z3qLQXEbW8o)
+4. Using meta-sensaas for clustering [https://www.youtube.com/watch?v=X5caj1us6rY](https://www.youtube.com/watch?v=X5caj1us6rY)
 
 ## Requirements
 
