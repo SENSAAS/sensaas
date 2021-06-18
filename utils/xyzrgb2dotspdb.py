@@ -50,7 +50,7 @@ while(compt < len(getstr)):
         ydot='%4.2f' % ydot
         zdot='%4.2f' % zdot
         doti=doti+1
-        solfile.write("HETATM%5s %4s %3s     1    %8s%8s%8s  %4s %5s\n" %(doti,elt,debnom,xdot,ydot,xdot,occup,bfactor))
+        solfile.write("HETATM%5s %4s %3s     1    %8s%8s%8s  %4s %5s\n" %(doti,elt,debnom,xdot,ydot,zdot,occup,bfactor))
     compt=compt+1
 
 solfile.close()
