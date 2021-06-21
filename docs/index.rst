@@ -413,6 +413,7 @@ To visualize the results, you can use any molecular viewer. For instance, you ca
 ::
 	pymol examples/VALSARTAN.sdf sensaas-1.sdf sensaas-2.sdf sensaas-3.sdf
 
+.. image:: _static/valsartan-tetrazole.png
 
 Miscellaneous Tools
 --------------------
