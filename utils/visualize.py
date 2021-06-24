@@ -1,17 +1,16 @@
-#!/usr/bin/python3.7
-
-#execute ./<>.py <pcd or xyzrgb file> - Display
-
 import open3d as o3d
-import os, sys
+import argparse
 
-# sys.argv[0] is the name of the program itself
-target=sys.argv[1]
-#source=sys.argv[2]
+p = argparse.ArgumentParser(description="Visualize point clouds with Open3D")
+p.add_argument("files", type=str, nargs="+", help="files")
 
-target_pcd = o3d.io.read_point_cloud(target)
-#source_pcd = o3d.io.read_point_cloud(source)
+args = p.parse_args()
 
-o3d.visualization.draw_geometries([target_pcd],window_name='open3d-molecule',width=1000, height=800, left=50, top=50)
-#to read 2 clouds
-#o3d.visualization.draw_geometries([target_pcd,source_pcd],window_name='open3d-molecule',width=1000, height=800, left=50, top=50)
+pcds = []
+for f in args.files:
+    pcd = o3d.io.read_point_cloud(f)
+    pcds.append(pcd)
+
+o3d.visualization.draw_geometries(
+    pcds, window_name="open3d-molecule", width=1000, height=800, left=50, top=50
+)
