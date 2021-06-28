@@ -56,6 +56,9 @@ p.add_argument("output", type=str, help="Output (log file)")
 p.add_argument("mode", type=str, help="Mode", choices=["optim", "eval"])
 p.add_argument("-v", "--verbose", action="store_true", help="Verbose mode (keep all files)")
 p.add_argument("-t", "--threshold", type=float, default=0.3, help="Threshold to evaluate correspondence set")
+p.add_argument("-vs", "--voxel_sizes", type=float, nargs="+",
+               default=[0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2],
+               help="Threshold to evaluate correspondence set")
 
 args = p.parse_args()
 
@@ -229,7 +232,7 @@ fd.close()
 #mode = optimisation (default)
 if mode != 'eval' :
     ## gcicp = Global + CICP registration (see subroutines)
-    tran=gcicp_registration(source_pcd,target_pcd,threshold,output,pcds2,pcds3,pcds4,pcdt2,pcdt3,pcdt4,Slabel2,Slabel3,Slabel4)
+    tran=gcicp_registration(source_pcd,target_pcd,threshold,output,pcds2,pcds3,pcds4,pcdt2,pcdt3,pcdt4,Slabel2,Slabel3,Slabel4, args.voxel_sizes)
 else:
     tran=np.identity(4)
 

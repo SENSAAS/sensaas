@@ -74,16 +74,15 @@ def colored_point_cloud(source_down,target_down,globaltran,voxel_size):
                 relative_rmse = 1e-6, max_iteration = max_iter))
     return result
 
-def gcicp_registration(spcd,tpcd,threshold,output,pcds2,pcds3,pcds4,pcdt2,pcdt3,pcdt4,Slabel2,Slabel3,Slabel4):
+def gcicp_registration(spcd,tpcd,threshold,output,pcds2,pcds3,pcds4,pcdt2,pcdt3,pcdt4,Slabel2,Slabel3,Slabel4,
+                       voxel_sizes=[0.2, 0.3, 0.4, 0.5, 0.6,0.7, 0.8, 0.9, 1.0, 1.1, 1.2]
+):
 
 #Global for initialization
     fit=0
     hfit=0
     vsi=0
-    rangevs = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2]
-    for i in rangevs:
-        voxel_size = i
-
+    for voxel_size in voxel_sizes:
         spcdbis, tpcdbis, source_down, target_down, source_fpfh, target_fpfh = prepare_dataset(spcd,tpcd,voxel_size)
         
         result_global = execute_global_registration(source_down, target_down,source_fpfh, target_fpfh, voxel_size)
