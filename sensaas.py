@@ -55,6 +55,7 @@ p.add_argument("source", type=str, help="Source file")
 p.add_argument("output", type=str, help="Output (log file)")
 p.add_argument("mode", type=str, help="Mode", choices=["optim", "eval"])
 p.add_argument("-v", "--verbose", action="store_true", help="Verbose mode (keep all files)")
+p.add_argument("-t", "--threshold", type=float, default=0.3, help="Threshold to evaluate correspondence set")
 
 args = p.parse_args()
 
@@ -101,7 +102,7 @@ fd.write('Open3D version %s\n' % (o3d.__version__))
 
 #threshold to evaluate correspondence set = dots that match (fitness and rmse) in GCICP.py
 # molecular surface space between dots = 0.3 then threshold = 0.3-0.4
-threshold = 0.3
+threshold = args.threshold
 
 fd.write("#label 1 {H, Cl, Br, I}\n")
 fd.write("#label 2 {O, N, S, F, HO, HN}\n")
