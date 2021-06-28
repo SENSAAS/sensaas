@@ -40,24 +40,33 @@ from XYZRGB2labels import *
 from SDFtoDots import *
 from PDBtoDots import *
 
-ARGV=[]
-try:
-    ARGV.append(sys.argv[1])
-    filesdf=ARGV[0]
-except:
-    print('usage: sensaas.py target-type target-file-name source-type source-file-name slog optim \neg:\nsensaas.py sdf DATASET/IMATINIB.sdf sdf DATASET/IMATINIB-part1.sdf slog optim')
-    quit()
+import argparse
+
+# List of supported file types for source and target
+filetypes = ["sdf", "pdb", "dot", "xyzrgb", "pcd"]
+
+p = argparse.ArgumentParser(
+    description="SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces"
+)
+p.add_argument("targettype", type=str, help="Target file type", choices=filetypes)
+p.add_argument("target", type=str, help="Target file")
+p.add_argument("sourcetype", type=str, help="Source file type", choices=filetypes)
+p.add_argument("source", type=str, help="Source file")
+p.add_argument("output", type=str, help="Output (log file)")
+p.add_argument("mode", type=str, help="Mode", choices=["optim", "eval"])
+
+args = p.parse_args()
 
 # sys.argv[0] is the name of the program itself
-sensaasexe=sys.argv[0]
+sensaasexe = p.prog  # p.prog defaults to sys.argv[0])
 sensaasexe=re.sub('sensaas\.py','',sensaasexe)
 
-targettype=sys.argv[1]
-target=sys.argv[2]
-sourcetype=sys.argv[3]
-source=sys.argv[4]
-output=sys.argv[5]
-mode=sys.argv[6]
+targettype = args.targettype
+target = args.target
+sourcetype = args.sourcetype
+source = args.source
+output = args.output
+mode = args.mode
 
 #sensaasexe="./"
 #if environment variable is set (eg: .bashr SENSAASBASE=/home/user/sensaas-executables )
