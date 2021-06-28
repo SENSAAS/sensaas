@@ -150,6 +150,11 @@ Then, to ease the analysis of the results, the script utils/ordered-catsensaas.p
 You may have to run the script as follows:
 
 	python utils/ordered-catsensaas.py matrix-sensaas.txt catsensaas.sdf
+	
+or if you want to only retrieve solutions having a gfit+hfit score above a defined cutoff:
+
+	python utils/ordered-catsensaas-cutoff.py matrix-sensaas.txt catsensaas.sdf 1.1
+	
 
 - the file **ordered-catsensaas.sdf** contains all aligned Sources in descending order of score
 - the file **ordered-scores.txt** contains gfit+hfit scores in descending order
