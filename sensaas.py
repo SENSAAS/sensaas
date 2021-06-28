@@ -54,6 +54,7 @@ p.add_argument("sourcetype", type=str, help="Source file type", choices=filetype
 p.add_argument("source", type=str, help="Source file")
 p.add_argument("output", type=str, help="Output (log file)")
 p.add_argument("mode", type=str, help="Mode", choices=["optim", "eval"])
+p.add_argument("-v", "--verbose", action="store_true", help="Verbose mode (keep all files)")
 
 args = p.parse_args()
 
@@ -87,7 +88,7 @@ else:
 #print(nscexe)
 
 #verbose=0 (keep important files only) or verbose=1
-verbose=0
+verbose = 1 if args.verbose else 0
 
 #######################################
 # MAIN program
