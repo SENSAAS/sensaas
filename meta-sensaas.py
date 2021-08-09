@@ -49,9 +49,6 @@ whichexe='linux'
 if(whichexe in platform):
     # linux
     sensaasexe=sensaasexe+ "sensaas.py"
-elif platform == "darwin":
-    # OS X - linux version?
-    sensaasexe=sensaasexe+ "sensaas.py"
 else:
     #windows
     sensaasexe="python " + sensaasexe+ "sensaas.py"
