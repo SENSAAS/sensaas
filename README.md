@@ -71,14 +71,14 @@ References :
 
 **Executables nsc (for Linux) or ncs-win (for windows) are included in this repository.**
 
-In case they do not work on your system, you may have to compile it using the source file nsc.c in directory src/. Instructions for compilation:
+In case they do not work on your system, you may have to compile it using the source file nsc-300.c in directory src/. Instructions for compilation:
 
 1. **for Windows**:
 	The current executable nsc-win.exe was compiled by using [http://www.codeblocks.org](http://www.codeblocks.org). Rename the executable as nsc-win.exe because  'nsc-win.exe' is used to set the variable nscexe in the Python script sensaas.py
 
 2. **for Linux**:
 
-		cc src/nsc.c -lm
+		cc src/nsc-300.c -lm
 	
 	rename a.out as nsc because 'nsc' is used to set the variable nscexe in the Python script sensaas.py:
 
