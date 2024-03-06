@@ -10,7 +10,7 @@
 
 **Documentation**: Full documentation is available at [https://github.com/SENSAAS/sensaas/blob/main/docs/index.rst](https://github.com/SENSAAS/sensaas/blob/main/docs/index.rst)
 
-**Website**: A web demo is available at https://chemoinfo.ipmc.cnrs.fr/SENSAAS/index.html
+**Website**: A web demo to use SENSAAS or [SENSAAS-Flex](https://doi.org/10.1093/bioinformatics/btae105) is available at https://chemoinfo.ipmc.cnrs.fr/SENSAAS/index.html
 
 **Tutorial**: These [videos](https://www.youtube.com/channel/UC3cjM1j8cQ-95ev0DNxRMOA) on YouTube provide tutorials
 
