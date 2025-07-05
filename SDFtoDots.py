@@ -3,6 +3,7 @@
 #Author: Lucas GRANDMOUGIN 
 
 import sys
+import subprocess
 import os
 import math
 import re
@@ -30,98 +31,89 @@ def sdfsurface(filesdf,nscexe):
 
     fichier2D=0
 
-    filesdf=open(filesdf,'r')
-    getstr=filesdf.read().split('\n')
-    filesdf.close()
+    # Read file more efficiently
+    with open(filesdf, 'r') as f:
+        getstr = f.read().splitlines()
 
-    tabLignesSdf=[]
+    # Parse only relevant lines starting from line 3
+    tabLignesSdf = [line.strip().split() for line in getstr[3:] if line.strip()]
 
-    compt=3
-    while(compt < len(getstr)):
-        tabLignesSdf.append(re.split('\s+', getstr[compt].strip()))
-        compt=compt+1
-    testspace=[]
-    testspace.append(re.split('', getstr[3]))
-    if(len(tabLignesSdf[0][0]) > 2):
-        if(testspace[0][1]==' '):
-            tabLignesSdf[0][1]=tabLignesSdf[0][0][2:]
-            tabLignesSdf[0][0]=tabLignesSdf[0][0][0:2]
-        elif(testspace[0][4]!=' '):
-            tabLignesSdf[0][1]=tabLignesSdf[0][0][3:]
-            tabLignesSdf[0][0]=tabLignesSdf[0][0][:3]
-        nbatomes=int(tabLignesSdf[0][0])
-        nbLiaisons=int(tabLignesSdf[0][1])
-    else:
-        nbatomes=int(tabLignesSdf[0][0])
-        nbLiaisons=int(tabLignesSdf[0][1])
+    # Determine atom and bond count from first parsed line
+    first_line = tabLignesSdf[0]
+    if len(first_line[0]) > 2:
+        raw = first_line[0]
+        # Handle possible spacing issues in atom count
+        if raw[1] == ' ':
+            first_line[1] = raw[2:]
+            first_line[0] = raw[:2]
+        elif len(raw) >= 5 and raw[4] != ' ':
+            first_line[1] = raw[3:]
+            first_line[0] = raw[:3]
 
-    #print(nbatomes)
-    #print(nbLiaisons)
+    # Convert to integers
+    nbatomes = int(first_line[0])
+    nbLiaisons = int(first_line[1])
 
     compt=1
-    getx=[]
-    getx.append('')
-    gety=[]
-    gety.append('')
-    getz=[]
-    getz.append('')
-    getA=[]
-    getA.append('')
-    getRayon=[]
-    getRayon.append('')
-    while (compt <= nbatomes):  
-        xAtome=float(tabLignesSdf[compt][0])
-        yAtome=float(tabLignesSdf[compt][1])
-        zAtome=float(tabLignesSdf[compt][2])
+    getx = ['']
+    gety = ['']
+    getz = ['']
+    getA = ['']
+    getRayon = ['']
+
+    valid_atoms = {'C', 'O', 'N', 'P', 'B', 'H', 'F', 'Br', 'Cl', 'S', 'I', 'X', 'Hp'}
+
+    for line in tabLignesSdf[1:nbatomes + 1]:
+        xAtome, yAtome, zAtome = map(float, line[:3])
+        atom = line[3]
+
         getx.append(xAtome)
         gety.append(yAtome)
         getz.append(zAtome)
-        if (float(zAtome) == 0):
-            fichier2D=fichier2D+1
-        getA.append(tabLignesSdf[compt][3])
-        if(getA[compt]!='C' and getA[compt]!='O' and getA[compt]!='N' and getA[compt]!='P' and getA[compt]!='B' and getA[compt]!='H' and getA[compt]!='F' and getA[compt]!='Br' and getA[compt]!='Cl' and getA[compt]!='S' and getA[compt]!='I' and getA[compt]!='X' and getA[compt]!='Hp'):
-            print("Warning: atom %s set as C because it is not the tab (unusual in medchem)" % getA[compt])
-            getA[compt]='C'
-        getRayon.append(tabR[getA[compt]])
-        compt=compt+1
 
-    if (fichier2D==int(nbatomes)):
+        if zAtome == 0.0:
+            fichier2D += 1
+
+        if atom not in valid_atoms:
+            print(f"Warning: atom {atom} set as C because it is not the tab (unusual in medchem)")
+            atom = 'C'
+
+        getA.append(atom)
+        getRayon.append(tabR[atom])
+
+    if fichier2D == nbatomes:
         print("Warning: sdf file in 2D; SenSaaS needs 3D coordinates to work properly")
 
-    compt=nbatomes+4
-    while (compt < nbatomes+nbLiaisons+1):
-        if (((getA[int(getstr[compt][:3])] == 'O') and (getA[int(getstr[compt][3:6])] == 'H')) or (getA[int(getstr[compt][:3])] == 'H') and (getA[int(getstr[compt][3:6])] == 'O')):
-            if(getA[int(getstr[compt][:3])]=='H'):
-                getRayon[int(getstr[compt][:3])]=tabR['Hp']
-            elif(getA[int(getstr[compt][3:6])]=='H'):
-                getRayon[int(getstr[compt][3:6])]=tabR['Hp']
-
-        if (((getA[int(getstr[compt][:3])] == 'N') and (getA[int(getstr[compt][3:6])] == 'H')) or (getA[int(getstr[compt][:3])] == 'H') and (getA[int(getstr[compt][3:6])] == 'N')):
-            if(getA[int(getstr[compt][:3])]=='H'):
-                getRayon[int(getstr[compt][:3])]=tabR['Hp']
-            elif(getA[int(getstr[compt][3:6])]=='H'):
-                getRayon[int(getstr[compt][3:6])]=tabR['Hp']
-
-        if (int(getstr[compt][3:6]) > nbatomes or int(getstr[compt][3:6]) < 0 or int(getstr[compt][:3]) > nbatomes or int(getstr[compt][:3]) < 0):
-            print("invalid atom number %6d or %6d" % (int(getstr[compt][3:6]),int(getstr[compt][:3])))
+    for line in getstr[nbatomes + 4: nbatomes + nbLiaisons + 1]:
+        try:
+            a1 = int(line[:3])
+            a2 = int(line[3:6])
+        except ValueError:
+            print(f"Invalid line: {line}")
             quit()
 
-        compt=compt+1 
+        if a1 < 0 or a1 > nbatomes or a2 < 0 or a2 > nbatomes:
+            print(f"invalid atom number {a1:6d} or {a2:6d}")
+            quit()
+
+        a1_type = getA[a1]
+        a2_type = getA[a2]
+
+        if (a1_type == 'O' and a2_type == 'H') or (a1_type == 'H' and a2_type == 'O'):
+            getRayon[a1 if a1_type == 'H' else a2] = tabR['Hp']
+
+        elif (a1_type == 'N' and a2_type == 'H') or (a1_type == 'H' and a2_type == 'N'):
+            getRayon[a1 if a1_type == 'H' else a2] = tabR['Hp']
 
 #nsc:
-    compt=1
-    psaIn=open('psa.in','w')
-    psaIn.write('* XYZR\n')
-    psaIn.write(espace6+str(nbatomes)+'\n')
-
-    while (compt <= nbatomes):
-        x='%.2f' % getx[compt]
-        y='%.2f' % gety[compt]
-        z='%.2f' % getz[compt]
-        psaIn.write('%8s %8s %8s %8s %8s \n'%(x,y,z,getRayon[compt],getA[compt]))
-        compt=compt+1
-    
-    psaIn.close()
+    with open('psa.in', 'w') as psaIn:
+        psaIn.write('* XYZR\n')
+        psaIn.write(f"{espace6}{nbatomes}\n")
+        for i in range(1, nbatomes + 1):
+            x = f"{getx[i]:.2f}"
+            y = f"{gety[i]:.2f}"
+            z = f"{getz[i]:.2f}"
+            psaIn.write(f"{x:>8} {y:>8} {z:>8} {getRayon[i]:>8} {getA[i]:>8}\n")
 
     #whichexe='nsc-win'
     #if(whichexe in nscexe):
@@ -133,141 +125,113 @@ def sdfsurface(filesdf,nscexe):
     #    p1=Popen([nscexe,"psa.in"],stdout=PIPE)
     #    p2=p1.communicate()[0]
     #print(nscexe)
-    cmd = '%s psa.in ' % (nscexe)
-    os.system(cmd)
 
-    psaOut=open('psa.out', 'r')
-    lignepsaOut= psaOut.readlines()
-    psaOut.close()
+    # Run the external command more safely and efficiently
+    subprocess.run([nscexe, 'psa.in'], check=True)
 
-    tabLignesPsaOut=[]
-    compt=3
-    while (compt < len(lignepsaOut)):
-        tabLignesPsaOut.append(re.split('\s+', lignepsaOut[compt].strip()))
-        compt=compt+1
+    # Read and parse psa.out lines starting from line 3
+    with open('psa.out', 'r') as psaOut:
+        lines = psaOut.readlines()[3:]
 
-    nbDots= int(tabLignesPsaOut[0][2])
-    #print("nbDots= %6s" % (nbDots))
-    del tabLignesPsaOut[0]
-    del tabLignesPsaOut[0]
+    tabLignesPsaOut = [re.split(r'\s+', line.strip()) for line in lines]
 
-    getDots=np.empty(shape=[nbDots,3], dtype='float64')
-    getrgb=np.empty(shape=[nbDots,3], dtype='float64')
+    nbDots = int(tabLignesPsaOut[0][2])
+    tabLignesPsaOut = tabLignesPsaOut[2:]  # remove first two header lines
 
-    compt=nbatomes+2
-    comptDots=0
-    ligneFicDots=[]
-    labeltot=[]
-    label1=[]
-    label2=[]
-    label3=[]
-    label4=[]
-    
-    while (compt < nbatomes+nbDots+2):
-        xDot=float(tabLignesPsaOut[compt][2])
-        yDot=float(tabLignesPsaOut[compt][3])
-        zDot=float(tabLignesPsaOut[compt][4])
-        compt2=1
-        m=100
-        mi=0
-        while(compt2 <= nbatomes):
-            xa=getx[compt2]
-            ya=gety[compt2]
-            za=getz[compt2]
-            goodDots= math.sqrt((xDot - xa)**2 + (yDot - ya)**2 + (zDot - za)**2)
-            if(goodDots < m):
-                m=goodDots
-                mi=compt2
-            compt2=compt2+1
+    # Preallocate arrays
+    getDots = np.empty((nbDots, 3), dtype=np.float64)
+    getrgb = np.empty((nbDots, 3), dtype=np.float64)
 
-        if(getA[mi]!='X'):
-            atomeCorrespondant=getA[mi]
-            rgbi=label[atomeCorrespondant]
-            if(getRayon[mi]==tabR['Hp']):
-                rgbi=label['O']
-            
-            getrgb[comptDots,:]=[rgb[rgbi,0], rgb[rgbi,1], rgb[rgbi,2]]
-            getDots[comptDots,:]=[xDot,yDot,zDot]
+    # Convert atom coordinates to NumPy arrays for vectorized distance computation
+    atom_coords = np.column_stack((getx[1:nbatomes + 1], gety[1:nbatomes + 1], getz[1:nbatomes + 1]))
+    atom_labels = getA[1:nbatomes + 1]
+    atom_radii = getRayon[1:nbatomes + 1]
 
-            labeltot.append(np.vstack([getDots[comptDots], getrgb[comptDots]]))
-            if (rgbi == 1):
-                label1.append(np.vstack([getDots[comptDots], getrgb[comptDots]]))
-            elif (rgbi == 2):
-                label2.append(np.vstack([getDots[comptDots], getrgb[comptDots]]))
-            elif (rgbi == 3):
-                label3.append(np.vstack([getDots[comptDots], getrgb[comptDots]]))
-            elif (rgbi == 4):
-                label4.append(np.vstack([getDots[comptDots], getrgb[comptDots]]))
-            else:
-                print("no label for dot no %5s ?\n" %(comptDots))
-            comptDots=comptDots+1
+    # Precompute tabR['Hp'] value to compare
+    hp_radius = tabR['Hp']
 
-        compt=compt+1
+    # Prepare containers for labeled dots
+    label_dict = {1: [], 2: [], 3: [], 4: []}
+    labeltot = []
 
-    if(verbose==1):
-        dotsFic=open('dots.xyzrgb', 'w')
-        dotslabel1=open('dotslabel1.xyzrgb', 'w')
-        dotslabel2=open('dotslabel2.xyzrgb', 'w')
-        dotslabel3=open('dotslabel3.xyzrgb', 'w')
-        dotslabel4=open('dotslabel4.xyzrgb', 'w')
+    for i, line in enumerate(tabLignesPsaOut[:nbDots]):
+        if len(line) < 5:
+            # skip malformed or empty lines
+            continue
+        xDot, yDot, zDot = map(float, line[2:5])
+        dot = np.array([xDot, yDot, zDot])
 
-    getDots=np.empty(shape=[len(labeltot),3], dtype='float64')
-    getrgb=np.empty(shape=[len(labeltot),3], dtype='float64')
-    getDots1=np.empty(shape=[len(label1),3], dtype='float64')
-    getrgb1=np.empty(shape=[len(label1),3], dtype='float64')
-    getDots2=np.empty(shape=[len(label2),3], dtype='float64')
-    getrgb2=np.empty(shape=[len(label2),3], dtype='float64')
-    getDots3=np.empty(shape=[len(label3),3], dtype='float64')
-    getrgb3=np.empty(shape=[len(label3),3], dtype='float64')
-    getDots4=np.empty(shape=[len(label4),3], dtype='float64')
-    getrgb4=np.empty(shape=[len(label4),3], dtype='float64')
+        # Compute distances vectorized: (nbatomes, 3) - (3,) -> (nbatomes, 3)
+        diffs = atom_coords - dot
+        dists = np.linalg.norm(diffs, axis=1)
 
-    compt=0
-    while(compt < len(labeltot)):
-        getDots[compt]= labeltot[compt][0]
-        getrgb[compt]= labeltot[compt][1]
-        if(verbose==1):
-            dotsFic.write('%8s'%getDots[compt,0]+'%8s'%getDots[compt,1]+'%8s'%getDots[compt,2]+espace5+'%5s'%getrgb[compt,0]+'%5s'%getrgb[compt,1]+'%5s'%getrgb[compt,2]+'\n')
-        compt=compt+1
+        # Find index of closest atom (mi)
+        mi = np.argmin(dists)
 
-    compt=0
-    while(compt < len(label1)):
-        getDots1[compt]= label1[compt][0]
-        getrgb1[compt]= label1[compt][1]
-        if(verbose==1):
-            dotslabel1.write('%8s'%getDots1[compt,0]+'%8s'%getDots1[compt,1]+'%8s'%getDots1[compt,2]+espace5+'%5s'%getrgb1[compt,0]+'%5s'%getrgb1[compt,1]+'%5s'%getrgb1[compt,2]+'\n')
-        compt=compt+1
+        atom_label = atom_labels[mi]
+        atom_radius = atom_radii[mi]
 
-    compt=0
-    while(compt < len(getDots2)):
-        getDots2[compt]= label2[compt][0]
-        getrgb2[compt]= label2[compt][1]
-        if(verbose==1):
-            dotslabel2.write('%8s'%getDots2[compt,0]+'%8s'%getDots2[compt,1]+'%8s'%getDots2[compt,2]+espace5+'%5s'%getrgb2[compt,0]+'%5s'%getrgb2[compt,1]+'%5s'%getrgb2[compt,2]+'\n')
-        compt=compt+1
+        if atom_label == 'X':
+            # Skip dummy atoms as in original code
+            continue
 
-    compt=0
-    while(compt < len(getDots3)):
-        getDots3[compt]= label3[compt][0]
-        getrgb3[compt]= label3[compt][1]
-        if(verbose==1):
-            dotslabel3.write('%8s'%getDots3[compt,0]+'%8s'%getDots3[compt,1]+'%8s'%getDots3[compt,2]+espace5+'%5s'%getrgb3[compt,0]+'%5s'%getrgb3[compt,1]+'%5s'%getrgb3[compt,2]+'\n')
-        compt=compt+1
+        # Determine rgb index
+        rgbi = label.get(atom_label, 3)  # default to 3 if not found
+        if atom_radius == hp_radius:
+            rgbi = label['O']  # override if radius is Hp
 
-    compt=0
-    while(compt < len(getDots4)):
-        getDots4[compt]= label4[compt][0]
-        getrgb4[compt]= label4[compt][1]
-        if(verbose==1):
-            dotslabel4.write('%8s'%getDots4[compt,0]+'%8s'%getDots4[compt,1]+'%8s'%getDots4[compt,2]+espace5+'%5s'%getrgb4[compt,0]+'%5s'%getrgb4[compt,1]+'%5s'%getrgb4[compt,2]+'\n')
-        compt=compt+1
-    
-    if(verbose==1):
-        dotsFic.close()
-        dotslabel1.close()
-        dotslabel2.close()
-        dotslabel3.close()
-        dotslabel4.close()
+        rgb_val = rgb[rgbi]
+
+        getDots[i] = dot
+        getrgb[i] = rgb_val
+
+        # Store combined dot and rgb
+        combined = np.vstack((dot, rgb_val))
+        labeltot.append(combined)
+
+        # Assign to respective label lists
+        if rgbi in label_dict:
+            label_dict[rgbi].append(combined)
+        else:
+            print(f"no label for dot no {i} ?")
+
+    # Convert label lists to arrays
+    label_arrays = {}
+    for key in label_dict:
+        arr = np.array(label_dict[key])
+        label_arrays[key] = arr if arr.size else np.empty((0, 2, 3))  # handle empty case
+
+    # Unpack for return and further use
+    getDots = np.array([item[0] for item in labeltot])
+    getrgb = np.array([item[1] for item in labeltot])
+
+    getDots1, getrgb1 = (label_arrays.get(1)[:, 0, :], label_arrays.get(1)[:, 1, :]) if label_arrays.get(1).size else (
+    np.empty((0, 3)), np.empty((0, 3)))
+    getDots2, getrgb2 = (label_arrays.get(2)[:, 0, :], label_arrays.get(2)[:, 1, :]) if label_arrays.get(2).size else (
+    np.empty((0, 3)), np.empty((0, 3)))
+    getDots3, getrgb3 = (label_arrays.get(3)[:, 0, :], label_arrays.get(3)[:, 1, :]) if label_arrays.get(3).size else (
+    np.empty((0, 3)), np.empty((0, 3)))
+    getDots4, getrgb4 = (label_arrays.get(4)[:, 0, :], label_arrays.get(4)[:, 1, :]) if label_arrays.get(4).size else (
+    np.empty((0, 3)), np.empty((0, 3)))
+
+    if verbose == 1:
+        # Open files with context managers
+        with open('dots.xyzrgb', 'w') as dotsFic, \
+                open('dotslabel1.xyzrgb', 'w') as dotslabel1, \
+                open('dotslabel2.xyzrgb', 'w') as dotslabel2, \
+                open('dotslabel3.xyzrgb', 'w') as dotslabel3, \
+                open('dotslabel4.xyzrgb', 'w') as dotslabel4:
+
+            def write_points(f, dots, rgbs):
+                for pt, color in zip(dots, rgbs):
+                    f.write(
+                        f"{pt[0]:8.2f}{pt[1]:8.2f}{pt[2]:8.2f}{espace5}{color[0]:5.2f}{color[1]:5.2f}{color[2]:5.2f}\n")
+
+            write_points(dotsFic, getDots, getrgb)
+            write_points(dotslabel1, getDots1, getrgb1)
+            write_points(dotslabel2, getDots2, getrgb2)
+            write_points(dotslabel3, getDots3, getrgb3)
+            write_points(dotslabel4, getDots4, getrgb4)
     else:
         os.remove("psa.in")
         os.remove("psa.out")
