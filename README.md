@@ -7,6 +7,7 @@
 
 ![example](/images/alignment.png)
 
+**A version of SENSAAS entirely written in python is available at [https://github.com/SENSAAS/sensaas-py](https://github.com/SENSAAS/sensaas-py)**
 
 **Documentation**: Full documentation is available at [https://github.com/SENSAAS/sensaas/blob/main/docs/index.rst](https://github.com/SENSAAS/sensaas/blob/main/docs/index.rst)
 
