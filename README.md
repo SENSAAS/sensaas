@@ -1,7 +1,7 @@
 ## SENSAAS
 
 [![Made with Python](https://img.shields.io/badge/Made%20with-Python-blue?style=for-the-badge&logo=python)](https://www.python.org/downloads/release/python-370/)
-![Built with Science](https://img.shields.io/badge/Built%20with-Science-blue?style=for-the-badge)
+[![Built with Science](https://img.shields.io/badge/Built%20with-Science-blue?style=for-the-badge)]((https://chemoinfo.ipmc.cnrs.fr/))
 
 **SENSAAS** is a shape-based alignment software which allows to superimpose molecules. It is based on the publication [SenSaaS: Shape-based Alignment by Registration of Colored Point-based Surfaces](https://onlinelibrary.wiley.com/doi/full/10.1002/minf.202000081)
 
