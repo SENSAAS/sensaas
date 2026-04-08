@@ -10,6 +10,7 @@
 **Documentation**: Full documentation is available at [https://github.com/SENSAAS/sensaas/blob/main/docs/index.rst](https://github.com/SENSAAS/sensaas/blob/main/docs/index.rst)
 
 **Tutorial**: For a quick start with SENSAAS, we recommend watching the videos available on the dedicated YouTube channel: [videos](https://www.youtube.com/channel/UC3cjM1j8cQ-95ev0DNxRMOA)
+
 --------------------
 ### Latest News and Releases
 
