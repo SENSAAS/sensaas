@@ -7,15 +7,17 @@
 
 ![example](/images/alignment.png)
 
-**A 100% Python‑based version of SENSAAS is now available at [https://github.com/SENSAAS/sensaas-py](https://github.com/SENSAAS/sensaas-py)**
-
 **Documentation**: Full documentation is available at [https://github.com/SENSAAS/sensaas/blob/main/docs/index.rst](https://github.com/SENSAAS/sensaas/blob/main/docs/index.rst)
 
 **Tutorial**: For a quick start with SENSAAS, we recommend watching the videos available on the dedicated YouTube channel: [videos](https://www.youtube.com/channel/UC3cjM1j8cQ-95ev0DNxRMOA)
 
-**[SENSAAS-Flex](https://github.com/SENSAAS/sensaas-flex), the first add-on of SENSAAS which allows flexible alignments - i.e. an optimisation of the conformation of the query molecule - is now available !**
+### Latest News and Releases
 
-**Website**: A web server providing easy‑to‑use online versions of SENSAAS and [SENSAAS-Flex](https://github.com/SENSAAS/sensaas-flex) is also available at https://chemoinfo.ipmc.cnrs.fr
+- **A 100% Python‑based version of SENSAAS is now available at [https://github.com/SENSAAS/sensaas-py](https://github.com/SENSAAS/sensaas-py)**
+
+- **[SENSAAS-Flex](https://github.com/SENSAAS/sensaas-flex), the first add-on of SENSAAS which allows flexible alignments - i.e. an optimisation of the conformation of the query molecule - is now available !**
+
+- **Website**: A web server providing easy‑to‑use online versions of SENSAAS and [SENSAAS-Flex](https://github.com/SENSAAS/sensaas-flex) is also available at https://chemoinfo.ipmc.cnrs.fr
 
 ## Requirements
 
