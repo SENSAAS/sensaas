@@ -1,89 +1,64 @@
-#!/usr/bin/python3.7
-
-import os, sys
 import numpy as np
-import re
 
-def save_trans_sdf(SDFfile,tran,output):
-    
-    filesdf=open(SDFfile,'r')
-    getstr=filesdf.read().split('\n')
-    filesdf.close()
 
-    tabLignesSdf=[]
-    tabLignesSdf.append(re.split('\s+', getstr[3].strip()))
-    testspace=[]
-    testspace.append(re.split('', getstr[3]))
-    if(len(tabLignesSdf[0][0]) > 2):
-        if(testspace[0][1]==' '):
-            tabLignesSdf[0][1]=tabLignesSdf[0][0][2:]
-            tabLignesSdf[0][0]=tabLignesSdf[0][0][0:2]
-        elif(testspace[0][4]!=' '):
-            tabLignesSdf[0][1]=tabLignesSdf[0][0][3:]
-            tabLignesSdf[0][0]=tabLignesSdf[0][0][:3]
-        nbatom=int(tabLignesSdf[0][0])
-        nbbond=int(tabLignesSdf[0][1])
+def save_trans_sdf(SDFfile, tran, output):
+    with open(SDFfile, 'r') as f:
+        lines = f.readlines()
+
+    header_line = lines[3].strip()
+    parts = header_line.split()
+
+    # Fix for unusual spacing cases
+    if len(parts[0]) > 2:
+        # Re-split based on custom logic in original code
+        # Attempt to parse nbatom and nbbond from header_line directly
+        # This logic assumes the first token has nbatom and some extra characters
+        # Safer approach:
+        # Extract numeric parts by parsing substrings as int
+        # But since original is a bit unclear, do a fallback
+        # We'll parse first 3 chars as nbatom, then the rest as nbbond
+        try:
+            nbatom = int(parts[0][:2])
+            nbbond = int(parts[0][2:])
+            if len(parts) > 1:
+                nbbond = int(parts[1])  # fallback to second token if exists
+        except ValueError:
+            # fallback to standard parsing
+            nbatom = int(parts[0])
+            nbbond = int(parts[1])
     else:
-        nbatom=int(tabLignesSdf[0][0])
-        nbbond=int(tabLignesSdf[0][1])
-    #print("nbatom= %3s nbbond= %3s" % (nbatom,nbbond))
-    
-    xyz=np.empty(shape=[nbatom,3], dtype=np.float64)
-    compt=4
-    compt2=0
-    while(compt < (4+nbatom)):
-        tabLine=re.split(' +', getstr[compt].strip())
-        x=float(tabLine[0])
-        y=float(tabLine[1])
-        z=float(tabLine[2])
-        #print(tabLine)
-        #print("x= %6s y= %6s z= %6s" %(x,y,z))
-        xyz[compt2,:]=[x,y,z] 
-        compt=compt+1
-        compt2=compt2+1
-    #print(xyz)
-    
-    #create a matrix with 1 everywhere with size = xyz.shape[0]
-    arr_xyz1 = np.ones((xyz.shape[0],4))
-    #fill with xyz
-    arr_xyz1[:,0:3] = xyz
-    # multiply the rigid transformation to obtain the transformed data
-    xyz_tran = np.matmul(tran,(arr_xyz1.T))[0:3,:].T
-    #print(xyz_tran)
+        nbatom = int(parts[0])
+        nbbond = int(parts[1])
 
-    fd = open(output, 'w')
-    compt=0
-    compt2=0
-    while (compt < len(getstr)):
-        if(compt>=4 and compt <(nbatom+4)):
-            line=""
-            tabLine=re.split(' +', getstr[compt].strip())
-            #print(tabLine)
-            tabLine[0]=str('%5.3f' % (xyz_tran[compt2,[0]]))
-            tabLine[1]=str('%5.3f' % (xyz_tran[compt2,[1]]))
-            tabLine[2]=str('%5.3f' % (xyz_tran[compt2,[2]]))
-            #print(tabLine)
-            line=line + str('%10s%10s%10s' % (tabLine[0],tabLine[1],tabLine[2]))
-            elt=tabLine[3]
-            longa=len(tabLine[3])
-            if(longa==1):
-                line=line + ' ' + str('%1s' % tabLine[3]) + ' '
+    # Read atom coordinates lines
+    atom_lines = lines[4:4 + nbatom]
+
+    xyz = np.array([list(map(float, line.split()[:3])) for line in atom_lines], dtype=np.float64)
+
+    # Create homogeneous coords for matrix multiplication (Nx4)
+    ones_col = np.ones((nbatom, 1), dtype=np.float64)
+    xyz_hom = np.hstack([xyz, ones_col])
+
+    # Apply transformation matrix: tran shape should be (4,4)
+    xyz_tran = (tran @ xyz_hom.T).T[:, :3]
+
+    # Prepare output lines
+    out_lines = []
+    for i, line in enumerate(lines):
+        if 4 <= i < 4 + nbatom:
+            tokens = line.split()
+            # Format transformed coords with 5.3f and width 10
+            coords_str = ''.join(f"{c:10.3f}" for c in xyz_tran[i - 4])
+            # Keep element symbol and rest of the line as is
+            rest = ' '.join(tokens[3:])
+            if rest:
+                out_line = f"{coords_str} {rest}"
             else:
-                line=line + ' ' + str('%2s' % tabLine[3])
-            maxi=len(tabLine)
-            for i in range(4,maxi):
-                line=line + ' ' + str('%2s' % tabLine[i])
-            fd.write(line+'\n')
+                out_line = coords_str
+            out_lines.append(out_line.rstrip() + '\n')
         else:
-            if(compt==(len(getstr)-1)):
-                fd.write(getstr[compt])
-            else:
-                fd.write(getstr[compt]+'\n')
-        if(compt>=4):
-            compt2=compt2+1
-        compt=compt+1
-    
-    fd.close()
-    return
+            out_lines.append(line)
 
-##################################
+    # Write transformed SDF file
+    with open(output, 'w') as f:
+        f.writelines(out_lines)
